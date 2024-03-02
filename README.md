@@ -18,4 +18,8 @@ This setup is intended to be used with `GNU Stow` which is a symlink farm manage
 
    a. Eiher run `stow .` and delete the conflicting files from `home/<username>` (if there are any)
 
-   b. Run `stow --adapt .` which moves the overlapping files from `/home/<username>` to `/home/<username>/dotfiles` <code style="color : red">This will override the files in dotfiles!</code>
+   b. Run `stow --adapt .` which moves the overlapping files from `/home/<username>` to `/home/<username>/dotfiles` and create a symlink from `/home/<username>`
+
+   ```diff
+   - This will override the files in dotfiles!
+   ```
