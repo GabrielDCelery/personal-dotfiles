@@ -14,7 +14,9 @@ This setup is intended to be used with `GNU Stow` which is a symlink farm manage
 
 3. Clone this repository into `/home/<username>/dotfiles` (example: `git clone <this repo's url> dotfiles`)
 
-4. Sync the dotfiles folder with the local `/home/<username>` folder
+4. Checkout to branch that contains system specific configuration (example: `git checkout wsl-ubuntu`)
+
+5. Sync the dotfiles folder with the local `/home/<username>` folder
 
    a. Eiher run `stow .` and delete the conflicting files from `home/<username>` (if there are any)
 
