@@ -1,1 +1,2 @@
-# Files and folders ignore overrides for STOW
+.git
+README.md
