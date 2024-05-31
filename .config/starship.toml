@@ -29,6 +29,9 @@ error_symbol = '[✗](bold red)'
 style = 'blue'
 read_only = ' 󰌾'
 read_only_style = 'blue'
+truncation_length = 7 
+truncate_to_repo = true
+home_symbol = '~'
 
 [nodejs]
 format = '[\[ $symbol($version) \] ]($style)'
