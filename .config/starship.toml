@@ -1,22 +1,59 @@
-# Get editor completions based on the config schema
+# nGet editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$username\
+$hostname\
+$directory\
+$fill\
+$nodejs\
+$golang\
+$git_branch\
+$git_state\
+$git_status\
+$git_metrics\
+$aws\
+$line_break\
+$character"""
+
 
 # Inserts a blank line between shell prompts
 add_newline = true
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+error_symbol = '[✗](bold red)'
+
+[directory]
+style = 'blue'
+read_only = ' 󰌾'
+read_only_style = 'blue'
+
+[nodejs]
+format = '[\[ $symbol($version) \] ]($style)'
+symbol = ' '
+
+[golang]
+format = '[\[ $symbol($version) \] ]($style)'
+symbol = ' '
 
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
 
-[aws]
-format = 'aws [$symbol($profile )(\($region\) )]($style)'
-style = 'bold blue'
+[git_branch]
+format = '[\[ $symbol$branch(:$remote_branch) \]]($style) '
+symbol = " "
 
-[palettes.catpuccin_macchiato]
+[git_status]
+format = '([\[ $all_status$ahead_behind \]]($style) )'
+
+[aws]
+format = '[\[ aws $symbol($profile)(\($region\) ) \]]($style)'
+symbol = " "
+
+[palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
 flamingo = "#f0c6c6"
 pink = "#f5bde6"
@@ -44,4 +81,4 @@ base = "#24273a"
 mantle = "#1e2030"
 crust = "#181926"
 
-palette = "catppuccin_macchiato"
+palette = 'catppuccin_macchiato'

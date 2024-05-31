@@ -101,11 +101,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
-echo "change permission of dotfiles to 700"
 chmod 700 -R ~/dotfiles/.zshrc.d
 
 for file in ~/dotfiles/.zshrc.d/*;
 do
-    echo "sourced $file in dotfiles"
     source "$file"
 done
