@@ -6,6 +6,7 @@ $username\
 $hostname\
 $directory\
 $fill\
+$rust\
 $nodejs\
 $golang\
 $git_branch\
@@ -41,6 +42,11 @@ symbol = ' '
 format = '[\[ $symbol($version) \] ]($style)'
 symbol = ' '
 
+[rust]
+format = '[\[ $symbol($version) \] ]($style)'
+symbol = ' '
+style = 'red'
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
@@ -51,6 +57,7 @@ symbol = " "
 
 [git_status]
 format = '([\[ $all_status$ahead_behind \]]($style) )'
+style = 'bold purple'
 
 [aws]
 format = '[\[ aws $symbol($profile)(\($region\) ) \]]($style)'
