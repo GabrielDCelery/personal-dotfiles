@@ -7,6 +7,7 @@ $hostname\
 $directory\
 $fill\
 $rust\
+$lua\
 $nodejs\
 $golang\
 $git_branch\
@@ -46,6 +47,10 @@ symbol = ' '
 format = '[\[ $symbol($version) \] ]($style)'
 symbol = ' '
 style = 'red'
+
+[lua]
+format = '[\[ $symbol($version) \] ]($style)'
+symbol = " "
 
 # Disable the package module, hiding it from the prompt completely
 [package]
