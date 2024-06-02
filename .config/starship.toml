@@ -65,7 +65,7 @@ format = '([\[ $all_status$ahead_behind \]]($style) )'
 style = 'bold purple'
 
 [aws]
-format = '[\[ aws $symbol($profile)(\($region\) ) \]]($style)'
+format = '[\[ aws $symbol($profile)(\($region\)) \]]($style)'
 symbol = " "
 
 [palettes.catppuccin_macchiato]
