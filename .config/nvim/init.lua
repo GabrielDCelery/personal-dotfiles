@@ -801,6 +801,7 @@ require('lazy').setup({
   --
   require 'custom.plugins.cattpuccin_theme',
   require 'custom.plugins.vim_tmux_navigator',
+  -- require 'custom.plugins.vim_test',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
