@@ -520,6 +520,9 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         ensure_installed = {
           'eslint',
+          'gopls',
+          'pylsp',
+          'rust_analyzer',
           'tsserver',
         },
         handlers = {
