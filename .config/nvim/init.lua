@@ -1,4 +1,4 @@
---[[iniini
+--[[iniiniinit
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -311,6 +311,12 @@ require('lazy').setup({
         desc = 'Toggle Spectre',
       })
     end,
+  },
+  {
+    'kevinhwang91/nvim-bqf',
+    dependencies = {
+      'junegunn/fzf',
+    },
   },
 
   -- LSP Plugins
