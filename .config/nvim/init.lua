@@ -1,4 +1,4 @@
---[[ini
+--[[iniini
 
 =====================================================================
 ==================== READ THIS BEFORE CONTINUING ====================
@@ -302,6 +302,14 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+    end,
+  },
+  {
+    'nvim-pack/nvim-spectre',
+    config = function()
+      vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
+        desc = 'Toggle Spectre',
+      })
     end,
   },
 
