@@ -3,6 +3,9 @@ return {
   'nvim-treesitter/nvim-treesitter',
   -- This is ran whenever treesitter is installed or updated, the below command will also make sure the language dependencies get updated as well
   build = ':TSUpdate',
+  dependencies = {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+  },
   opts = {
     -- Specify the languages that we want to get treeitter installed
     ensure_installed = {
