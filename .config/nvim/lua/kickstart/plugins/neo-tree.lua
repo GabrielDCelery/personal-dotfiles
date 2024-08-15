@@ -15,6 +15,21 @@ return {
     --  { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
   },
   opts = {
+    sources = {
+      'filesystem',
+      'git_status',
+      'buffers',
+    },
+    source_selector = {
+      winbar = true,
+      statusline = true,
+    },
+    window = {
+      position = 'float',
+      mappings = {
+        ['P'] = { 'toggle_preview', config = { use_float = true } },
+      },
+    },
     filesystem = {
       window = {
         mappings = {
@@ -22,5 +37,6 @@ return {
         },
       },
     },
+    git_status = {},
   },
 }
