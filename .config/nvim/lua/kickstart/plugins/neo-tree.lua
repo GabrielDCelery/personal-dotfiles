@@ -9,10 +9,10 @@ return {
     'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
     'MunifTanjim/nui.nvim',
   },
-  vim.keymap.set('n', '<leader>e', '<cmd>Neotree<cr>'),
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
+    vim.keymap.set('n', '<leader>e', '<cmd>Neotree reveal<cr>', { desc = 'NeoTree reveal' }),
+    --  { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
   },
   opts = {
     filesystem = {
