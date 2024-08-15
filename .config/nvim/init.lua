@@ -200,21 +200,8 @@ require('lazy').setup({
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
   require 'kickstart.plugins.telescope',
-  {
-    'nvim-pack/nvim-spectre',
-    config = function()
-      vim.keymap.set('n', '<leader>S', '<cmd>lua require("spectre").toggle()<CR>', {
-        desc = 'Toggle Spectre',
-      })
-    end,
-  },
-  {
-    'kevinhwang91/nvim-bqf',
-    dependencies = {
-      'junegunn/fzf',
-    },
-  },
-
+  require 'plugins.spectre',
+  require 'plugins.better-quickfix',
   -- LSP Plugins
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
