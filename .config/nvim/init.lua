@@ -199,7 +199,7 @@ require('lazy').setup({
   -- you do for a plugin at the top level, you can do for a dependency.
   --
   -- Use the `dependencies` key to specify the dependencies of a particular plugin
-  require 'kickstart.plugins.nvim-telescope',
+  require 'kickstart.plugins.telescope',
   {
     'nvim-pack/nvim-spectre',
     config = function()
@@ -229,7 +229,7 @@ require('lazy').setup({
     },
   },
   { 'Bilal2453/luvit-meta', lazy = true },
-  require 'kickstart.plugins.nvim-lspconfig',
+  require 'kickstart.plugins.lspconfig',
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.autocompletion',
   -- Highlight todo, notes, etc in comments
@@ -272,7 +272,7 @@ require('lazy').setup({
       --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
-  require 'kickstart.plugins.nvim-treesitter',
+  require 'kickstart.plugins.treesitter',
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
