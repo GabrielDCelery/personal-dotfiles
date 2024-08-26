@@ -64,9 +64,9 @@ symbol = " "
 [git_status]
 format = '([\[ $all_status$ahead_behind \]]($style) )'
 style = 'bold purple'
-ahead = '⇡${count}'
+ahead = ' ${count}'
 diverged = '⇕⇡${ahead_count}⇣${behind_count}'
-behind = '⇣${count}'
+behind = ' ${count}'
 
 [aws]
 format = '[\[ aws $symbol ($profile)(\($region\)) \]]($style)'
