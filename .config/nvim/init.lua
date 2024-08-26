@@ -1,9 +1,8 @@
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-require 'custom.options.main'
-require 'custom.options.keymap'
-
+require 'options.main'
+require 'options.keymap'
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode
 --  See `:help vim.highlight.on_yank()`
