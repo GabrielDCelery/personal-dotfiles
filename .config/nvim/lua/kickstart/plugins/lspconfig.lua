@@ -203,6 +203,7 @@ return {
         'cmake',
         'eslint',
         'gopls',
+        'yamlls',
         'pylsp',
         'rust_analyzer',
         'tsserver',
