@@ -3,7 +3,7 @@ vim.opt.relativenumber = true
 
 vim.opt.mouse = 'a'
 
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
