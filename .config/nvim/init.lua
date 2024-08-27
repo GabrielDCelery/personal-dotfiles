@@ -52,26 +52,16 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   require 'plugins.trouble',
   require 'plugins.neogit',
+  require 'plugins.barbar',
   vim.keymap.set('n', '<leader>g', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' }),
+  vim.keymap.set('n', '<Tab>', '<cmd>bn<cr>', { desc = 'Navigate to next buffer' }),
+  vim.keymap.set('n', '<S-Tab>', '<cmd>bp<cr>', { desc = 'Navigate to previous buffer' }),
+  vim.keymap.set('n', '<leader>b', '<cmd>bdelete<CR>'),
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
+    icons = vim.g.have_nerd_font and {} or {},
   },
 })
 
