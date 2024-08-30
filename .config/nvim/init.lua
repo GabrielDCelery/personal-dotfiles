@@ -53,6 +53,7 @@ require('lazy').setup({
   require 'plugins.trouble',
   require 'plugins.neogit',
   require 'plugins.barbar',
+  require 'plugins.autoclose',
   vim.keymap.set('n', '<leader>g', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' }),
   vim.keymap.set('n', '<Tab>', '<cmd>bn<cr>', { desc = 'Navigate to next buffer' }),
   vim.keymap.set('n', '<S-Tab>', '<cmd>bp<cr>', { desc = 'Navigate to previous buffer' }),
