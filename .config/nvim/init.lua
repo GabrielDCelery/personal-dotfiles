@@ -50,6 +50,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',
   require 'plugins.neogit',
   require 'plugins.barbar',
