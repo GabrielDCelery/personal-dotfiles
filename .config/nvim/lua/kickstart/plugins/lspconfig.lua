@@ -226,6 +226,16 @@ return {
           -- certain features of an LSP (for example, turning off formatting for tsserver)
           server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
           require('lspconfig')[server_name].setup(server)
+          -- require('lspconfig').clangd.setup {
+          --   init_options = {
+          --     compilationDatabaseDirectory = 'build',
+          --     index = 'auto',
+          --     compileFlags = {
+          --       '-I/home/linuxbrew/.linuxbrew/include/c++/14',
+          --       '-I/home/linuxbrew/.linuxbrew/include/c++/14/x86_64-pc-linux-gnu',
+          --     },
+          --   },
+          -- }
         end,
       },
     }
