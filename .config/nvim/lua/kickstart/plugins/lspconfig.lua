@@ -200,6 +200,7 @@ return {
 
     require('mason-lspconfig').setup {
       ensure_installed = {
+        'clangd',
         'cmake',
         'eslint',
         'gopls',
