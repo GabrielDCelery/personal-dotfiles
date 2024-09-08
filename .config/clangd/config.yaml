@@ -1,0 +1,6 @@
+CompileFlags:
+  Add: [
+    "-I/home/linuxbrew/.linuxbrew/include/c++/14",
+    "-I/home/linuxbrew/.linuxbrew/include/c++/14/x86_64-pc-linux-gnu"
+  ]
+
