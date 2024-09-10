@@ -208,18 +208,10 @@ return {
         'yamlls',
         'pylsp',
         'rust_analyzer',
-        'tsserver',
+        'ts_ls',
       },
       handlers = {
         function(server_name)
-          -- TODO START
-          -- tsserver got renamed to ts_ls (because tsserver is alreadt a node executable and not an LSP so it got confusing for a lot of people)
-          -- This is a fix for now until hopefully mason sorts this out
-          if server_name == 'tsserver' then
-            server_name = 'ts_ls'
-          end
-          -- TODO END
-
           local server = servers[server_name] or {}
           -- This handles overriding only values explicitly passed
           -- by the server configuration above. Useful when disabling
