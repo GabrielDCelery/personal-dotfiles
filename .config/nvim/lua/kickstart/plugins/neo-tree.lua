@@ -18,14 +18,15 @@ return {
     sources = {
       'filesystem',
       'git_status',
-      'buffers',
+      -- 'buffers',
     },
     source_selector = {
       winbar = true,
       statusline = true,
     },
     window = {
-      position = 'float',
+      -- position = 'float',
+      position = 'left',
       mappings = {
         ['P'] = { 'toggle_preview', config = { use_float = true } },
       },
