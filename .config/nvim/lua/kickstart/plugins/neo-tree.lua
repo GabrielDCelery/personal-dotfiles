@@ -30,6 +30,9 @@ return {
       mappings = {
         ['P'] = { 'toggle_preview', config = { use_float = true } },
       },
+      show_relative_path = true,
+      show_unique_filename = true,
+      show_modified_items = true,
     },
     filesystem = {
       follow_current_file = {
