@@ -1,0 +1,63 @@
+#!/bin/zsh 
+
+create_filename_from_title() {
+    local note_title="$1"
+    local note_date="$2"
+    # Remove excess whitespace
+    note_title=$(echo "$note_title" | tr -s ' ')
+    # Replace whitespace with hyphen
+    note_title=$(echo "$note_title" | tr ' ' '-')
+    # Convert to lowercase
+    note_title=$(echo "$note_title" | tr '[:upper:]' '[:lower:]')
+    # Remove invalid characters
+    note_title=$(echo "$note_title" | tr -d '<>"\/\\|\?*.')
+    echo "$note_title-$(date +%Y%m%d%H%M%S --date "$note_date").md"
+}
+
+if [ ! -n "$PERSONAL_NOTES_DEFAULT_AUTHOR" ]; then
+    echo "PERSONAL_NOTES_DEFAULT_AUTHOR has not been specified, exitting..."
+    exit 1
+fi
+
+if [ ! -d "$PERSONAL_NOTES_INBOX_DIR" ]; then
+    echo "PERSONAL_NOTES_INBOX_DIR is not a valid directory, exitting..."
+    exit 1
+fi
+
+if [ ! -f "$PERSONAL_NOTES_TEMPLATE" ]; then
+    echo "PERSONAL_NOTES_TEMPLATE is not a valid file, exitting..."
+    exit 1
+fi
+
+echo "Provide a title for your note:\n"
+read note_title
+
+note_date="$(date -u)"
+
+note_filename="$(create_filename_from_title "$note_title" "$note_date")"
+note_path="$PERSONAL_NOTES_INBOX_DIR/$note_filename"
+
+echo "\nWill create a note with the following settings:\n"
+echo "Title: $note_title"
+echo "Date: $note_date"
+echo "Path: $note_path"
+echo "\nDo you want to continue? [yN]\n"
+read choice
+
+if [ "$choice" != "y" ]; then
+    echo "Exitting..."
+    exit 0
+fi
+
+echo "\nCopying template from $PERSONAL_NOTES_TEMPLATE to $note_path"
+cp $PERSONAL_NOTES_TEMPLATE $note_path
+
+echo "Replace template variables with actual values"
+sed -i "s/{{ title }}/$note_title/" $note_path
+sed -i "s/{{ date }}/$(date +%Y-%m-%dT%H-%M-%SZ --date $note_date)/" $note_path
+sed -i "s/{{ author }}/$PERSONAL_NOTES_DEFAULT_AUTHOR/" $note_path
+
+cd $PERSONAL_NOTES_INBOX_DIR && nvim $note_filename
+
+exit 0
+
