@@ -11,7 +11,7 @@ create_filename_from_title() {
     note_title=$(echo "$note_title" | tr '[:upper:]' '[:lower:]')
     # Remove invalid characters
     note_title=$(echo "$note_title" | tr -d '<>"\/\\|\?*.')
-    echo "$note_title-$(date +%Y%m%d%H%M%S --date "$note_date").md"
+    echo "$note_title-$(date -u +%Y%m%d%H%M%S).md"
 }
 
 if [ ! -n "$PERSONAL_NOTES_DEFAULT_AUTHOR" ]; then
