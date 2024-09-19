@@ -22,6 +22,7 @@ $character"""
 
 # Inserts a blank line between shell prompts
 add_newline = true
+command_timeout = 10000 # 10 seconds
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
@@ -138,3 +139,4 @@ mantle = "#181825"
 crust = "#11111b"
 
 palette = 'catppuccin_mocha'
+
