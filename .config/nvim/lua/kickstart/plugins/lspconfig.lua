@@ -209,6 +209,7 @@ return {
         'yamlls',
         'pylsp',
         'rust_analyzer',
+        'sqls',
         'ts_ls',
       },
       handlers = {
