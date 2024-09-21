@@ -39,7 +39,7 @@ require('lazy').setup({
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.autocompletion',
   require 'plugins.todo-commments',
-  require 'plugins.mini',
+  -- require 'plugins.mini',
   require 'kickstart.plugins.treesitter',
   require 'plugins.theme',
   require 'plugins.vim_tmux_navigator',
