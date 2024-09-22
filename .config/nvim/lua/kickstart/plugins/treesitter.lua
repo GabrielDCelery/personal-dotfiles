@@ -12,6 +12,7 @@ return {
       'bash',
       'c',
       'diff',
+      'go',
       'html',
       'javascript',
       'json',
@@ -63,6 +64,51 @@ return {
           ['il'] = '@loop.inner',
           ['al'] = '@loop.outer',
           ['at'] = '@comment.outer',
+        },
+      },
+      swap = {
+        enable = true,
+        swap_next = {
+          ['<leader>a'] = '@parameter.inner',
+        },
+        swap_previous = {
+          ['<leader>A'] = '@parameter.inner',
+        },
+      },
+      move = {
+        enable = true,
+        set_jumps = true, -- whether to set jumps in the jumplist
+        goto_next_start = {
+          [']f'] = '@function.outer',
+          [']c'] = '@class.outer',
+          [']l'] = '@loop.outer',
+          [']i'] = '@conditional.outer',
+          -- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
+          -- [']o'] = '@loop.*',
+          -- ["]o"] = { query = { "@loop.inner", "@loop.outer" } }
+          --
+          -- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+          -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+          -- [']s'] = { query = '@scope', query_group = 'locals', desc = 'Next scope' },
+          -- [']z'] = { query = '@fold', query_group = 'folds', desc = 'Next fold' },
+        },
+        goto_next_end = {
+          [']F'] = '@function.outer',
+          [']C'] = '@class.outer',
+          [']L'] = '@loop.outer',
+          [']I'] = '@conditional.outer',
+        },
+        goto_previous_start = {
+          ['[f'] = '@function.outer',
+          ['[c'] = '@class.outer',
+          ['[l'] = '@loop.outer',
+          ['[i'] = '@conditional.outer',
+        },
+        goto_previous_end = {
+          ['[F'] = '@function.outer',
+          ['[C'] = '@class.outer',
+          ['[L'] = '@loop.outer',
+          ['[I'] = '@conditional.outer',
         },
       },
     },
