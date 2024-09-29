@@ -10,6 +10,7 @@ $rust\
 $lua\
 $nodejs \
 $golang\
+$python\
 $git_branch\
 $git_state\
 $git_status\
@@ -44,6 +45,11 @@ symbol = ' '
 [golang]
 format = '[\[ $symbol($version) \] ]($style)'
 symbol = ' '
+
+[python]
+format = '[\[ $symbol($version) \] ]($style)'
+symbol = ' '
+style = 'blue'
 
 [rust]
 format = '[\[ $symbol($version) \] ]($style)'
