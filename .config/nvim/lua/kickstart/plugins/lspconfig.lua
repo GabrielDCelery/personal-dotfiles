@@ -207,7 +207,7 @@ return {
         'gopls',
         'jsonls',
         'yamlls',
-        'pylsp',
+        'pyright',
         'rust_analyzer',
         'sqls',
         'ts_ls',
