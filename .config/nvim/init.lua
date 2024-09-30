@@ -59,6 +59,7 @@ require('lazy').setup({
   require 'plugins.autoclose',
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
+  require 'plugins.lualine',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
