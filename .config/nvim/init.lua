@@ -1,4 +1,3 @@
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 require 'options.main'
@@ -54,12 +53,13 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',
-  require 'plugins.neogit',
+  -- require 'plugins.neogit',
   require 'plugins.barbar',
   require 'plugins.autoclose',
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
   require 'plugins.lualine',
+  require 'plugins.fugitive',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
