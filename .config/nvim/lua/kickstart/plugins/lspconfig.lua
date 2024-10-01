@@ -211,6 +211,7 @@ return {
         'rust_analyzer',
         'sqls',
         'ts_ls',
+        'yamlls',
       },
       handlers = {
         function(server_name)
