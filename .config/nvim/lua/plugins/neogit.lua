@@ -9,6 +9,6 @@ return {
     'ibhagwan/fzf-lua', -- optional
   },
   config = true,
-  vim.keymap.set('n', '<leader>g', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' }),
+  vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' }),
   --  vim.keymap.set('n', '<leader>n', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' })
 }
