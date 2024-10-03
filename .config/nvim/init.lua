@@ -53,13 +53,13 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',
-  -- require 'plugins.neogit',
   require 'plugins.barbar',
   require 'plugins.autoclose',
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
   require 'plugins.lualine',
-  require 'plugins.fugitive',
+  require 'plugins.neogit',
+  -- require 'plugins.fugitive',
   -- require 'plugins.lazygit',
 }, {
   ui = {
