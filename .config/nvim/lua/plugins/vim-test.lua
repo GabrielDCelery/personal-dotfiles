@@ -10,5 +10,6 @@ return {
   vim.keymap.set('n', '<leader>tv', ':TestVisit<CR>'),
 
   vim.cmd "let g:test#javascript#runner = 'jest'",
+  vim.cmd "let g:test#javascript#jest#executable = 'npx jest'",
   vim.cmd "let test#strategy = 'vimux'",
 }
