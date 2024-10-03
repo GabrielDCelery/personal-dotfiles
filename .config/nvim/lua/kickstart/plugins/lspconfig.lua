@@ -206,6 +206,7 @@ return {
         'eslint',
         'gopls',
         'jsonls',
+        'html',
         'yamlls',
         'pyright',
         'rust_analyzer',
