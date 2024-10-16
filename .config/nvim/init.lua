@@ -30,6 +30,7 @@ require('lazy').setup({
   require 'plugins.gitsigns',
   require 'plugins.which-key',
   require 'plugins.telescope',
+  require 'plugins.telescope-diff',
   require 'plugins.spectre',
   require 'plugins.better-quickfix',
   require 'plugins.lazydev',
