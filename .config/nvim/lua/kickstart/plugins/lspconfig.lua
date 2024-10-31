@@ -211,7 +211,6 @@ return {
         'yamlls',
         'pyright',
         'rust_analyzer',
-        'sqls',
         'ts_ls',
         'yamlls',
       },
