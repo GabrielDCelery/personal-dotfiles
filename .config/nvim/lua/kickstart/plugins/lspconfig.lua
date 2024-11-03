@@ -212,6 +212,7 @@ return {
         'pyright',
         'rust_analyzer',
         'templ',
+        'terraformls',
         'ts_ls',
         'yamlls',
       },
