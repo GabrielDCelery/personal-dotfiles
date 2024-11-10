@@ -209,6 +209,7 @@ return {
         'jsonls',
         'html',
         'yamlls',
+        'markdown_oxide',
         'pyright',
         'rust_analyzer',
         'templ',
