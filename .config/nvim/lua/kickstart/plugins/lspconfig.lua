@@ -208,6 +208,7 @@ return {
         'gopls',
         'jsonls',
         'html',
+        'lua_ls',
         'yamlls',
         'markdown_oxide',
         'pyright',
