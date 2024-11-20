@@ -36,3 +36,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>hc', '<cmd>helpclose<CR>', { desc = 'Close help' })
 
 vim.keymap.set('n', '<leader>q', '<cmd>:q<CR>', { desc = 'Quit' })
+
+vim.keymap.set('n', '<leader>pw', 'viw"_dP', {
+  noremap = true,
+  silent = true,
+  desc = 'Paste inner word below cursor with the contents of default register but do not yank it',
+})
