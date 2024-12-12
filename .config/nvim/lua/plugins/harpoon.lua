@@ -18,9 +18,9 @@ return {
       harpoon:list():prev()
     end, { desc = 'Move to next harpoon buffer' })
 
-    -- vim.keymap.set('n', '<leader>hs', function()
-    --   harpoon.ui:toggle_quick_menu(harpoon:list())
-    -- end)
+    vim.keymap.set('n', '<leader>he', function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end, { desc = 'Edit harpoon buffers' })
 
     -- INFO: Telescope settings for harpoon
 
