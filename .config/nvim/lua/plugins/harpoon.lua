@@ -8,14 +8,15 @@ return {
 
     vim.keymap.set('n', '<leader>ha', function()
       harpoon:list():add()
-    end)
+    end, { desc = 'Add buffer go harpoon' })
 
     vim.keymap.set('n', '<Tab>', function()
       harpoon:list():next()
-    end)
+    end, { desc = 'Move to next harpoon buffer' })
+
     vim.keymap.set('n', '<S-Tab>', function()
       harpoon:list():prev()
-    end)
+    end, { desc = 'Move to next harpoon buffer' })
 
     -- vim.keymap.set('n', '<leader>hs', function()
     --   harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -46,6 +47,6 @@ return {
     vim.keymap.set('n', '<leader>hs', function()
       toggle_telescope(harpoon:list())
       vim.api.nvim_input '<Esc>'
-    end)
+    end, { desc = 'Open harpoon buffers in telescope' })
   end,
 }
