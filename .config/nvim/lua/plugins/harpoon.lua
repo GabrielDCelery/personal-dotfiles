@@ -24,28 +24,42 @@ return {
 
     -- INFO: Telescope settings for harpoon
 
+    local pickers = require 'telescope.pickers'
+    local finders = require 'telescope.finders'
+    local sorters = require 'telescope.sorters'
     local conf = require('telescope.config').values
-    local function toggle_telescope(harpoon_files)
+
+    local function reverse_table(table_to_reverse)
+      local reversed_table = {}
+      for i, v in ipairs(table_to_reverse) do
+        reversed_table[#table_to_reverse + 1 - i] = v
+      end
+      return reversed_table
+    end
+
+    local function toggle_telescope(harpoon_files, opts)
+      opts = opts or {}
+
       local file_paths = {}
 
-      for _, item in ipairs(harpoon_files.items) do
+      for _, item in ipairs(reverse_table(harpoon_files.items)) do
         table.insert(file_paths, item.value)
       end
 
-      require('telescope.pickers')
-        .new({}, {
+      pickers
+        .new(opts, {
           prompt_title = 'Harpoon',
-          finder = require('telescope.finders').new_table {
+          finder = finders.new_table {
             results = file_paths,
           },
           previewer = conf.file_previewer {},
-          sorter = conf.generic_sorter {},
+          sorter = sorters.get_fzy_sorter(opts),
         })
         :find()
     end
 
     vim.keymap.set('n', '<leader>hs', function()
-      toggle_telescope(harpoon:list())
+      toggle_telescope(harpoon:list(), {})
       vim.api.nvim_input '<Esc>'
     end, { desc = 'Open harpoon buffers in telescope' })
   end,
