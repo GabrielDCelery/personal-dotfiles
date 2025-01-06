@@ -10,6 +10,16 @@ return {
       harpoon:list():add()
     end, { desc = 'Add buffer go harpoon' })
 
+    -- vim.keymap.set('n', '<leader>hd', function()
+    --   local curr_buf_path = vim.fn.expand '%:p'
+    --   for i, buf in ipairs(harpoon:list()) do
+    --     if buf == curr_buf_path then
+    --       harpoon:list().remove_at(harpoon:list(), i)
+    --       return
+    --     end
+    --   end
+    -- end, { desc = 'Remove buffer from harpoon' })
+
     vim.keymap.set('n', '<Tab>', function()
       harpoon:list():next()
     end, { desc = 'Move to next harpoon buffer' })

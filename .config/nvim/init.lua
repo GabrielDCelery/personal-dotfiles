@@ -26,29 +26,32 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require 'plugins.sleuth',
+  require 'plugins.theme', -- configure and load theme for editor
+  require 'plugins.sleuth', -- auto adjust cursor to follow indentation
+  require 'plugins.flash', -- navigate within buffer jumping to characters
+  require 'plugins.spectre', -- search and replace text in the codebase
+  require 'plugins.neogit', -- built-in git GUI
+  require 'plugins.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
+  require 'plugins.neo-tree', -- browse and edit file system
+  require 'plugins.harpoon', -- harpoon for pinning buffers that keep revisiting
   require 'plugins.gitsigns',
   require 'plugins.which-key',
   require 'plugins.telescope',
   require 'plugins.telescope-diff',
-  require 'plugins.spectre',
   require 'plugins.better-quickfix',
   require 'plugins.lazydev',
-  require 'plugins.luvit-meta',
+  -- require 'plugins.luvit-meta',
   require 'kickstart.plugins.lspconfig',
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.autocompletion',
-  require 'plugins.todo-commments',
   -- require 'plugins.mini',
   require 'kickstart.plugins.treesitter',
-  require 'plugins.theme',
   require 'plugins.vim_tmux_navigator',
   -- require 'custom.plugins.vim_test',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  require 'kickstart.plugins.neo-tree',
   require 'plugins.vim-test',
   require 'plugins.vimux',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
@@ -59,11 +62,8 @@ require('lazy').setup({
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
   require 'plugins.lualine',
-  require 'plugins.neogit',
   -- require 'plugins.fugitive',
   -- require 'plugins.lazygit',
-  require 'plugins.flash',
-  require 'plugins.harpoon',
   -- require 'plugins.leap',
 }, {
   ui = {
