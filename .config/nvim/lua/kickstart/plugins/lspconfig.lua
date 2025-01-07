@@ -203,6 +203,7 @@ return {
         'bashls',
         'clangd',
         'cmake',
+        'dagger',
         'dockerls',
         'eslint',
         'gopls',
