@@ -2,20 +2,10 @@
 
 Collection of dotfiles for my personal work environment setup
 
-# How does it work?
+# How to use it?
 
-This setup is intended to be used with `GNU Stow` which is a symlink farm manager.
+This setup now is fully built around to be used with my automated scripts leveraging `Ansiblele`.
 
-# Fast setup guide
+[Link to my personal development environment quickstart](https://github.com/GabrielDCelery/personal-dev-environment-quickstart)
 
-1. Install [GNU Stow](https://www.gnu.org/software/stow/)
-
-2. Navigate to `/home/<username>`
-
-3. Clone this repository into `/home/<username>/dotfiles` (example: `git clone <this repo's url> dotfiles`)
-
-4. Sync the dotfiles folder with the local `/home/<username>` folder
-
-   a. Eiher run `stow .` and delete the conflicting files from `home/<username>` (if there are any)
-
-   b. Run `stow --adopt .` which moves the overlapping files from `/home/<username>` to `/home/<username>/dotfiles` and create a symlink from `/home/<username>`. This will override the files in dotfiles so they either have to be reverted or applied!
+[!WARNING] - If you just clone this repository and set it up using something `GNU Stow` then it is likely not going to work properly.
