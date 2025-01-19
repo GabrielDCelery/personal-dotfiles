@@ -4,7 +4,7 @@ Collection of dotfiles for my personal work environment setup
 
 # How to use it?
 
-This setup now is fully built around to be used with my automated scripts leveraging `Ansiblele`.
+This setup now is fully built around to be used with my automated scripts leveraging `Ansible`.
 
 [Link to my personal development environment quickstart](https://github.com/GabrielDCelery/personal-dev-environment-quickstart)
 
