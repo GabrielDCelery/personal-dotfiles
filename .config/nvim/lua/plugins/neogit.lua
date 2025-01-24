@@ -9,10 +9,10 @@ return {
   config = function()
     local neogit = require 'neogit'
     neogit.setup {}
-    vim.keymap.set('n', '<leader>gs', '<cmd>Neogit<cr>', { desc = 'NeoGit reveal' })
-    vim.keymap.set('n', '<leader>gdo', '<cmd>DiffviewOpen<cr>', { desc = 'DiffviewOpen' })
-    vim.keymap.set('n', '<leader>gdc', '<cmd>DiffviewClose<cr>', { desc = 'DiffviewClose' })
-    vim.keymap.set('n', '<leader>gdr', '<cmd>DiffviewRefresh<cr>', { desc = 'DiffviewRefresh' })
-    vim.keymap.set('n', '<leader>gdt', '<cmd>DiffviewToggleFiles<cr>', { desc = 'DiffviewToggleFiles' })
+    vim.keymap.set('n', '<leader>go', '<cmd>Neogit<cr>', { desc = 'Open Neogit' })
+    vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<cr>', { desc = 'DiffviewOpen' })
+    vim.keymap.set('n', '<leader>gc', '<cmd>DiffviewClose<cr>', { desc = 'DiffviewClose' })
+    vim.keymap.set('n', '<leader>gr', '<cmd>DiffviewRefresh<cr>', { desc = 'DiffviewRefresh' })
+    vim.keymap.set('n', '<leader>gt', '<cmd>DiffviewToggleFiles<cr>', { desc = 'DiffviewToggleFiles' })
   end,
 }
