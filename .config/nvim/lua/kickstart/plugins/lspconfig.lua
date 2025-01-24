@@ -1,14 +1,19 @@
 return {
-  -- Main LSP Configuration
   'neovim/nvim-lspconfig',
   dependencies = {
-    -- Automatically install LSPs and related tools to stdpath for Neovim
-    { 'williamboman/mason.nvim', config = true }, -- NOTE: Must be loaded before dependants
-    'williamboman/mason-lspconfig.nvim',
-
+    {
+      'williamboman/mason.nvim',
+      config = true,
+    },
+    {
+      'williamboman/mason-lspconfig.nvim',
+    },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    { 'j-hui/fidget.nvim', opts = {} },
+    {
+      'j-hui/fidget.nvim',
+      opts = {},
+    },
 
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
@@ -30,6 +35,10 @@ return {
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+
+        -- WARN: This is not Goto Definition, this is Goto Declaration.
+        --  For example, in C this would take you to the header.
+        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
         -- Find references for the word under your cursor.
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -61,18 +70,18 @@ return {
         -- or a suggestion from your LSP for this to activate.
         map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 
-        -- WARN: This is not Goto Definition, this is Goto Declaration.
-        --  For example, in C this would take you to the header.
-        map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed
         --
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-          local highlight_augroup = vim.api.nvim_create_augroup('kickstart-lsp-highlight', { clear = false })
+
+        local does_buffer_support_document_highlight = client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+
+        if does_buffer_support_document_highlight then
+          local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
+
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
@@ -89,7 +98,7 @@ return {
             group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
             callback = function(event2)
               vim.lsp.buf.clear_references()
-              vim.api.nvim_clear_autocmds { group = 'kickstart-lsp-highlight', buffer = event2.buf }
+              vim.api.nvim_clear_autocmds { group = 'lsp-highlight', buffer = event2.buf }
             end,
           })
         end
@@ -98,11 +107,12 @@ return {
         -- code, if the language server you are using supports them
         --
         -- This may be unwanted, since they displace some of your code
-        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-          map('<leader>th', function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          end, '[T]oggle Inlay [H]ints')
-        end
+        --
+        -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+        --   map('<leader>th', function()
+        --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+        --   end, '[T]oggle Inlay [H]ints')
+        -- end
       end,
     })
 
@@ -110,26 +120,8 @@ return {
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
 
-    -- Enable the following language servers
-    --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
-    --
-    --  Add any additional override configuration in the following tables. Available keys are:
-    --  - cmd (table): Override the default command used to start the server
-    --  - filetypes (table): Override the default list of associated filetypes for the server
-    --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
-    --  - settings (table): Override the default settings passed when initializing the server.
-    --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
-    -- local servers = {}
-
-    -- Ensure the servers and tools above are installed
-    --  To check the current status of installed tools and/or manually install
-    --  other tools, you can run
-    --    :Mason
-    --
-    --  You can press `g?` for help in this menu.
     require('mason').setup()
 
     require('mason-lspconfig').setup {
@@ -153,7 +145,6 @@ return {
         'rust_analyzer',
         'templ',
         'terraformls',
-        -- 'tflint',
         'ts_ls',
         'yamlls',
       },
@@ -161,16 +152,13 @@ return {
       ---@type table<string, fun(server_name: string)>?
       handlers = {
         function(server_name)
-          local lspconfig = require 'lspconfig'
-          lspconfig[server_name].setup {}
-        end,
-        ['terraformls'] = function()
-          local lspconfig = require 'lspconfig'
-          lspconfig.terraformls.setup {}
+          require('lspconfig')[server_name].setup {
+            capabilities = defaultLspCapabilities,
+          }
         end,
         ['lua_ls'] = function()
-          local lspconfig = require 'lspconfig'
-          lspconfig.lua_ls.setup {
+          require('lspconfig').lua_ls.setup {
+            capabilities = defaultLspCapabilities,
             settings = {
               Lua = {
                 completion = {
@@ -180,6 +168,17 @@ return {
                 -- diagnostics = { disable = { 'missing-fields' } },
               },
             },
+          }
+        end,
+        ['markdown_oxide'] = function()
+          require('lspconfig').markdown_oxide.setup {
+            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {
+              workspace = {
+                didChangeWatchedFiles = {
+                  dynamicRegistration = true,
+                },
+              },
+            }),
           }
         end,
       },
