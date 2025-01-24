@@ -47,7 +47,7 @@ format = '[\[ $symbol($version) \] ]($style)'
 symbol = ' '
 
 [python]
-format = '[\[ $symbol($version) \] ]($style)'
+format = '[\[ $symbol($version):($virtualenv) \] ]($style)'
 symbol = ' '
 style = 'blue'
 
@@ -86,7 +86,7 @@ disabled = false
 format = '[\[   $time \]]($style)'
 time_format = '%Y-%m-%d %H:%M:%S'
 time_range = '10:00:00-14:00:00'
-style = 'bold blue'
+style = 'bold peach'
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
