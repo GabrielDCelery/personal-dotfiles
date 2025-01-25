@@ -24,12 +24,12 @@ require('lazy').setup({
   require 'plugins.better-quickfix',     -- quickfix window
   require 'plugins.autopairs',           -- plugin to auto pair brackets and quotes
   require 'plugins.autoformat',          -- autoformatter (e.g. prettier)
+  require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
 
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
   -- require 'plugins.luvit-meta',
   require 'kickstart.plugins.autocompletion',
   -- require 'plugins.mini',
-  require 'plugins.vim_tmux_navigator',
   -- require 'custom.plugins.vim_test',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
