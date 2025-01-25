@@ -26,22 +26,22 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require 'plugins.lazydev', -- auto configures the lua LSP for editing neovim configurations
-  require 'plugins.theme', -- configure and load theme for editor
-  require 'plugins.sleuth', -- auto adjust cursor to follow indentation
-  require 'plugins.flash', -- navigate within buffer jumping to characters
-  require 'plugins.spectre', -- search and replace text in the codebase
-  require 'plugins.neogit', -- built-in git GUI
-  require 'plugins.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
-  require 'plugins.neo-tree', -- browse and edit file system
-  require 'plugins.harpoon', -- harpoon for pinning buffers that keep revisiting
-  require 'plugins.gitsigns', -- git decorations
-  require 'plugins.which-key', -- displays key bindings
+  require 'plugins.theme',               -- configure and load theme for editor
+  require 'plugins.lazydev',             -- auto configures the lua LSP for editing neovim configurations
+  require 'kickstart.plugins.lspconfig', -- configuring lsp
+  require 'plugins.sleuth',              -- auto adjust cursor to follow indentation
+  require 'plugins.flash',               -- navigate within buffer jumping to characters
+  require 'plugins.spectre',             -- search and replace text in the codebase
+  require 'plugins.neogit',              -- built-in git GUI
+  require 'plugins.todo-commments',      -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
+  require 'plugins.neo-tree',            -- browse and edit file system
+  require 'plugins.harpoon',             -- harpoon for pinning buffers that keep revisiting
+  require 'plugins.gitsigns',            -- git decorations
+  require 'plugins.which-key',           -- displays key bindings
   require 'plugins.telescope',
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
   require 'plugins.better-quickfix', -- quickfix window
   -- require 'plugins.luvit-meta',
-  require 'kickstart.plugins.lspconfig',
   require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.autocompletion',
   -- require 'plugins.mini',
@@ -51,14 +51,14 @@ require('lazy').setup({
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   require 'plugins.vim-test',
   require 'plugins.vimux',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',
   -- require 'plugins.barbar',
-  require 'plugins.autoclose',
+  -- require 'plugins.autoclose',
   require 'plugins.render-markdown',
   require 'plugins.dadbod',
   require 'plugins.lualine',
