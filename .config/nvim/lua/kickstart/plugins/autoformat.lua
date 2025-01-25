@@ -25,11 +25,12 @@ return { -- Autoformat
       }
     end,
     formatters_by_ft = {
+      go = { 'goimports', 'gofmt' },
       lua = { 'stylua' },
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
-      javascript = { 'prettier', 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', 'prettierd', stop_after_first = true },
       json = { 'prettier', 'prettierd', stop_after_first = true },
       jsonc = { 'prettier', 'prettierd', stop_after_first = true },
       markdown = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
