@@ -29,12 +29,12 @@ return { -- Autoformat
       -- Conform can also run multiple formatters sequentially
       -- python = { "isort", "black" },
       --
-      javascript = { 'prettierd', 'prettier', stop_after_first = true },
-      json = { 'prettierd', 'prettier', stop_after_first = true },
-      jsonc = { 'prettierd', 'prettier', stop_after_first = true },
-      markdown = { 'prettierd', 'prettier', stop_after_first = true },
-      typescript = { 'prettierd', 'prettier', stop_after_first = true },
-      typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+      javascript = { 'prettier', 'prettierd', 'prettier', stop_after_first = true },
+      json = { 'prettier', 'prettierd', stop_after_first = true },
+      jsonc = { 'prettier', 'prettierd', stop_after_first = true },
+      markdown = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
+      typescript = { 'prettier', 'prettierd', stop_after_first = true },
+      typescriptreact = { 'prettier', 'prettierd', stop_after_first = true },
       -- You can use 'stop_after_first' to run the first available formatter from the list
       -- javascript = { "prettierd", "prettier", stop_after_first = true },
     },

@@ -77,7 +77,8 @@ return {
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-        local does_buffer_support_document_highlight = client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+        local does_buffer_support_document_highlight = client and
+            client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
 
         if does_buffer_support_document_highlight then
           local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
@@ -120,7 +121,8 @@ return {
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
+    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(),
+      require('cmp_nvim_lsp').default_capabilities())
 
     require('mason').setup()
 
