@@ -34,6 +34,7 @@ return { -- Autoformat
       json = { 'prettier', 'prettierd', stop_after_first = true },
       jsonc = { 'prettier', 'prettierd', stop_after_first = true },
       markdown = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
+      python = { 'isort', 'black' },
       typescript = { 'prettier', 'prettierd', stop_after_first = true },
       typescriptreact = { 'prettier', 'prettierd', stop_after_first = true },
       -- You can use 'stop_after_first' to run the first available formatter from the list
