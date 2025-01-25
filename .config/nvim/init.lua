@@ -38,20 +38,20 @@ require('lazy').setup({
   require 'plugins.harpoon',             -- harpoon for pinning buffers that keep revisiting
   require 'plugins.gitsigns',            -- git decorations
   require 'plugins.which-key',           -- displays key bindings
-  require 'plugins.telescope',
+  require 'plugins.telescope',           -- telescope
+  require 'plugins.better-quickfix',     -- quickfix window
+  require 'plugins.autopairs',           -- plugin to auto pair brackets and quotes
+  require 'plugins.autoformat',          -- autoformatter (e.g. prettier)
+
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
-  require 'plugins.better-quickfix', -- quickfix window
   -- require 'plugins.luvit-meta',
-  require 'kickstart.plugins.autoformat',
   require 'kickstart.plugins.autocompletion',
   -- require 'plugins.mini',
-  require 'kickstart.plugins.treesitter',
   require 'plugins.vim_tmux_navigator',
   -- require 'custom.plugins.vim_test',
   -- require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  require 'kickstart.plugins.autopairs',
   require 'plugins.vim-test',
   require 'plugins.vimux',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
@@ -60,7 +60,7 @@ require('lazy').setup({
   -- require 'plugins.barbar',
   -- require 'plugins.autoclose',
   require 'plugins.render-markdown',
-  require 'plugins.dadbod',
+  -- require 'plugins.dadbod',
   require 'plugins.lualine',
   -- require 'plugins.fugitive',
   -- require 'plugins.lazygit',
