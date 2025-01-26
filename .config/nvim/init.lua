@@ -24,7 +24,7 @@ require('lazy').setup({
   require 'plugins.better-quickfix',     -- quickfix window
   require 'plugins.autopairs',           -- plugin to auto pair brackets and quotes
   require 'plugins.autoformat',          -- autoformatter (e.g. prettier)
-  require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
+  -- require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
   require 'plugins.toggleterm',          -- inbuilt terminal
   require 'plugins.vim-test',
 
