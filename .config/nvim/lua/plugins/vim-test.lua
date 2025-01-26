@@ -3,11 +3,11 @@ return {
   dependencies = {
     'preservim/toggleterm',
   },
-  vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>'),
-  vim.keymap.set('n', '<leader>tf', ':TestFile<CR>'),
-  vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>'),
-  vim.keymap.set('n', '<leader>tl', ':TestLast<CR>'),
-  vim.keymap.set('n', '<leader>tv', ':TestVisit<CR>'),
+  vim.keymap.set('n', '<leader>Tt', ':TestNearest<CR>'),
+  vim.keymap.set('n', '<leader>Tf', ':TestFile<CR>'),
+  vim.keymap.set('n', '<leader>Ta', ':TestSuite<CR>'),
+  vim.keymap.set('n', '<leader>Tl', ':TestLast<CR>'),
+  vim.keymap.set('n', '<leader>Tv', ':TestVisit<CR>'),
 
   vim.cmd "let g:test#javascript#runner = 'jest'",
   vim.cmd "let g:test#javascript#jest#executable = 'npx jest'",
