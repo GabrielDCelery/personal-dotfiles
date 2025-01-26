@@ -25,6 +25,7 @@ require('lazy').setup({
   require 'plugins.autopairs',           -- plugin to auto pair brackets and quotes
   require 'plugins.autoformat',          -- autoformatter (e.g. prettier)
   require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
+  require 'plugins.toggleterm',
 
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
   -- require 'plugins.luvit-meta',
@@ -35,7 +36,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   require 'plugins.vim-test',
-  require 'plugins.vimux',
+  -- require 'plugins.vimux',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',

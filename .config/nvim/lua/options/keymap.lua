@@ -33,6 +33,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize +10<cr>', { desc = "Increase width" })
+vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize -10<cr>', { desc = "Decrease width" })
+vim.keymap.set('n', '<C-Up>', '<cmd>horizontal resize +5<cr>', { desc = "Increase height" })
+vim.keymap.set('n', '<C-Down>', '<cmd>horizontal resize -5<cr>', { desc = "Decrease height" })
+
 -- vim.keymap.set('n', '<leader>hc', '<cmd>helpclose<CR>', { desc = 'Close help' })
 
 vim.keymap.set('n', '<leader>q', '<cmd>:q<CR>', { desc = 'Quit' })
