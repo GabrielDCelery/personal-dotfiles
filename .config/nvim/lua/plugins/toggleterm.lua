@@ -6,7 +6,7 @@ return {
       require('toggleterm').setup {
         -- size = 20,
         -- open_mapping = '<C-\\>',
-        open_mapping = [[<c-\>]],
+        open_mapping = [[<c-t>]],
         size = function(term)
           if term.direction == 'horizontal' then
             return 20
@@ -27,6 +27,10 @@ return {
       vim.keymap.set('t', '<C-j>', [[<c-\><c-n><c-W>j]], { desc = 'Move down' })
       vim.keymap.set('t', '<C-k>', [[<c-\><c-n><c-W>k]], { desc = 'Move up' })
       vim.keymap.set('t', '<C-l>', [[<c-\><c-n><c-W>l]], { desc = 'Move right' })
+      vim.keymap.set('t', '<C-Left>', [[<c-\><c-n><cmd>vertical resize +10<cr>]], { desc = 'Resize left' })
+      vim.keymap.set('t', '<C-Right>', [[<c-\><c-n><cmd>vertical resize -10<cr>]], { desc = 'Resize right' })
+      vim.keymap.set('t', '<C-Up>', [[<c-\><c-n><cmd>horizontal resize +5<cr>]], { desc = 'Resize up' })
+      vim.keymap.set('t', '<C-Down>', [[<c-\><c-n><cmd>horizontal resize -5<cr>]], { desc = 'Resize down' })
     end
   },
 }
