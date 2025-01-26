@@ -1,7 +1,7 @@
 return {
   'vim-test/vim-test',
   dependencies = {
-    'preservim/vimux',
+    'preservim/toggleterm',
   },
   vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>'),
   vim.keymap.set('n', '<leader>tf', ':TestFile<CR>'),
