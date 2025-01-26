@@ -5,8 +5,9 @@ return {
     config = function()
       require('toggleterm').setup {
         -- size = 20,
-        -- open_mapping = '<C-\\>',
-        open_mapping = [[<c-t>]],
+        open_mapping = '<C-\\>',
+        -- open_mapping = [[<c-t>]],
+        -- open_mapping = [[<leader>\]],
         size = function(term)
           if term.direction == 'horizontal' then
             return 20
