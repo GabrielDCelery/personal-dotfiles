@@ -31,6 +31,13 @@ return {
       vim.keymap.set('t', '<C-Right>', [[<c-\><c-n><cmd>vertical resize -10<cr>]], { desc = 'Resize right' })
       vim.keymap.set('t', '<C-Up>', [[<c-\><c-n><cmd>horizontal resize +5<cr>]], { desc = 'Resize up' })
       vim.keymap.set('t', '<C-Down>', [[<c-\><c-n><cmd>horizontal resize -5<cr>]], { desc = 'Resize down' })
+
+      -- local Terminal = require('toggleterm.terminal').Terminal
+      -- local lazygit = Terminal:new({ cmd = 'lazygit', direction = 'float', size = 100, hidden = true })
+      --
+      -- vim.keymap.set('n', '<leader>tl', function()
+      --   lazygit:toggle()
+      -- end, { desc = 'Open LazyGit in terminal' })
     end
   },
 }
