@@ -29,7 +29,7 @@ return { -- Autoformat
       lua = { 'stylua' },
       javascript = { 'prettier', 'prettierd', stop_after_first = true },
       json = { 'jq', stop_after_first = true },
-      jsonc = { 'prettier', 'prettierd', stop_after_first = true },
+      -- jsonc = { 'prettier', 'prettierd', stop_after_first = true },
       markdown = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
       python = { 'isort', 'black' },
       typescript = { 'prettier', 'prettierd', stop_after_first = true },
