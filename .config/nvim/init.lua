@@ -8,7 +8,6 @@ require('custom.highlight-when-yanking').init()
 require('custom.lazy-plugin-manager').init()
 
 require('lazy').setup({
-  require 'plugins.theme',               -- configure and load theme for editor
   require 'plugins.lazydev',             -- auto configures the lua LSP for editing neovim configurations
   require 'kickstart.plugins.lspconfig', -- configuring lsp
   require 'plugins.sleuth',              -- auto adjust cursor to follow indentation
@@ -27,6 +26,8 @@ require('lazy').setup({
   -- require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
   require 'plugins.toggleterm',          -- inbuilt terminal
   require 'plugins.vim-test',
+  require 'plugins.theme',               -- configure and load theme for editor
+  require 'kickstart.plugins.treesitter',
 
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
   -- require 'plugins.luvit-meta',
