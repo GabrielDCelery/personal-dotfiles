@@ -2,6 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$nix_shell\
 $username\
 $hostname\
 $directory\
@@ -87,6 +88,15 @@ format = '[\[   $time \]]($style)'
 time_format = '%Y-%m-%d %H:%M:%S'
 time_range = '10:00:00-14:00:00'
 style = 'bold peach'
+
+# ~/.config/starship.toml
+
+[nix_shell]
+disabled = false
+impure_msg = '[impure shell](bold red)'
+pure_msg = '[pure shell](bold green)'
+unknown_msg = '[unknown shell](bold yellow)'
+format = 'via [󱄅 $state( \($name\)):](bold blue) '
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
