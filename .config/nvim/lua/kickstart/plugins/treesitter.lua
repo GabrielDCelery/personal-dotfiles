@@ -20,6 +20,7 @@ return {
       'luadoc',
       'markdown',
       'markdown_inline',
+      'nix',
       'query',
       'typescript',
       'xml',
