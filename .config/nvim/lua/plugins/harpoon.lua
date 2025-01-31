@@ -20,13 +20,13 @@ return {
     --   end
     -- end, { desc = 'Remove buffer from harpoon' })
 
-    vim.keymap.set('n', '<Tab>', function()
-      harpoon:list():next()
-    end, { desc = 'Move to next harpoon buffer' })
-
-    vim.keymap.set('n', '<S-Tab>', function()
-      harpoon:list():prev()
-    end, { desc = 'Move to next harpoon buffer' })
+    -- vim.keymap.set('n', '<Tab>', function()
+    --   harpoon:list():next()
+    -- end, { desc = 'Move to next harpoon buffer' })
+    --
+    -- vim.keymap.set('n', '<S-Tab>', function()
+    --   harpoon:list():prev()
+    -- end, { desc = 'Move to next harpoon buffer' })
 
     vim.keymap.set('n', '<leader>he', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -57,15 +57,15 @@ return {
       end
 
       pickers
-        .new(opts, {
-          prompt_title = 'Harpoon',
-          finder = finders.new_table {
-            results = file_paths,
-          },
-          previewer = conf.file_previewer {},
-          sorter = sorters.get_fzy_sorter(opts),
-        })
-        :find()
+          .new(opts, {
+            prompt_title = 'Harpoon',
+            finder = finders.new_table {
+              results = file_paths,
+            },
+            previewer = conf.file_previewer {},
+            sorter = sorters.get_fzy_sorter(opts),
+          })
+          :find()
     end
 
     vim.keymap.set('n', '<leader>hs', function()
