@@ -140,6 +140,7 @@ return {
         'gopls',
         'jsonls',
         'html',
+        'lemminx',
         'lua_ls',
         'yamlls',
         'markdown_oxide',

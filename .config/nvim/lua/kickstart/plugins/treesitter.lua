@@ -22,6 +22,7 @@ return {
       'markdown_inline',
       'query',
       'typescript',
+      'xml',
       'vim',
       'vimdoc',
     },
