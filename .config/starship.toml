@@ -93,9 +93,9 @@ style = 'bold peach'
 
 [nix_shell]
 disabled = false
-impure_msg = '[impure shell](bold red)'
-pure_msg = '[pure shell](bold green)'
-unknown_msg = '[unknown shell](bold yellow)'
+impure_msg = '[default shell](bold green)'
+pure_msg = '[pure shell](bold yellow)'
+unknown_msg = '[unknown shell](bold red)'
 format = 'via [󱄅 $state( \($name\)):](bold blue) '
 
 [palettes.catppuccin_macchiato]
