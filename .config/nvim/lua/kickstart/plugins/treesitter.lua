@@ -23,6 +23,7 @@ return {
       'nix',
       'query',
       'typescript',
+      'terraform',
       'xml',
       'vim',
       'vimdoc',
