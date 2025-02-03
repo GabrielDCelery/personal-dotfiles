@@ -142,7 +142,7 @@ return {
         'html',
         'lemminx',
         'lua_ls',
-        'nil_ls',
+        -- 'nil_ls',
         'yamlls',
         'markdown_oxide',
         'pyright',
