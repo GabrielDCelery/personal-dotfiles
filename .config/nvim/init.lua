@@ -8,25 +8,27 @@ require('custom.highlight-when-yanking').init()
 require('custom.lazy-plugin-manager').init()
 
 require('lazy').setup({
-  require 'plugins.lazydev',             -- auto configures the lua LSP for editing neovim configurations
-  require 'kickstart.plugins.lspconfig', -- configuring lsp
-  require 'plugins.sleuth',              -- auto adjust cursor to follow indentation
-  require 'plugins.flash',               -- navigate within buffer jumping to characters
-  require 'plugins.spectre',             -- search and replace text in the codebase
-  require 'plugins.neogit',              -- built-in git GUI
-  require 'plugins.todo-commments',      -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
-  require 'plugins.neo-tree',            -- browse and edit file system
-  require 'plugins.harpoon',             -- harpoon for pinning buffers that keep revisiting
-  require 'plugins.gitsigns',            -- git decorations
-  require 'plugins.which-key',           -- displays key bindings
-  require 'plugins.telescope',           -- telescope
-  require 'plugins.better-quickfix',     -- quickfix window
-  require 'plugins.autopairs',           -- plugin to auto pair brackets and quotes
-  require 'plugins.autoformat',          -- autoformatter (e.g. prettier)
+  require 'plugins.lazydev', -- auto configures the lua LSP for editing neovim configurations
+  require 'plugins.lspconfig', -- configuring lsp
+  require 'plugins.autoformat', -- autoformatter (e.g. prettier)
+  require 'plugins.lint', -- linting
+  require 'plugins.sleuth', -- auto adjust cursor to follow indentation
+  require 'plugins.flash', -- navigate within buffer jumping to characters
+  require 'plugins.spectre', -- search and replace text in the codebase
+  require 'plugins.neogit', -- built-in git GUI
+  require 'plugins.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
+  require 'plugins.neo-tree', -- browse and edit file system
+  require 'plugins.harpoon', -- harpoon for pinning buffers that keep revisiting
+  require 'plugins.gitsigns', -- git decorations
+  require 'plugins.which-key', -- displays key bindings
+  require 'plugins.telescope', -- telescope
+  require 'plugins.better-quickfix', -- quickfix window
+  require 'plugins.autopairs', -- plugin to auto pair brackets and quotes
+  -- require 'plugins.cursor-trail',
   -- require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
-  require 'plugins.toggleterm',          -- inbuilt terminal
+  require 'plugins.toggleterm', -- inbuilt terminal
   require 'plugins.vim-test',
-  require 'plugins.theme',               -- configure and load theme for editor
+  require 'plugins.theme', -- configure and load theme for editor
   require 'kickstart.plugins.treesitter',
 
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)

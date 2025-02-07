@@ -1,20 +1,13 @@
 return {
   'neovim/nvim-lspconfig',
   dependencies = {
-    {
-      'williamboman/mason.nvim',
-      config = true,
-    },
-    {
-      'williamboman/mason-lspconfig.nvim',
-    },
+    -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
+    { 'williamboman/mason.nvim', opts = {} },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-    {
-      'j-hui/fidget.nvim',
-      opts = {},
-    },
-
+    { 'j-hui/fidget.nvim', opts = {} },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
   },
@@ -77,8 +70,7 @@ return {
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-        local does_buffer_support_document_highlight = client and
-            client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+        local does_buffer_support_document_highlight = client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
 
         if does_buffer_support_document_highlight then
           local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
@@ -117,41 +109,67 @@ return {
       end,
     })
 
+    local language_serves = {
+      'bashls',
+      'buf_ls',
+      'cmake',
+      'dagger',
+      'dockerls',
+      'eslint',
+      'gopls',
+      'jsonls',
+      'html',
+      'lemminx',
+      'lua_ls',
+      -- 'nil_ls',
+      'yamlls',
+      'markdown_oxide',
+      'pyright',
+      'rust_analyzer',
+      'templ',
+      'terraformls',
+      'ts_ls',
+      'yamlls',
+    }
+
+    local formatters = {
+      'black', -- python
+      'isort', -- python
+      'goimports', -- go
+      -- 'jq', -- json
+      'markdownlint', -- markdown
+      'prettier',
+      'prettierd',
+      'stylua', -- lua formatter
+      -- 'yamlfmt', -- yaml
+      'yq', -- json, yaml xml formatter
+    }
+
+    local linters = {
+      'eslint_d',
+      'tflint',
+      'jsonlint',
+      'yamllint',
+      'hadolint',
+    }
+
+    vim.list_extend(language_serves, formatters)
+    vim.list_extend(language_serves, linters)
+
+    require('mason-tool-installer').setup { ensure_installed = language_serves }
+
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(),
-      require('cmp_nvim_lsp').default_capabilities())
-
-    require('mason').setup()
+    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
 
     require('mason-lspconfig').setup {
+      -- Using mason-tool-installer therefore setting automatic_installation to false and leaving ensure_installed empty
       ---@type boolean
-      automatic_installation = true,
+      automatic_installation = false,
       ---@type string[]
-      ensure_installed = {
-        'bashls',
-        'buf_ls',
-        'cmake',
-        'dagger',
-        'dockerls',
-        'eslint',
-        'gopls',
-        'jsonls',
-        'html',
-        'lemminx',
-        'lua_ls',
-        -- 'nil_ls',
-        'yamlls',
-        'markdown_oxide',
-        'pyright',
-        'rust_analyzer',
-        'templ',
-        'terraformls',
-        'ts_ls',
-        'yamlls',
-      },
+      ensure_installed = {},
       -- See `:h mason-lspconfig.setup_handlers()`
       ---@type table<string, fun(server_name: string)>?
       handlers = {
@@ -162,7 +180,7 @@ return {
         end,
         ['lua_ls'] = function()
           require('lspconfig').lua_ls.setup {
-            capabilities = defaultLspCapabilities,
+            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {}),
             settings = {
               Lua = {
                 completion = {

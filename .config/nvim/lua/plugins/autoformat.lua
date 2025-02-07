@@ -1,10 +1,10 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
-  event = { 'BufWritePre' },
+  event = { 'BufWritePre', 'BufNewFile' },
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>f',
+      '<leader>lf',
       function()
         require('conform').format { async = true, lsp_fallback = true }
       end,
@@ -21,19 +21,20 @@ return { -- Autoformat
       local disable_filetypes = { c = true, cpp = true }
       return {
         timeout_ms = 500,
+        async = false,
         lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
       }
     end,
     formatters_by_ft = {
-      go = { 'goimports', 'gofmt' },
+      go = { 'goimports' },
       lua = { 'stylua' },
       javascript = { 'prettier', 'prettierd', stop_after_first = true },
-      json = { 'jq', stop_after_first = true },
-      -- jsonc = { 'prettier', 'prettierd', stop_after_first = true },
+      json = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
       markdown = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
       python = { 'isort', 'black' },
       typescript = { 'prettier', 'prettierd', stop_after_first = true },
       typescriptreact = { 'prettier', 'prettierd', stop_after_first = true },
+      yaml = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
     },
   },
 }
