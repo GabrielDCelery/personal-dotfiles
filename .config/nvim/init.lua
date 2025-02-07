@@ -12,6 +12,8 @@ require('lazy').setup({
   require 'plugins.lspconfig', -- configuring lsp
   require 'plugins.autoformat', -- autoformatter (e.g. prettier)
   require 'plugins.lint', -- linting
+  require 'plugins.autocompletion', -- autocompletion
+  -- require 'kickstart.plugins.autocompletion', -- autocompletion
   require 'plugins.sleuth', -- auto adjust cursor to follow indentation
   require 'plugins.flash', -- navigate within buffer jumping to characters
   require 'plugins.spectre', -- search and replace text in the codebase
@@ -33,7 +35,6 @@ require('lazy').setup({
 
   -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
   -- require 'plugins.luvit-meta',
-  require 'kickstart.plugins.autocompletion',
   -- require 'plugins.mini',
   -- require 'custom.plugins.vim_test',
   -- require 'kickstart.plugins.debug',
