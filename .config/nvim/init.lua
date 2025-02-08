@@ -9,10 +9,11 @@ require('custom.lazy-plugin-manager').init()
 
 require('lazy').setup({
   require 'plugins.lazydev', -- auto configures the lua LSP for editing neovim configurations
-  require 'plugins.lspconfig', -- configuring lsp
-  require 'plugins.autoformat', -- autoformatter (e.g. prettier)
-  require 'plugins.lint', -- linting
-  require 'plugins.autocompletion', -- autocompletion
+  require 'plugins.lsp.lspconfig', -- configuring lsp
+  require 'plugins.lsp.autoformat', -- autoformatter (e.g. prettier)
+  require 'plugins.lsp.lint', -- linting
+  require 'plugins.lsp.autocompletion', -- autocompletion
+  require 'plugins.lsp.autopairs', -- plugin to auto pair brackets and quotes
   -- require 'kickstart.plugins.autocompletion', -- autocompletion
   require 'plugins.sleuth', -- auto adjust cursor to follow indentation
   require 'plugins.flash', -- navigate within buffer jumping to characters
@@ -25,7 +26,6 @@ require('lazy').setup({
   require 'plugins.which-key', -- displays key bindings
   require 'plugins.telescope', -- telescope
   require 'plugins.better-quickfix', -- quickfix window
-  require 'plugins.autopairs', -- plugin to auto pair brackets and quotes
   -- require 'plugins.cursor-trail',
   -- require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
   require 'plugins.toggleterm', -- inbuilt terminal
