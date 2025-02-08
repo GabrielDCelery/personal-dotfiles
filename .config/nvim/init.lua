@@ -44,6 +44,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
   -- require 'plugins.telescope-file-browser',
   require 'plugins.trouble',
+
   -- require 'plugins.barbar',
   -- require 'plugins.autoclose',
   require 'plugins.render-markdown',
@@ -52,6 +53,7 @@ require('lazy').setup({
   -- require 'plugins.fugitive',
   -- require 'plugins.lazygit',
   -- require 'plugins.leap',
+  require 'plugins.noice',
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
