@@ -1,59 +1,54 @@
+-- Keep these at the beginning to avoid bugs
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Options/Settings
 require 'options.main'
 require 'options.keymap'
 
+-- Custom code snippets
 require('custom.highlight-when-yanking').init()
 require('custom.lazy-plugin-manager').init()
 
 require('lazy').setup({
-  require 'plugins.lazydev', -- auto configures the lua LSP for editing neovim configurations
-  require 'plugins.lsp.lspconfig', -- configuring lsp
-  require 'plugins.lsp.autoformat', -- autoformatter (e.g. prettier)
-  require 'plugins.lsp.lint', -- linting
+  -- Neovim editor setup plugins
+  require 'plugins.neovim.lazydev', -- auto configures the lua LSP for workspace libraries
+
+  -- Theme/Styling
+  require 'plugins.styling.theme', -- configure and load theme for editor
+  require 'plugins.styling.noice', -- experimental plugin that replaces the command line and messages with a custom implementation
+  require 'plugins.styling.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
+  require 'plugins.styling.render-markdown', -- rendering markdown documents
+  require 'plugins.styling.lualine', -- editor status bar
+  require 'plugins.styling.which-key', -- displays key bindings
+
+  -- LSP/Formatting/Linting
+  require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation
+  require 'plugins.lsp.lspconfig', -- language servers
+  require 'plugins.lsp.autoformat', -- autoformatter
+  require 'plugins.lsp.lint', -- linter
   require 'plugins.lsp.autocompletion', -- autocompletion
-  require 'plugins.lsp.autopairs', -- plugin to auto pair brackets and quotes
-  -- require 'kickstart.plugins.autocompletion', -- autocompletion
-  require 'plugins.sleuth', -- auto adjust cursor to follow indentation
-  require 'plugins.flash', -- navigate within buffer jumping to characters
-  require 'plugins.spectre', -- search and replace text in the codebase
-  require 'plugins.neogit', -- built-in git GUI
-  require 'plugins.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
-  require 'plugins.neo-tree', -- browse and edit file system
-  require 'plugins.harpoon', -- harpoon for pinning buffers that keep revisiting
-  require 'plugins.gitsigns', -- git decorations
-  require 'plugins.which-key', -- displays key bindings
-  require 'plugins.telescope', -- telescope
-  require 'plugins.better-quickfix', -- quickfix window
-  -- require 'plugins.cursor-trail',
-  -- require 'plugins.vim_tmux_navigator',  -- this helps navigating between neovim windows and tmux panes
-  require 'plugins.toggleterm', -- inbuilt terminal
-  require 'plugins.vim-test',
-  require 'plugins.theme', -- configure and load theme for editor
-  require 'kickstart.plugins.treesitter',
+  require 'plugins.lsp.autopairs', -- auto pair brackets and quotes
+  require 'plugins.lsp.spectre', -- search and replace text in the codebase
 
-  -- require 'plugins.telescope-diff', -- diff tool using telescope (never ended up using but havent made up my mind yed)
-  -- require 'plugins.luvit-meta',
-  -- require 'plugins.mini',
-  -- require 'custom.plugins.vim_test',
-  -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
-  -- require 'kickstart.plugins.lint',
-  -- require 'plugins.vimux',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
-  -- require 'plugins.telescope-file-browser',
-  require 'plugins.trouble',
+  -- Navigation/Searching
+  require 'plugins.navigation.flash', -- navigate within buffer jumping to characters
+  require 'plugins.navigation.neo-tree', -- browse and edit file system
+  require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
+  require 'plugins.navigation.telescope', -- telescope
+  require 'plugins.navigation.treesitter', -- treesitter
 
-  -- require 'plugins.barbar',
-  -- require 'plugins.autoclose',
-  require 'plugins.render-markdown',
-  -- require 'plugins.dadbod',
-  require 'plugins.lualine',
-  -- require 'plugins.fugitive',
-  -- require 'plugins.lazygit',
-  -- require 'plugins.leap',
-  require 'plugins.noice',
+  -- Git/Version control
+  require 'plugins.git.neogit', -- built-in git GUI
+  require 'plugins.git.gitsigns', -- git decorations
+
+  -- Testing
+  require 'plugins.testing.vim-test', -- test initiator
+  require 'plugins.testing.better-quickfix', -- quickfix window
+  require 'plugins.testing.trouble', -- enhanced errors window
+
+  -- Terminal
+  require 'plugins.terminal.toggleterm', -- inbuilt terminal
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
