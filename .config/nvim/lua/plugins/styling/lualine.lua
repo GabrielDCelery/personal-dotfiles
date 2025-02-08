@@ -5,6 +5,11 @@ return {
     opt = true,
   },
   config = function()
-    require('lualine').setup {}
+    -- catppuccin is not controlled via the theme integrations but here
+    require('lualine').setup {
+      options = {
+        theme = 'catppuccin',
+      },
+    }
   end,
 }

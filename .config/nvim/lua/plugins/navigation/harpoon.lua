@@ -8,7 +8,7 @@ return {
 
     vim.keymap.set('n', '<leader>ha', function()
       harpoon:list():add()
-    end, { desc = 'Add buffer go harpoon' })
+    end, { desc = 'harpoon add' })
 
     -- vim.keymap.set('n', '<leader>hd', function()
     --   local curr_buf_path = vim.fn.expand '%:p'
@@ -30,7 +30,7 @@ return {
 
     vim.keymap.set('n', '<leader>he', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
-    end, { desc = 'Edit harpoon buffers' })
+    end, { desc = 'harpoon edit' })
 
     -- INFO: Telescope settings for harpoon
 
@@ -57,20 +57,20 @@ return {
       end
 
       pickers
-          .new(opts, {
-            prompt_title = 'Harpoon',
-            finder = finders.new_table {
-              results = file_paths,
-            },
-            previewer = conf.file_previewer {},
-            sorter = sorters.get_fzy_sorter(opts),
-          })
-          :find()
+        .new(opts, {
+          prompt_title = 'Harpoon',
+          finder = finders.new_table {
+            results = file_paths,
+          },
+          previewer = conf.file_previewer {},
+          sorter = sorters.get_fzy_sorter(opts),
+        })
+        :find()
     end
 
     vim.keymap.set('n', '<leader>hs', function()
       toggle_telescope(harpoon:list(), {})
       vim.api.nvim_input '<Esc>'
-    end, { desc = 'Open harpoon buffers in telescope' })
+    end, { desc = 'harpoon search' })
   end,
 }

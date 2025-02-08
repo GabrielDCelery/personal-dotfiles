@@ -1,6 +1,16 @@
 return {
   'folke/todo-comments.nvim',
   event = 'VimEnter',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  opts = { signs = false },
+  dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim', -- Need this to enable Telescope search of TODO comments
+  },
+  config = function()
+    require('todo-comments').setup {
+      opts = {
+        signs = true,
+      },
+    }
+    -- NOTE: have configured the key binding
+  end,
 }
