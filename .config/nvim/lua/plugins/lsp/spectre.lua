@@ -6,6 +6,6 @@ return {
       spectre.toggle()
       vim.api.nvim_input '<CR>'
     end
-    vim.keymap.set('n', '<leader>S', toggle_spectre, { desc = 'Toggle Spectre' })
+    vim.keymap.set('n', '<leader>S', toggle_spectre, { desc = 'spectre' })
   end,
 }

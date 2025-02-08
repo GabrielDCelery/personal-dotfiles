@@ -11,7 +11,7 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'NeoTree toggle' }),
+    vim.keymap.set('n', '<leader>n', '<cmd>Neotree toggle<cr>', { desc = 'neotree' }),
     --  { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal' },
   },
   opts = {

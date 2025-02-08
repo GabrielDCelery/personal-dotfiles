@@ -11,12 +11,12 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>d', group = '[D]ocument' },
       { '<leader>r', group = '[R]ename' },
       { '<leader>s', group = 'telescope' },
-      { '<leader>w', group = '[W]orkspace' },
+      -- { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = 'test' },
       { '<leader>h', group = 'harpoon' },
       { '<leader>g', group = 'git' },
       { '<leader>l', group = 'lint' },
-      { '<leader>e', group = 'error' },
+      { '<leader>e', group = 'trouble' },
     }
   end,
 }

@@ -6,7 +6,7 @@ return {
     {
       '<leader>ee',
       '<cmd>Trouble diagnostics toggle<cr>',
-      desc = 'toggle',
+      desc = 'trouble toggle',
     },
     -- {
     --   '<leader>xX',
