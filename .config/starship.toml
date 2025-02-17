@@ -3,6 +3,7 @@
 
 format = """
 $nix_shell\
+$kubernetes\
 $username\
 $hostname\
 $directory\
@@ -97,6 +98,14 @@ impure_msg = '[default shell](bold green)'
 pure_msg = '[pure shell](bold yellow)'
 unknown_msg = '[unknown shell](bold red)'
 format = 'via [󱄅 $state( \($name\)):](bold blue) '
+
+[kubernetes]
+format = 'on [󱃾 (\[user: $user, cluster: $cluster, context: $context) \($namespace\)](bold green) '
+disabled = false
+contexts = [
+  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+]
+detect_files = ['k8s', 'kubeconfig']
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
