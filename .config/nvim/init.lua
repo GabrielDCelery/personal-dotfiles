@@ -26,7 +26,7 @@ require('lazy').setup({
   require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation
   require 'plugins.lsp.lspconfig', -- language servers
   require 'plugins.lsp.autoformat', -- autoformatter
-  require 'plugins.lsp.lint', -- linter
+  -- require 'plugins.lsp.lint', -- linter
   require 'plugins.lsp.autocompletion', -- autocompletion
   require 'plugins.lsp.autopairs', -- auto pair brackets and quotes
   require 'plugins.lsp.spectre', -- search and replace text in the codebase
