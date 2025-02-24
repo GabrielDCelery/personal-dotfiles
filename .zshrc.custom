@@ -1,3 +1,12 @@
+# ZSH
+ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/highlighters
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[[Z'      autosuggest-accept
+# ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# ZSH_AUTOSUGGEST_USE_ASYNC=true
+
 # STARSHIP
 eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
@@ -5,6 +14,9 @@ export STARSHIP_RELOAD=true
 # GPG
 # allow the gpg agent to interact with the terminal
 export GPG_TTY=$(tty)
+
+# STOW
+export PATH="$HOME/.dotfiles/.local/bin:$PATH"
 
 # AWS-VAULT
 # make aws-vault use pass as password manager
@@ -56,3 +68,11 @@ export PATH=$PATH:$GOBIN
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
+# PERSONAL NOTES
+export PATH="$PATH:$HOME/.local/bin"
+export PERSONAL_NOTES_DIR=$HOME/notes
+export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
+export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
+export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
+
