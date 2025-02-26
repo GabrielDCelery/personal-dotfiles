@@ -76,3 +76,5 @@ export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
 export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
 export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
 
+# RUBY GEM
+export PATH="$(gem environment gemdir)/bin:$PATH"
