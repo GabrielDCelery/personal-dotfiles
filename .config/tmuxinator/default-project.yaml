@@ -1,0 +1,6 @@
+name: default-project
+
+windows:
+  - editor: nvim
+  - terminal:
+  - lazygit: lazygit
