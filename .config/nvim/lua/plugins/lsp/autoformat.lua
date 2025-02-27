@@ -4,12 +4,30 @@ return { -- Autoformat
   cmd = { 'ConformInfo' },
   keys = {
     {
-      '<leader>lf',
+      '<leader>lc',
       function()
         require('conform').format { async = true, lsp_fallback = true }
       end,
       mode = '',
-      desc = 'linter autoformat',
+      desc = 'format conform',
+    },
+    -- TODO: Move this to a custom function since it does not belong to conform
+    {
+      '<leader>lj',
+      function()
+        vim.cmd '%!jq .'
+      end,
+      mode = '',
+      desc = 'format json',
+    },
+    -- TODO: Move this to a custom function since it does not belong to conform
+    {
+      '<leader>ly',
+      function()
+        vim.cmd "%!yq e '.' -P"
+      end,
+      mode = '',
+      desc = 'format yaml',
     },
   },
   opts = {
