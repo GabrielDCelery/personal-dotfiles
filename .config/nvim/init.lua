@@ -9,6 +9,7 @@ require 'options.keymap'
 -- Custom code snippets
 require('custom.highlight-when-yanking').init()
 require('custom.lazy-plugin-manager').init()
+require('custom.autoformat-json-on-bufread').init()
 
 require('lazy').setup({
   -- Neovim editor setup plugins
