@@ -1,3 +1,6 @@
+# XDCONFIG
+export XDG_CONFIG_HOME="$HOME/.config"
+
 # ZSH
 ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/highlighters
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
