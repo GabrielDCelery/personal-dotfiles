@@ -17,6 +17,8 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>g', group = 'git' },
       { '<leader>l', group = 'lint' },
       { '<leader>e', group = 'trouble' },
+      { '<leader>d', group = 'debug' },
+      { '<leader>a', group = 'ai' },
     }
   end,
 }
