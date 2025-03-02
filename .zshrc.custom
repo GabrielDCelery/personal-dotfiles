@@ -1,5 +1,6 @@
 # WEZTERM
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
+
 # XDCONFIG
 export XDG_CONFIG_HOME="$HOME/.config"
 
@@ -69,6 +70,9 @@ alias pip='"$(which pip3)"'
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+
+# RUST
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
