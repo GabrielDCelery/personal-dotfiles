@@ -48,7 +48,7 @@ require('lazy').setup({
   require 'plugins.testing.better-quickfix', -- quickfix window
   require 'plugins.testing.trouble', -- enhanced errors window
   require 'plugins.testing.debugger', -- debugger
-  require 'plugins.testing.ai', -- ai assistant
+  require 'plugins.testing.ai-assitant', -- ai assistant
 
   -- Terminal
   require 'plugins.terminal.toggleterm', -- inbuilt terminal
