@@ -54,6 +54,7 @@ alias k='grc kubectl'
 alias netstat='grc netstat'
 alias e='eza'
 alias dig='grc dig'
+alias traceroute='grc traceroute'
 
 # NEOVIM
 # make neovim the default editor
