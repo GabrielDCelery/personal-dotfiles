@@ -1,3 +1,5 @@
+# WEZTERM
+export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 # XDCONFIG
 export XDG_CONFIG_HOME="$HOME/.config"
 
