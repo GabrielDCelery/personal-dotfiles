@@ -23,6 +23,18 @@ return {
       max_tokens = 4096,
       -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
     },
+    disabled_tools = {
+      'python',
+      -- 'list_files',
+      -- 'search_files',
+      -- 'read_file',
+      'create_file',
+      'rename_file',
+      'delete_file',
+      'create_dir',
+      'rename_dir',
+      'delete_dir',
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
