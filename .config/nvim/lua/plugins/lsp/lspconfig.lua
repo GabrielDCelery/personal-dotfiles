@@ -122,6 +122,7 @@ return {
       'dockerls',
       'eslint',
       'gopls',
+      'helm-ls',
       'jsonls',
       'html',
       'lemminx',
