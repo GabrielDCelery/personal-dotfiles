@@ -22,6 +22,7 @@ require('lazy').setup({
   require 'plugins.styling.render-markdown', -- rendering markdown documents
   require 'plugins.styling.lualine', -- editor status bar
   require 'plugins.styling.which-key', -- displays key bindings
+  require 'plugins.styling.colorizer', -- color highlighter
 
   -- LSP/Formatting/Linting
   require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation
