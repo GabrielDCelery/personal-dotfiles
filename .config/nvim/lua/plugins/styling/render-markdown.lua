@@ -19,6 +19,7 @@ return {
         enabled = true,
         width = 'block',
       },
+      latex = { enabled = false },
     }
   end,
 }
