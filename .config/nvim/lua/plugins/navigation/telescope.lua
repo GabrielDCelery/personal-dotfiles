@@ -84,6 +84,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- NOTE: The below need folke/todo-comments.nvim plugin to be installed
     vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'search todo' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'search buffers' })
+    vim.keymap.set('n', '<leader>sG', builtin.git_status, { desc = 'search git status' })
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = 'search neovim' })
