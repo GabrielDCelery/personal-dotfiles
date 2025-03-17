@@ -40,7 +40,7 @@ vim.keymap.set('n', '<C-Down>', '<cmd>horizontal resize -5<cr>', { desc = "Decre
 
 -- vim.keymap.set('n', '<leader>hc', '<cmd>helpclose<CR>', { desc = 'Close help' })
 
-vim.keymap.set('n', '<leader>q', '<cmd>:q<CR>', { desc = 'Quit' })
+-- vim.keymap.set('n', '<leader>q', '<cmd>:q<CR>', { desc = 'Quit' })
 
 vim.keymap.set('n', '<leader>pw', 'viw"_dP', {
   noremap = true,
