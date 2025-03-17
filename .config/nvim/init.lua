@@ -23,6 +23,7 @@ require('lazy').setup({
   require 'plugins.styling.lualine', -- editor status bar
   require 'plugins.styling.which-key', -- displays key bindings
   require 'plugins.styling.colorizer', -- color highlighter
+  require 'plugins.styling.web-devicons', -- nerd fonts for neovim plugins
 
   -- LSP/Formatting/Linting
   require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation
