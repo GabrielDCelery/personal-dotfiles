@@ -12,17 +12,37 @@ return {
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
+    local signsMap = {
+      [vim.diagnostic.severity.ERROR] = { message = 'Error', icon = ' ' },
+      [vim.diagnostic.severity.WARN] = { message = 'Warn', icon = ' ' },
+      [vim.diagnostic.severity.HINT] = { message = 'Hint', icon = '󰌵 ' },
+      [vim.diagnostic.severity.INFO] = { message = 'Info', icon = ' ' },
+    }
+
     vim.diagnostic.config {
       virtual_text = {
+        -- prefix = '●',
+        prefix = function(diagnostic)
+          for k, v in pairs(signsMap) do
+            if diagnostic.severity == k then
+              return v.icon
+            end
+          end
+          return ''
+        end,
         spacing = 4,
         source = true,
         wrap = true, -- Enable wrapping for virtual text
+        format = function(diagnostic)
+          return vim.split(diagnostic.message, '\n')[1]
+        end,
       },
       signs = true,
       underline = true,
       update_in_insert = false,
       severity_sort = true,
       float = {
+        wrap = true,
         focusable = true,
         style = 'minimal',
         border = 'rounded',
@@ -35,10 +55,9 @@ return {
     }
 
     -- Show diagnostic symbols in the sign column
-    local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
-    for type, icon in pairs(signs) do
-      local hl = 'DiagnosticSign' .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    for _, v in pairs(signsMap) do
+      local hl = 'DiagnosticSign' .. v.message
+      vim.fn.sign_define(hl, { text = v.icon, texthl = hl, numhl = hl })
     end
 
     vim.api.nvim_create_autocmd('LspAttach', {
