@@ -12,6 +12,35 @@ return {
     'hrsh7th/cmp-nvim-lsp',
   },
   config = function()
+    vim.diagnostic.config {
+      virtual_text = {
+        spacing = 4,
+        source = true,
+        wrap = true, -- Enable wrapping for virtual text
+      },
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      float = {
+        focusable = true,
+        style = 'minimal',
+        border = 'rounded',
+        source = true,
+        header = '',
+        prefix = '',
+        wrap_at = 80, -- Wrap floating window text at 80 characters
+        max_width = 100, -- Maximum width of diagnostic floating window
+      },
+    }
+
+    -- Show diagnostic symbols in the sign column
+    local signs = { Error = ' ', Warn = ' ', Hint = '󰌵 ', Info = ' ' }
+    for type, icon in pairs(signs) do
+      local hl = 'DiagnosticSign' .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
       callback = function(event)
