@@ -21,14 +21,13 @@ return {
 
     vim.diagnostic.config {
       virtual_text = {
-        -- prefix = '●',
         prefix = function(diagnostic)
           for k, v in pairs(signsMap) do
             if diagnostic.severity == k then
               return v.icon
             end
           end
-          return ''
+          return '●'
         end,
         spacing = 4,
         source = true,
