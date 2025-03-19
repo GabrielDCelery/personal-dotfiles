@@ -8,8 +8,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<leader>qs', vim.diagnostic.setloclist, { desc = 'Send diagnostic [Q]uickfix list' })
 vim.keymap.set('n', '<leader>qo', '<cmd>copen<cr>', { desc = 'Open quickfix list' })
 vim.keymap.set('n', '<leader>qc', '<cmd>cclose<cr>', { desc = 'Close quickfix list' })
-vim.keymap.set('n', '<leader>qn', '<cmd>cnext<cr>', { desc = 'Next quickfix list' })
-vim.keymap.set('n', '<leader>qp', '<cmd>cprev<cr>', { desc = 'Previous quickfix list' })
+vim.keymap.set('n', '<leader>qn', '<cmd>cnewer<cr>', { desc = 'Next quickfix list' })
+vim.keymap.set('n', '<leader>qp', '<cmd>colder<cr>', { desc = 'Previous quickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -37,10 +37,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
-vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize +10<cr>', { desc = "Increase width" })
-vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize -10<cr>', { desc = "Decrease width" })
-vim.keymap.set('n', '<C-Up>', '<cmd>horizontal resize +5<cr>', { desc = "Increase height" })
-vim.keymap.set('n', '<C-Down>', '<cmd>horizontal resize -5<cr>', { desc = "Decrease height" })
+vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize +10<cr>', { desc = 'Increase width' })
+vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize -10<cr>', { desc = 'Decrease width' })
+vim.keymap.set('n', '<C-Up>', '<cmd>horizontal resize +5<cr>', { desc = 'Increase height' })
+vim.keymap.set('n', '<C-Down>', '<cmd>horizontal resize -5<cr>', { desc = 'Decrease height' })
 
 -- vim.keymap.set('n', '<leader>hc', '<cmd>helpclose<CR>', { desc = 'Close help' })
 
