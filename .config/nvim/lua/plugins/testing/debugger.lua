@@ -20,20 +20,26 @@ return {
     vim.keymap.set('n', '<leader>dso', ':DapStepOut<cr>', { noremap = true, desc = 'step out' })
     vim.keymap.set('n', '<leader>dsv', ':DapStepOver<cr>', { noremap = true, desc = 'step over' })
 
+    vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#f5c2e7' })
+    vim.api.nvim_set_hl(0, 'DapBreakpointCondition', { ctermbg = 0, fg = '#f5c2e7' })
+    vim.api.nvim_set_hl(0, 'DapLogPoint', { ctermbg = 0, fg = '#94e2d5' })
+    vim.api.nvim_set_hl(0, 'DapStopped', { ctermbg = 0, fg = '#fab387' })
+    vim.api.nvim_set_hl(0, 'DapBreakpointRejected', { ctermbg = 0, fg = '#f38ba8' })
+
     vim.fn.sign_define('DapBreakpoint', {
-      text = ' ',
+      text = ' ',
       texthl = 'DapBreakpoint',
       linehl = '',
       numhl = '',
     })
     vim.fn.sign_define('DapBreakpointCondition', {
-      text = ' ',
+      text = ' ',
       texthl = 'DapBreakpointCondition',
       linehl = '',
       numhl = '',
     })
     vim.fn.sign_define('DapLogPoint', {
-      text = ' ',
+      text = '󱙓 ',
       texthl = 'DapLogPoint',
       linehl = '',
       numhl = '',
@@ -45,7 +51,7 @@ return {
       numhl = 'DapStopped',
     })
     vim.fn.sign_define('DapBreakpointRejected', {
-      text = ' ',
+      text = ' ',
       texthl = 'DapBreakpointRejected',
       linehl = '',
       numhl = '',
