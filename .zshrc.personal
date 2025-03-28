@@ -13,10 +13,6 @@ bindkey '^[[Z'      autosuggest-accept
 # ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # ZSH_AUTOSUGGEST_USE_ASYNC=true
 
-# STARSHIP
-eval "$(starship init zsh)"
-export STARSHIP_RELOAD=true
-
 # GPG
 # allow the gpg agent to interact with the terminal
 export GPG_TTY=$(tty)
@@ -90,3 +86,8 @@ export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
 
 # RUBY GEM
 export PATH="$(gem environment gemdir)/bin:$PATH"
+
+# STARSHIP
+eval "$(starship init zsh)"
+export STARSHIP_RELOAD=true
+
