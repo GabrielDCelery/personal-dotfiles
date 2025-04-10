@@ -1,9 +1,6 @@
 # HOMEBREW
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# GPG
-gpgconf --kill gpg-agent
-
 # WEZTERM
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 
