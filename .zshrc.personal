@@ -1,5 +1,15 @@
 # HOMEBREW
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+HOMEBREW_LINUX_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
+HOMEBREW_APPLE_PATH="/opt/homebrew/bin/brew"
+HOMEBREW_INTEL_PATH="/usr/local/bin/brew"
+
+if [ -e "$HOMEBREW_APPLE_PATH" ]; then
+    eval "$($HOMEBREW_APPLE_PATH shellenv)"
+elif [ -e "$HOMEBREW_INTEL_PATH" ]; then
+    eval "$($HOMEBREW_INTEL_PATH shellenv)"
+elif [ -e "$HOMEBREW_LINUX_PATH" ]; then
+    eval "$($HOMEBREW_LINUX_PATH shellenv)"
+fi
 
 # WEZTERM
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
