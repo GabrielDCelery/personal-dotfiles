@@ -3,6 +3,10 @@ return {
   priority = 1000,
   config = function()
     vim.cmd.colorscheme 'catppuccin-mocha'
+    -- change the highligting behaviour
+    -- vim.cmd.gi / this is a Neovim command to set highlighting rules
+    -- Comment / refers to the syntax group of comments
+    -- gui=nonw / remove any special text formatting (e.g. italics) from comments
     vim.cmd.hi 'Comment gui=none'
     require('catppuccin').setup {
       default_integrations = true,
@@ -10,6 +14,7 @@ return {
       -- integrations = {}
       integrations = {
         noice = true,
+        harpoon = true,
       },
     }
   end,
