@@ -189,12 +189,12 @@ return {
       'black', -- python
       'isort', -- python
       'goimports', -- go
-      -- 'jq', -- json
+      'jq', -- json
       'markdownlint', -- markdown
       'prettier',
       'prettierd',
       'stylua', -- lua formatter
-      -- 'yamlfmt', -- yaml
+      'yamlfmt', -- yaml
       'yq', -- json, yaml xml formatter
     }
 
