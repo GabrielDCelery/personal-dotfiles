@@ -21,6 +21,7 @@ return {
       'markdown',
       'markdown_inline',
       'nix',
+      'python',
       'query',
       'typescript',
       'terraform',
