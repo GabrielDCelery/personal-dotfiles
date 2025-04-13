@@ -92,6 +92,13 @@ return {
       -- 'git diff',
       -- 'git commit',
     },
+    windows = {
+      position = 'right',
+      sidebar_header = {
+        align = 'left',
+        rounded = false,
+      },
+    },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
