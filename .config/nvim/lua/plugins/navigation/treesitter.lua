@@ -3,6 +3,7 @@ return {
   'nvim-treesitter/nvim-treesitter',
   -- This is ran whenever treesitter is installed or updated, the below command will also make sure the language dependencies get updated as well
   build = ':TSUpdate',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
@@ -65,10 +66,16 @@ return {
         enable = true,
         lookahead = true,
         keymaps = {
+          ['a='] = '@assignment.outer',
+          ['i='] = '@assignment.inner',
+          ['r='] = '@assignment.rhs',
+          ['l='] = '@assignment.lhs',
           ['aa'] = '@parameter.outer',
           ['ia'] = '@parameter.inner',
           ['af'] = '@function.outer',
           ['if'] = '@function.inner',
+          ['am'] = '@call.outer',
+          ['im'] = '@call.inner',
           ['ac'] = '@class.outer',
           ['ic'] = '@class.inner',
           ['ii'] = '@conditional.inner',
@@ -81,10 +88,12 @@ return {
       swap = {
         enable = true,
         swap_next = {
-          -- ['<leader>a'] = '@parameter.inner',
+          ['<leader>na'] = '@parameter.inner',
+          ['<leader>nf'] = '@function.outer',
         },
         swap_previous = {
-          -- ['<leader>A'] = '@parameter.inner',
+          ['<leader>pa'] = '@parameter.inner',
+          ['<leader>pf'] = '@function.outer',
         },
       },
       move = {
