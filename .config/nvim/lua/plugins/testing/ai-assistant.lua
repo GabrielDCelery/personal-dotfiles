@@ -76,16 +76,21 @@ return {
       provider_opts = {},
     },
     disabled_tools = {
-      'python',
-      -- 'list_files',
-      -- 'search_files',
-      -- 'read_file',
+      'python', -- do not want code execution capabilities
       'create_file',
       'rename_file',
       'delete_file',
       'create_dir',
       'rename_dir',
       'delete_dir',
+
+      -- 'list_files',
+      -- 'search_files',
+      -- 'read_file',
+      -- 'grep',
+      -- 'read_defitions',
+      -- 'git diff',
+      -- 'git commit',
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
