@@ -75,6 +75,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    pcall(require('telescope').load_extension, 'noice')
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
@@ -91,6 +92,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sn', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = 'search neovim' })
+    vim.keymap.set('n', '<leader>sN', '<cmd>Telescope noice<cr>', { desc = 'search noice' })
     vim.keymap.set('n', '<leader>s/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
