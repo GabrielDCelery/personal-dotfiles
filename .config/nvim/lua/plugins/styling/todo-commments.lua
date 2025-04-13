@@ -11,6 +11,7 @@ return {
         signs = true,
       },
     }
-    -- NOTE: have configured the key binding
+
+    vim.keymap.set('n', '<leader>qt', '<cmd>TodoQuickFix<cr>', { desc = 'TODO quickfix' })
   end,
 }
