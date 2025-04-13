@@ -7,9 +7,10 @@ require 'options.main'
 require 'options.keymap'
 
 -- Custom code snippets
-require('custom.highlight-when-yanking').init()
-require('custom.lazy-plugin-manager').init()
+require('custom.highlight-when-yanking').init() -- highlight text when yanking
+require('custom.lazy-plugin-manager').init() -- the lazy plugin manager
 require('custom.autoformat-json-on-bufread').init()
+require('custom.filetype').init() -- custom filetypes
 
 require('lazy').setup({
   -- Neovim editor setup plugins
@@ -22,7 +23,7 @@ require('lazy').setup({
   require 'plugins.styling.render-markdown', -- rendering markdown documents
   require 'plugins.styling.lualine', -- editor status bar
   require 'plugins.styling.which-key', -- displays key bindings
-  require 'plugins.styling.colorizer', -- color highlighter
+  require 'plugins.styling.colorizer', -- color highlighter for RGB colors
   require 'plugins.styling.web-devicons', -- nerd fonts for neovim plugins
 
   -- LSP/Formatting/Linting
