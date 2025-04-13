@@ -1,44 +1,5 @@
 return {
   'yetone/avante.nvim',
-  event = 'VeryLazy',
-  lazy = false,
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-  opts = {
-    -- add any opts here
-    -- for example
-    provider = 'claude',
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-5-sonnet-20241022',
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-    },
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-    },
-    disabled_tools = {
-      'python',
-      -- 'list_files',
-      -- 'search_files',
-      -- 'read_file',
-      'create_file',
-      'rename_file',
-      'delete_file',
-      'create_dir',
-      'rename_dir',
-      'delete_dir',
-    },
-  },
-  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-  build = 'make',
-  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
     'nvim-treesitter/nvim-treesitter',
     'stevearc/dressing.nvim',
@@ -77,4 +38,57 @@ return {
       ft = { 'markdown' },
     },
   },
+  event = 'VeryLazy',
+  lazy = false,
+  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  opts = {
+    provider = 'claude', -- the default provider being used
+
+    claude = {
+      endpoint = 'https://api.anthropic.com',
+      model = 'claude-3-5-sonnet-20241022',
+      timeout = 30000, -- timeout in milliseconds
+      temperature = 0, -- adjust if needed
+      max_tokens = 4096,
+      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    },
+    openai = {
+      endpoint = 'https://api.openai.com/v1',
+      model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
+      timeout = 30000, -- timeout in milliseconds
+      temperature = 0, -- adjust if needed
+      max_tokens = 4096,
+      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    },
+    behaviour = {
+      auto_suggestions = false,
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = true,
+      minimize_diff = true,
+      enable_token_counting = true,
+      enable_cursor_planning_mode = true,
+      enable_claude_text_editor_tool_mode = true,
+    },
+    file_selector = {
+      provider = 'telescope',
+      provider_opts = {},
+    },
+    disabled_tools = {
+      'python',
+      -- 'list_files',
+      -- 'search_files',
+      -- 'read_file',
+      'create_file',
+      'rename_file',
+      'delete_file',
+      'create_dir',
+      'rename_dir',
+      'delete_dir',
+    },
+  },
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = 'make',
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 }
