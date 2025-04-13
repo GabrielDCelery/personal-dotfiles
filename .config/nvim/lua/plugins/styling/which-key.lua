@@ -7,9 +7,9 @@ return { -- Useful plugin to show you pending keybinds.
       preset = 'modern',
     }
     whichKey.add {
-      { '<leader>c', group = '[C]ode' },
-      { '<leader>d', group = '[D]ocument' },
-      { '<leader>r', group = '[R]ename' },
+      { '<leader>c', group = 'code' },
+      { '<leader>d', group = 'document' },
+      { '<leader>r', group = 'rename' },
       { '<leader>s', group = 'telescope' },
       -- { '<leader>w', group = '[W]orkspace' },
       { '<leader>t', group = 'test' },
@@ -19,6 +19,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>e', group = 'trouble' },
       { '<leader>d', group = 'debug' },
       { '<leader>a', group = 'ai' },
+      { '<leader>q', group = 'quickfix' },
     }
   end,
 }
