@@ -77,6 +77,10 @@ alias nvimc='cd $HOME/.config/nvim && nvim'
 alias python='"$(which python3)"'
 alias pip='"$(which pip3)"'
 
+# N Nodejs version manager
+export N_PREFIX="$HOME/.n"
+export PATH="$N_PREFIX/bin:$PATH"
+
 # GOLANG
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
