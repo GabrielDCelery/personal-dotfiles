@@ -18,13 +18,26 @@ export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ZSH
+# setting up syntax higlighting in the terminal
 ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/highlighters
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# autosuggestions based on command history
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# shift tab to accept autosuggestion
 bindkey '^[[Z'      autosuggest-accept
-# ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
-# ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-# ZSH_AUTOSUGGEST_USE_ASYNC=true
+# do autosuggestions in an async manner for performance gains
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+# use both history AND completion for better suggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# clear autosuggestions in more scenarios
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+# reduce autosuggestion timeout
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# change autosuggestion color to make it more visible
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# improve autosuggestion performance on large history
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 # GPG
 # allow the gpg agent to interact with the terminal
