@@ -29,6 +29,7 @@ bindkey '^[[Z'      autosuggest-accept
 # GPG
 # allow the gpg agent to interact with the terminal
 export GPG_TTY=$(tty)
+export GNUPGHOME="$HOME/.gnupg"
 
 # STOW
 export PATH="$HOME/.dotfiles/.local/bin:$PATH"
