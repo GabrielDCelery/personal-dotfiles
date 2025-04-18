@@ -13,6 +13,16 @@ return {
       return ''
     end
 
+    local function get_formatter()
+      local conform = require 'conform'
+      local formatters = conform.list_formatters(0)
+      -- check if the array like table of formatters is empty
+      if #formatters == 0 then
+        return ''
+      end
+      return '󰉢 ' .. formatters[1].name
+    end
+
     -- catppuccin is not controlled via the theme integrations but here
     require('lualine').setup {
       options = {
@@ -43,6 +53,7 @@ return {
           'encoding',
           'fileformat',
           'filetype',
+          get_formatter,
           {
             'lsp_status',
             icon = '', -- f013
