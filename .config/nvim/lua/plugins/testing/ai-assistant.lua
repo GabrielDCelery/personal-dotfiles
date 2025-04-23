@@ -40,7 +40,7 @@ return {
   },
   event = 'VeryLazy',
   lazy = false,
-  version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+  version = '*', -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     provider = 'claude', -- the default provider being used
 
@@ -77,11 +77,11 @@ return {
     },
     disabled_tools = {
       'python', -- do not want code execution capabilities
-      'create_file',
-      'rename_file',
+      -- 'create_file',
+      -- 'rename_file',
       'delete_file',
-      'create_dir',
-      'rename_dir',
+      -- 'create_dir',
+      -- 'rename_dir',
       'delete_dir',
 
       -- 'list_files',
