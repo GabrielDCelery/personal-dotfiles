@@ -1,0 +1,10 @@
+name: python-project
+windows:
+  - editor:
+      - source ./.venv/bin/activate
+      - nvim
+  - terminal:
+      - source ./.venv/bin/activate
+  - lazygit:
+      - source ./.venv/bin/activate
+      - lazygit
