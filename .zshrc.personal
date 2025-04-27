@@ -111,6 +111,8 @@ export MANWIDTH=999
 alias nvimc='cd $HOME/.config/nvim && nvim'
 
 # PYTHON
+eval "$(pyenv init -)"
+eval "$(pyenv init --path)"
 alias python='"$(which python3)"'
 alias pip='"$(which pip3)"'
 
