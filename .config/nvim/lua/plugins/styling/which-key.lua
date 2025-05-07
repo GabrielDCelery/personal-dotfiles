@@ -20,6 +20,7 @@ return { -- Useful plugin to show you pending keybinds.
       { '<leader>d', group = 'debug' },
       { '<leader>a', group = 'ai' },
       { '<leader>q', group = 'quickfix' },
+      { '<leader>f', group = 'fzf' },
     }
   end,
 }

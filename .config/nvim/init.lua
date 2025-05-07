@@ -41,6 +41,7 @@ require('lazy').setup({
   require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
   require 'plugins.navigation.telescope', -- telescope
   require 'plugins.navigation.treesitter', -- treesitter
+  require 'plugins.navigation.fzflua', -- versatile fzf based search
   -- require 'plugins.navigation.hydra', -- hydra
 
   -- Git/Version control
