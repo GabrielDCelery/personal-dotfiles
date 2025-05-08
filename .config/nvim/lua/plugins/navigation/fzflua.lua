@@ -13,6 +13,11 @@ return {
         row = 0.35, -- window row position (0=top, 1=bottom)
         col = 0.50, -- window col position (0=left, 1=right)
       },
+      keymap = {
+        fzf = {
+          ['ctrl-q'] = 'select-all+accept',
+        },
+      },
     }
     vim.keymap.set('n', '<leader>fF', require('fzf-lua').builtin, { desc = 'fzf builtin' })
     vim.keymap.set('n', '<leader>ff', require('fzf-lua').files, { desc = 'fzf files' })
