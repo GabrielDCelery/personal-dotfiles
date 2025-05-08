@@ -83,15 +83,15 @@ return { -- Fuzzy Finder (files, lsp, etc)
     vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'search files' })
     vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = 'search grep' })
     -- NOTE: The below need folke/todo-comments.nvim plugin to be installed
-    vim.keymap.set('n', '<leader>st', '<cmd>TodoTelescope<cr>', { desc = 'search todo' })
+    vim.keymap.set('n', '<leader>sn', '<cmd>TodoTelescope<cr>', { desc = 'search notes/todo' })
     vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = 'search buffers' })
     vim.keymap.set('n', '<leader>sG', function()
       builtin.git_status()
       vim.api.nvim_input '<ESC>'
     end, { desc = 'search git status' })
-    vim.keymap.set('n', '<leader>sn', function()
-      builtin.find_files { cwd = vim.fn.stdpath 'config' }
-    end, { desc = 'search neovim' })
+    -- vim.keymap.set('n', '<leader>sn', function()
+    --   builtin.find_files { cwd = vim.fn.stdpath 'config' }
+    -- end, { desc = 'search neovim' })
     vim.keymap.set('n', '<leader>sN', '<cmd>Telescope noice<cr>', { desc = 'search noice' })
     vim.keymap.set('n', '<leader>s/', function()
       -- You can pass additional configuration to Telescope to change the theme, layout, etc.
