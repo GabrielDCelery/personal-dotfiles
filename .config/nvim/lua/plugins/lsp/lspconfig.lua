@@ -182,6 +182,7 @@ return {
       'templ',
       'terraformls',
       'ts_ls',
+      'volar',
       'yamlls',
     }
 
@@ -218,6 +219,7 @@ return {
     local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
 
     require('mason-lspconfig').setup {
+      automatic_enable = true,
       -- Using mason-tool-installer therefore setting automatic_installation to false and leaving ensure_installed empty
       ---@type boolean
       automatic_installation = false,
@@ -254,6 +256,52 @@ return {
                 },
               },
             }),
+          }
+        end,
+        ['volar'] = function()
+          require('lspconfig').volar.setup {
+            capabilities = defaultLspCapabilities,
+            filetypes = {
+              'typescript',
+              'javascript',
+              'javascriptreact',
+              'typescriptreact',
+              'vue',
+              'json',
+            },
+            init_options = {
+              typescript = {
+                -- would use the following if we had a global installation of typescript
+                -- tsdk = vim.fn.expand '$HOME/node_modules/typescript/lib',
+                -- this is the installation of the typescrpt language server that mason-tool-installer installs
+                tsdk = vim.fn.expand '$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib',
+              },
+              -- additional Volar settings
+              languageFeatures = {
+                implementation = true, -- Go to implementation support
+                references = true, -- Find references support
+                definition = true, -- Go to definition support
+                typeDefinition = true, -- Go to type definition support
+                callHierarchy = true,
+                hover = true,
+                rename = true,
+                renameFileRefactoring = true,
+                signatureHelp = true,
+                codeAction = true,
+                workspaceSymbol = true,
+                completion = {
+                  defaultTagNameCase = 'both',
+                  defaultAttrNameCase = 'kebabCase',
+                },
+              },
+            },
+            before_init = function(params, config)
+              local root_dir = params.root_dir
+              local lib_path = vim.fs.find('node_modules/typescript/lib', { path = root_dir, upward = true })[1]
+              if lib_path then
+                config.init_options.typescript.tsdk = lib_path
+              end
+            end,
           }
         end,
       },

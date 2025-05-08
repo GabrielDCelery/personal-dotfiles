@@ -52,6 +52,7 @@ return { -- Autoformat
       ['python'] = { 'isort', 'black' },
       ['typescript'] = { 'prettier', 'prettierd', stop_after_first = true },
       ['typescriptreact'] = { 'prettier', 'prettierd', stop_after_first = true },
+      ['vue'] = { 'prettier', 'prettierd', stop_after_first = true },
       ['yaml'] = { 'yamlfmt', 'yq', 'prettier', 'prettierd', stop_after_first = true },
       ['helm'] = { 'yamlfmt' },
       ['helm.yaml'] = { 'yamlfmt' },

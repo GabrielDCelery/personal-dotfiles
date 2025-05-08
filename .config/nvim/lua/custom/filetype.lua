@@ -13,6 +13,12 @@ function M.init()
       ['.*%/templates/.*%.yml'] = 'helm',
     },
   }
+
+  vim.filetype.add {
+    pattern = {
+      ['.*%.vue'] = 'vue',
+    },
+  }
 end
 
 return M
