@@ -133,23 +133,25 @@ return {
         -- When you move your cursor, the highlights will be cleared (the second autocommand).
         local client = vim.lsp.get_client_by_id(event.data.client_id)
 
-        local does_buffer_support_document_highlight = client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
+        local does_buffer_support_document_highlight = client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf)
 
         if does_buffer_support_document_highlight then
           local highlight_augroup = vim.api.nvim_create_augroup('lsp-highlight', { clear = false })
 
+          -- if the cursror stays still then it will highglight all references of the symbol under the cursor
           vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
             buffer = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.document_highlight,
           })
 
+          -- when moving the cursor clear the previously highligted references
           vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
             buffer = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.clear_references,
           })
-
+          -- when the lsp client detaches clear all existing highlights, also remove highligthing autocommand from that buffer
           vim.api.nvim_create_autocmd('LspDetach', {
             group = vim.api.nvim_create_augroup('kickstart-lsp-detach', { clear = true }),
             callback = function(event2)
