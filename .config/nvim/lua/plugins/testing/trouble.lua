@@ -8,6 +8,11 @@ return {
       '<cmd>Trouble diagnostics toggle<cr>',
       desc = 'trouble toggle',
     },
+    {
+      '<leader>ef',
+      '<cmd>Trouble diagnostics<cr><cmd>TroubleClose<cr><cmd>FzfLua quickfix<cr>',
+      desc = 'trouble diagnostics in fzf',
+    },
     -- {
     --   '<leader>xX',
     --   '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',

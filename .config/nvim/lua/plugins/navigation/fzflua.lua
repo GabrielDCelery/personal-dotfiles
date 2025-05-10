@@ -37,5 +37,7 @@ return {
     vim.keymap.set('n', '<leader>sc', require('fzf-lua').grep_curbuf, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sC', require('fzf-lua').commands, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sq', require('fzf-lua').quickfix, { desc = 'fzf quickfix' })
+    vim.keymap.set('n', '<leader>se', require('fzf-lua').diagnostics_document, { desc = 'fzf diagnostics (current buffer)' })
+    vim.keymap.set('n', '<leader>sE', require('fzf-lua').diagnostics_workspace, { desc = 'fzf diagnostics (workspace)' })
   end,
 }
