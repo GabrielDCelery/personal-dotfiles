@@ -1,4 +1,6 @@
 # HOMEBREW
+# the below block looks for the "brew" executable at different locations and if it finds it
+# then executes "brew shellenv" which sets up necessary homebrew environment variables
 HOMEBREW_LINUX_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
 HOMEBREW_APPLE_PATH="/opt/homebrew/bin/brew"
 HOMEBREW_INTEL_PATH="/usr/local/bin/brew"
@@ -12,9 +14,11 @@ elif [ -e "$HOMEBREW_LINUX_PATH" ]; then
 fi
 
 # WEZTERM
+# by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 
 # XDCONFIG
+# XDG_CONFIG_HOME is a standard for defining the location for user specific configurations so we set it to ~/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ZSH
@@ -105,33 +109,45 @@ alias traceroute='grc traceroute'
 # NEOVIM
 # make neovim the default editor
 export EDITOR='nvim'
-# make neovim the default manpage viewer
+# setting neovim to be the default manpage viewer
+# +Man! is a neovim command that loads neovim built-in manpage viewer and ! at the end forces it to start in "Man mode"
 export MANPAGER='nvim +Man!'
+# This will make man pages use the full width of the terminal window, without it they would wrap around 80 characters
 export MANWIDTH=999
+# use nvimc to cd into where there is the neovim configuration and open it with neovim
 alias nvimc='cd $HOME/.config/nvim && nvim'
 
 # PYTHON
-eval "$(pyenv init -)"
+# set up shell function integration, command completion, hell variables and path modifications to ensure pyenv's Python versions are found first
+eval "$(pyenv init - zsh)"
+# sets up PATH environment variable
 eval "$(pyenv init --path)"
+# alias the python command to use python3
 alias python='"$(which python3)"'
+# alias the pip command to use pip3
 alias pip='"$(which pip3)"'
 
 # N Nodejs version manager
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# not using NVM atm in favor of N, but leaving it here for now
+# NVM
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 # GOLANG
+# GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
 export GOPATH=$(go env GOPATH)
+# GOBIN specifies where go should install executable programs when using "go install"
 export GOBIN=$GOPATH/bin
+# make GOBIN part of path
 export PATH=$PATH:$GOBIN
 
 # RUST
+# when using cargo install those binaries will be in ~/.cargo/bin, so we need to add that dir to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # PERSONAL NOTES
 export PATH="$PATH:$HOME/.local/bin"
