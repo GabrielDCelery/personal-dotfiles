@@ -7,12 +7,12 @@ return {
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     {
       'williamboman/mason.nvim', 
-      version = 'v1.8.3',
+      -- version = 'v1.8.3',
       opts = {}
     },
     {
       'williamboman/mason-lspconfig.nvim',
-      version = 'v1.32.0',
+      -- version = 'v1.32.0',
     },
     {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
