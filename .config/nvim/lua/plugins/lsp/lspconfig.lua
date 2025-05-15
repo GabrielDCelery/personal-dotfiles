@@ -19,7 +19,7 @@ return {
       opts = {
         ensure_installed = language_servers,
 
-        auto_update = false, -- will not auto-update, run MasonToolsInstall or MasonToolsUpdate
+        auto_update = true, -- will not auto-update, run MasonToolsInstall or MasonToolsUpdate
         run_on_start = true, -- will install tools on startup
       },
     },
