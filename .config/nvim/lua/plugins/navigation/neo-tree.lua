@@ -39,6 +39,11 @@ return {
         enabled = true,
         leave_dirs_open = false,
       },
+      filtered_items = {
+        visible = true, -- This shows hidden files
+        hide_dotfiles = false, -- This shows files starting with a dot
+        hide_gitignored = true, -- This hides files in .gitignore
+      },
       window = {
         mappings = {
           ['\\'] = 'close_window',
