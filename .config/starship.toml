@@ -19,6 +19,7 @@ $git_status\
 $git_metrics\
 $aws \
 $azure \
+$terraform \
 $time\
 $line_break\
 $character"""
@@ -82,13 +83,18 @@ behind = '⇣${count}'
 disabled = false
 format = '[\[ $symbol $profile / $region / $duration \]]($style)'
 symbol = "󰸏 "
-style = 'bold yellow'
+style = 'bold fg:#fab387'
 
 [azure]
 disabled = false
 format = '[\[ $symbol ($subscription) \]]($style)'
 symbol = '󰠅 '
-style = 'blue yellow'
+style = 'bold fg:#89b4fa'
+
+[terraform]
+format = '[\[ $symbol $workspace \]]($style)'
+symbol = '󱁢 '
+style = 'bold fg:#cba6f7'
 
 [time]
 disabled = false
