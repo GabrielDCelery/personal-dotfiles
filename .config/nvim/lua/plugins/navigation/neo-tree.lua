@@ -43,6 +43,9 @@ return {
         visible = true, -- This shows hidden files
         hide_dotfiles = false, -- This shows files starting with a dot
         hide_gitignored = true, -- This hides files in .gitignore
+        hide_by_name = { -- This gets hidden even though it is a dotfile and dotfiles are configured not to be hidden
+          '.git',
+        },
       },
       window = {
         mappings = {
