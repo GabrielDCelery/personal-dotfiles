@@ -58,5 +58,10 @@ return { -- Autoformat
       ['helm.yaml'] = { 'yamlfmt' },
       ['kubernetes'] = { 'yamlfmt' },
     },
+    formatters = {
+      yamlfmt = {
+        prepend_args = { '-formatter', 'retain_line_breaks=true' },
+      },
+    },
   },
 }
