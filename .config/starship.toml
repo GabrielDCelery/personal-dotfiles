@@ -14,9 +14,7 @@ $nodejs \
 $golang\
 $python\
 $git_branch\
-$git_state\
 $git_status\
-$git_metrics\
 $aws \
 $azure \
 $terraform \
