@@ -43,22 +43,27 @@ return {
   version = '*', -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
   opts = {
     provider = 'claude', -- the default provider being used
-
-    claude = {
-      endpoint = 'https://api.anthropic.com',
-      model = 'claude-3-5-sonnet-20241022',
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
-    },
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- timeout in milliseconds
-      temperature = 0, -- adjust if needed
-      max_tokens = 4096,
-      -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+    providers = {
+      claude = {
+        endpoint = 'https://api.anthropic.com',
+        model = 'claude-3-5-sonnet-20241022',
+        extra_request_body = {
+          timeout = 30000, -- timeout in milliseconds
+          temperature = 0, -- adjust if needed
+          max_tokens = 4096,
+          -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+        },
+      },
+      openai = {
+        endpoint = 'https://api.openai.com/v1',
+        model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
+        extra_request_body = {
+          timeout = 30000, -- timeout in milliseconds
+          temperature = 0, -- adjust if needed
+          max_tokens = 4096,
+          -- reasoning_effort = "high" -- only supported for reasoning models (o1, etc.)
+        },
+      },
     },
     behaviour = {
       auto_suggestions = false,
