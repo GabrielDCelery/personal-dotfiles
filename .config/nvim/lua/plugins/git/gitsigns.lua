@@ -22,7 +22,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         -- Toggles
         -- map('n', '<leader>gp', gitsigns.preview_hunk_inline, { desc = 'Preview hunk' }) -- dont know if I need this
         -- map('n', '<leader>gtb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' }) -- prefer having blame turned on all the time
-        -- map('n', '<leader>gtd', gitsigns.toggle_deleted, { desc = '[T]oggle git show [D]eleted' }) -- conflicting with toggle from neogit
+        map('n', '<leader>gtd', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' }) -- conflicting with toggle from neogit
         -- map('n', '<leader>gD', gitsigns.diffthis, { desc = 'git [d]iff against index' }) -- not important since we have neogit
       end,
     }

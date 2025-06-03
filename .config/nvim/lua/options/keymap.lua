@@ -51,3 +51,6 @@ vim.keymap.set('n', '<leader>pw', 'viw"_dP', {
   silent = true,
   desc = 'Paste inner word below cursor with the contents of default register but do not yank it',
 })
+
+vim.keymap.set('n', 'zO', 'zR', { desc = 'Open all folders in document' })
+vim.keymap.set('n', 'zC', 'zM', { desc = 'Close all folders in document' })
