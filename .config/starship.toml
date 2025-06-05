@@ -113,6 +113,11 @@ pure_msg = '[pure shell](bold yellow)'
 unknown_msg = '[unknown shell](bold red)'
 format = 'via [󱄅 $state( \($name\)):](bold blue) '
 
+# ~/.config/starship.toml
+
+[vagrant]
+format = '[\[   $version \]](bold white) '
+
 [kubernetes]
 format = 'on [󱃾 \[$user on $cluster in $context \($namespace\)\]](dimmed green) '
 disabled = false
