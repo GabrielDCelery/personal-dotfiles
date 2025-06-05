@@ -15,9 +15,10 @@ $golang\
 $python\
 $git_branch\
 $git_status\
-$aws \
-$azure \
-$terraform \
+$aws\
+$azure\
+$terraform\
+$vagrant\
 $time\
 $line_break\
 $character"""
