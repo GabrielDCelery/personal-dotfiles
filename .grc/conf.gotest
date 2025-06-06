@@ -8,8 +8,20 @@ colour=green, yellow
 regexp=^PASS$
 colour=bold white on_green
 -
-regexp=^(ok|FAIL)\s+.*
+regexp=^(FAIL)\s+.*
 colour=default, magenta
+-
+regexp=(DEBUG)
+colour=cyan
+-
+regexp=(WARN)
+colour=yellow
+-
+regexp=(ERROR)
+colour=red
+-
+regexp=^(ok)\s+.*
+colour=green
 -
 regexp=--- FAIL: .* (\(\d+\.\d+s\))
 colour=red, yellow
