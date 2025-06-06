@@ -16,6 +16,7 @@ local language_servers = {
   'markdown_oxide',
   'pyright',
   'rust_analyzer',
+  'solargraph',
   'templ',
   'terraformls',
   'ts_ls',
