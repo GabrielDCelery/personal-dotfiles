@@ -42,7 +42,7 @@ truncate_to_repo = true
 home_symbol = '~'
 
 [nodejs]
-format = '[\[ $symbol ($version) \]]($style)'
+format = '[\[ $symbol ($version) \] ]($style)'
 symbol = ' '
 
 [golang]
@@ -73,7 +73,7 @@ style = 'bold fg:#f5c2e7'
 symbol = " "
 
 [git_status]
-format = '([\[ $all_status$ahead_behind \]]($style) )'
+format = '([\[ $all_status$ahead_behind \] ]($style))'
 # style = 'bold purple'
 style = 'bold fg:#f5c2e7'
 ahead = '⇡${count}'
@@ -82,7 +82,7 @@ behind = '⇣${count}'
 
 [aws]
 disabled = false
-format = '[\[ $symbol $profile / $region / $duration \]]($style)'
+format = '[\[ $symbol $profile / $region / $duration \]]($style) '
 symbol = "󰸏 "
 style = 'bold fg:#fab387'
 
