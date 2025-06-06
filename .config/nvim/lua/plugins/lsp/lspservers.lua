@@ -20,7 +20,7 @@ local language_servers = {
   'templ',
   'terraformls',
   'ts_ls',
-  'volar',
+  -- 'volar',
   'yamlls',
 }
 
