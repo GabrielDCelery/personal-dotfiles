@@ -22,9 +22,19 @@ export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 # ZSH
-# initialize completion system, -U means unique entries and -z means withoug aliases
-autoload -Uz compinit
-compinit
+# Do a full completion system initialization if:
+# - .zcompdump doesn't exist, or
+# - .zcompdump is more than 24 hours old
+if [[ ! -f "$HOME/.zcompdump" ]] || [[ -n "$(find "$HOME/.zcompdump" -type f -mtime +1 2>/dev/null)" ]]; then
+  # initialize completion system, -U means unique entries and -z means without aliases
+  autoload -Uz compinit
+  compinit
+else
+  # Fast load completion system if cache exists and is fresh (less than 24h old)
+  autoload -Uz compinit
+  compinit -C
+fi
+
 # load completion menu and configure style
 # enable menu eslection where you can use the arrow keys to navigate through completions
 zstyle ':completion:*' menu select
