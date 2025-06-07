@@ -1,12 +1,12 @@
 return {
   {
     'akinsho/toggleterm.nvim',
-    version = "*",
+    version = '*',
     config = function()
       require('toggleterm').setup {
         -- size = 20,
-        open_mapping = '<C-\\>',
-        -- open_mapping = [[<c-t>]],
+        -- open_mapping = '<C-\\>',
+        open_mapping = [[<c-t>]],
         -- open_mapping = [[<leader>\]],
         size = function(term)
           if term.direction == 'horizontal' then
@@ -19,8 +19,8 @@ return {
         end,
         direction = 'vertical',
         float_opts = {
-          border = 'double'
-        }
+          border = 'double',
+        },
       }
 
       vim.keymap.set('t', '<Esc><Esc>', [[<c-\><c-n>]], { desc = 'Move left' })
@@ -39,6 +39,6 @@ return {
       -- vim.keymap.set('n', '<leader>tl', function()
       --   lazygit:toggle()
       -- end, { desc = 'Open LazyGit in terminal' })
-    end
+    end,
   },
 }

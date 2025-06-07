@@ -42,6 +42,7 @@ require('lazy').setup({
   -- require 'plugins.navigation.telescope', -- telescope
   require 'plugins.navigation.treesitter', -- treesitter
   require 'plugins.navigation.fzflua', -- versatile fzf based search
+  require 'plugins.navigation.vim-tmux-navigator', -- vim tmux navigator
   -- require 'plugins.navigation.hydra', -- hydra
 
   -- Git/Version control
@@ -57,7 +58,7 @@ require('lazy').setup({
   require 'plugins.testing.ai-assistant', -- ai assistant
 
   -- Terminal
-  require 'plugins.terminal.toggleterm', -- inbuilt terminal
+  -- require 'plugins.terminal.toggleterm', -- inbuilt terminal
 }, {
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
