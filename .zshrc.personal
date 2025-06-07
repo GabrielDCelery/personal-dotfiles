@@ -53,24 +53,35 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 # warnings in red
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
+# CLI SYNTAX HIGHLIGHTING
 # setting up syntax higlighting in the terminal
-ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/highlighters
+# - highlights valid commands in green
+# - showing errors in red
+# - highlighting paths, options and arguments differently
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# CLI AUTOSUGGESTIONS
 # autosuggestions based on command history
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # shift tab to accept autosuggestion
 bindkey '^[[Z'      autosuggest-accept
 # do autosuggestions in an async manner for performance gains
 ZSH_AUTOSUGGEST_USE_ASYNC=true
+# disable autosuggestions for large buffers
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # use both history AND completion for better suggestions
 ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-# clear autosuggestions in more scenarios
+# clear autosuggestions when any of the below scenarios happen
+# - buffer-empty - when the command line becomes empty
+# - bracketed-paste - when text is pasted into the terminal
+# - accept-line - when pressing enter to execute a command
+# - push-line-or-edit - when using the push-line-feature (typically Alt+Q) which saves the current line and gives a new prompt
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
-# reduce autosuggestion timeout
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# change autosuggestion color to make it more visible
+# change autosuggestion color to grey to make it more visible
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 # improve autosuggestion performance on large history
+# - exclude cd commands in history based suggestions since those are unlikely to get reused
+# - exclude git from the completion system since it has its own comprehensive system
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
