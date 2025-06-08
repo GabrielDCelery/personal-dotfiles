@@ -74,24 +74,24 @@ ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 # ****************************************************************************************************************************************************************
 # load completion menu and configure style
 # enable menu eslection where you can use the arrow keys to navigate through completions
-zstyle ':completion:*' menu select
-# make completion case insensitive
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive completion
-# _expand: Expands variables and aliases
-# _complete: Regular completion
-# _ignored: Also show ignored completions
-# _approximate: Allows for approximate matching (typo correction)
-zstyle ':completion:*' completer _expand _complete _ignored _approximate
-# make the completion menu more visually appealing
-# show more detailed information
-zstyle ':completion:*' verbose yes
-# descriptors in green
-zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
-# messages in purple
-zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
-# warnings in red
-zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
-
+# zstyle ':completion:*' menu select
+# # make completion case insensitive
+# zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # case insensitive completion
+# # _expand: Expands variables and aliases
+# # _complete: Regular completion
+# # _ignored: Also show ignored completions
+# # _approximate: Allows for approximate matching (typo correction)
+# zstyle ':completion:*' completer _expand _complete _ignored _approximate
+# # make the completion menu more visually appealing
+# # show more detailed information
+# zstyle ':completion:*' verbose yes
+# # descriptors in green
+# zstyle ':completion:*:*:*:*:descriptions' format '%F{green}-- %d --%f'
+# # messages in purple
+# zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
+# # warnings in red
+# zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
+#
 
 # GPG ************************************************************************************************************************************************************
 # allow the gpg agent to interact with the terminal
