@@ -138,10 +138,12 @@ export MANWIDTH=999
 alias nvimc='cd $HOME/.config/nvim && nvim'
 
 # PYTHON
-# set up shell function integration, command completion, hell variables and path modifications to ensure pyenv's Python versions are found first
+# run shell specific initializations for zsh
+# - set up shims (lightweight executables) in the $PATH
+# - registers pyenv's shell function for version switching
+# - set up command completion for pyenv commands
+# - install shell hooks to automatically swithc pythong versions when switching between directories
 eval "$(pyenv init - zsh)"
-# sets up PATH environment variable
-eval "$(pyenv init --path)"
 # alias the python command to use python3
 alias python='"$(which python3)"'
 # alias the pip command to use pip3
