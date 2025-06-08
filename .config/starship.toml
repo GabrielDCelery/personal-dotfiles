@@ -68,7 +68,7 @@ symbol = " "
 disabled = true
 
 [git_branch]
-format = '[\[ $symbol$branch(:$remote_branch) \]]($style)'
+format = '[\[ $symbol$branch(:$remote_branch) \] ]($style)'
 style = 'bold fg:#f5c2e7'
 symbol = " "
 
