@@ -1,4 +1,4 @@
-# HOMEBREW
+# HOMEBREW *******************************************************************************************************************************************************
 # the below block looks for the "brew" executable at different locations and if it finds it
 # then executes "brew shellenv" which sets up necessary homebrew environment variables
 HOMEBREW_LINUX_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
@@ -13,15 +13,18 @@ elif [ -e "$HOMEBREW_LINUX_PATH" ]; then
     eval "$($HOMEBREW_LINUX_PATH shellenv)"
 fi
 
-# WEZTERM
+
+# WEZTERM ********************************************************************************************************************************************************
 # by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 
-# XDCONFIG
-# XDG_CONFIG_HOME is a standard for defining the location for user specific configurations so we set it to ~/.config
+
+# XDCONFIG *******************************************************************************************************************************************************
+# the env variable XDG_CONFIG_HOME is a standard for defining the location for user specific configurations so we set it to ~/.config
 export XDG_CONFIG_HOME="$HOME/.config"
 
-# CLI COMPLETIONS
+
+# CLI COMPLETIONS ************************************************************************************************************************************************
 # initialize completion system, -U means unique entries and -z means without aliases
 autoload -Uz compinit
 # Do a full completion system initialization if:
@@ -33,14 +36,16 @@ else
   ( compinit -C >/dev/null 2>&1 & ) >/dev/null 2>&1
 fi
 
-# CLI SYNTAX HIGHLIGHTING
+
+# CLI SYNTAX HIGHLIGHTING ****************************************************************************************************************************************
 # setting up syntax higlighting in the terminal
 # - highlights valid commands in green
 # - showing errors in red
 # - highlighting paths, options and arguments differently
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# CLI AUTOSUGGESTIONS
+
+# CLI AUTOSUGGESTIONS ********************************************************************************************************************************************
 # autosuggestions based on command history
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # shift tab to accept autosuggestion
@@ -66,6 +71,7 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 
+# ****************************************************************************************************************************************************************
 # load completion menu and configure style
 # enable menu eslection where you can use the arrow keys to navigate through completions
 zstyle ':completion:*' menu select
@@ -86,26 +92,40 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 # warnings in red
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
-# GPG
+
+# GPG ************************************************************************************************************************************************************
 # allow the gpg agent to interact with the terminal
+# set the GPG_TTY env variable to the current terminal device, this is important so GPG can interact with the terminal and do things like prompting for password
 export GPG_TTY=$(tty)
+# set the directory where GPG stores the encryption keys, trust database and configuration files
 export GNUPGHOME="$HOME/.gnupg"
 
-# STOW
+
+# STOW ***********************************************************************************************************************************************************
+# some binaries get stored in dotfiles so want to extend the $PATH with that location
+# TODO: does not look like the correct way to do, let's revisit and see if I can do better
 export PATH="$HOME/.dotfiles/.local/bin:$PATH"
 
-# AWS-VAULT
-# make aws-vault use pass as password manager
+
+# AWS VAULT ******************************************************************************************************************************************************
+# make aws-vault use pass as its backend storage system
 export AWS_VAULT_BACKEND=pass
+# specify where pass witll store the credentials managed by aws vault
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 
-# DIRENV
+
+# DIRENV *********************************************************************************************************************************************************
+# generate shell specific code for zsh
+# - monitor when we change directories
+# - automatically load env variables from .envrc when entering a directory and unloading them when leading the dir
 eval "$(direnv hook zsh)"
 
 # BAT
-export BAT_THEME=CatppuccinMocha
+export BAT_CONFIG_PATH="$(bat --config-file)"
+export BAT_CONFIG_DIR="$(bat --config-dir)"
+export BAT_THEME="Catppuccin Mocha"
 
-# ZOCIDE
+# ZOXIDE
 eval "$(zoxide init zsh)"
 
 # FZF
@@ -126,7 +146,8 @@ alias e='eza'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
 
-# NEOVIM
+
+# NEOVIM *********************************************************************************************************************************************************
 # make neovim the default editor
 export EDITOR='nvim'
 # setting neovim to be the default manpage viewer
@@ -137,7 +158,8 @@ export MANWIDTH=999
 # use nvimc to cd into where there is the neovim configuration and open it with neovim
 alias nvimc='cd $HOME/.config/nvim && nvim'
 
-# PYTHON
+
+# PYTHON *********************************************************************************************************************************************************
 # run shell specific initializations for zsh
 # - set up shims (lightweight executables) in the $PATH
 # - registers pyenv's shell function for version switching
@@ -149,39 +171,45 @@ alias python='"$(which python3)"'
 # alias the pip command to use pip3
 alias pip='"$(which pip3)"'
 
-# N Nodejs version manager
+
+# NODEJS *********************************************************************************************************************************************************
+# N version manger setup
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
-# not using NVM atm in favor of N, but leaving it here for now
-# NVM
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# GOLANG
-# GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
+# GOLANG *********************************************************************************************************************************************************
+# the env GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
 export GOPATH=$(go env GOPATH)
-# GOBIN specifies where go should install executable programs when using "go install"
+# the env GOBIN specifies where go should install executable programs when using "go install"
 export GOBIN=$GOPATH/bin
 # make GOBIN part of path
 export PATH=$PATH:$GOBIN
 
-# RUST
+
+# RUST ***********************************************************************************************************************************************************
 # when using cargo install those binaries will be in ~/.cargo/bin, so we need to add that dir to PATH
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# PERSONAL NOTES
+
+# PERSONAL NOTES ************************************************************************************************************************************************ 
 export PATH="$PATH:$HOME/.local/bin"
 export PERSONAL_NOTES_DIR=$HOME/notes
 export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
 export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
 export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
 
-# RUBY GEM
+
+# RUBY ***********************************************************************************************************************************************************
 export PATH="$(gem environment gemdir)/bin:$PATH"
 
-# STARSHIP
+
+# STARSHIP *******************************************************************************************************************************************************
 eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
 
+# not using NVM atm in favor of N, but leaving it here for now
+# NVM
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
