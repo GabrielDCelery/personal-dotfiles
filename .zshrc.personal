@@ -120,10 +120,12 @@ export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 # - automatically load env variables from .envrc when entering a directory and unloading them when leading the dir
 eval "$(direnv hook zsh)"
 
-# BAT
+
+# BAT *************************************************************************************************************************************************************
 export BAT_CONFIG_PATH="$(bat --config-file)"
 export BAT_CONFIG_DIR="$(bat --config-dir)"
 export BAT_THEME="Catppuccin Mocha"
+
 
 # ZOXIDE
 eval "$(zoxide init zsh)"
@@ -137,7 +139,8 @@ export FZF_TMUX_OPTS=" -p90%,70%"
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
 
-# aliases
+
+# ALIASES *********************************************************************************************************************************************************
 alias ps='grc ps'
 alias ls='grc ls'
 alias k='grc kubectl'
