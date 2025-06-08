@@ -1,27 +1,16 @@
-local language_servers = require 'plugins.lsp.lspservers'
-
 return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' }, -- Load only when file is opened
   dependencies = {
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     {
-      'williamboman/mason.nvim', 
-      -- version = 'v1.8.3',
-      opts = {}
+      'williamboman/mason.nvim',
+      version = 'v2.0.0',
+      opts = {},
     },
     {
       'williamboman/mason-lspconfig.nvim',
-      -- version = 'v1.32.0',
-    },
-    {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      opts = {
-        ensure_installed = language_servers,
-
-        auto_update = true, -- will not auto-update, run MasonToolsInstall or MasonToolsUpdate
-        run_on_start = true, -- will install tools on startup
-      },
+      version = 'v2.2.0',
     },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
@@ -194,9 +183,27 @@ return {
       automatic_enable = true,
       -- Using mason-tool-installer therefore setting automatic_installation to false and leaving ensure_installed empty
       ---@type boolean
-      automatic_installation = false,
+      automatic_installation = true,
       ---@type string[]
-      ensure_installed = {},
+      -- NOTE: If there are no language servers and want to figure out which one to install run LspInstall in the file
+      -- and will get a list of recommended suggestions
+      ensure_installed = {
+        'bashls', -- bash -- https://github.com/bash-lsp/bash-language-server
+        'buf_ls', -- protocol buffer -- https://github.com/bufbuild/buf
+        'dockerls', -- dockerfile -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
+        'docker_compose_language_service', -- docker compose -- https://github.com/microsoft/compose-language-service
+        'eslint', -- eslint -- https://github.com/hrsh7th/vscode-langservers-extracted
+        'gopls', -- go -- https://github.com/golang/tools/tree/master/gopls
+        'html', -- html -- https://github.com/hrsh7th/vscode-langservers-extracted
+        'lua_ls', -- lua -- https://github.com/luals/lua-language-server
+        'marksman', -- markdown -- https://github.com/artempyanykh/marksman
+        'rust_analyzer', -- rust -- https://github.com/rust-lang/rust-analyzer
+        'pyright', -- python -- https://github.com/microsoft/pyright
+        'taplo', -- toml -- https://github.com/tamasfe/taplo
+        'terraformls', -- terraform -- https://github.com/hashicorp/terraform-ls
+        'ts_ls', -- typescript -- https://github.com/typescript-language-server/typescript-language-server
+        'yamlls', -- yaml -- https://github.com/redhat-developer/yaml-language-server
+      },
       -- See `:h mason-lspconfig.setup_handlers()`
       ---@type table<string, fun(server_name: string)>?
       handlers = {
@@ -230,52 +237,52 @@ return {
             }),
           }
         end,
-        ['volar'] = function()
-          require('lspconfig').volar.setup {
-            capabilities = defaultLspCapabilities,
-            filetypes = {
-              'typescript',
-              'javascript',
-              'javascriptreact',
-              'typescriptreact',
-              'vue',
-              'json',
-            },
-            init_options = {
-              typescript = {
-                -- would use the following if we had a global installation of typescript
-                -- tsdk = vim.fn.expand '$HOME/node_modules/typescript/lib',
-                -- this is the installation of the typescrpt language server that mason-tool-installer installs
-                tsdk = vim.fn.expand '$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib',
-              },
-              -- additional Volar settings
-              languageFeatures = {
-                implementation = true, -- Go to implementation support
-                references = true, -- Find references support
-                definition = true, -- Go to definition support
-                typeDefinition = true, -- Go to type definition support
-                callHierarchy = true,
-                hover = true,
-                rename = true,
-                renameFileRefactoring = true,
-                signatureHelp = true,
-                codeAction = true,
-                workspaceSymbol = true,
-                completion = {
-                  defaultTagNameCase = 'both',
-                  defaultAttrNameCase = 'kebabCase',
-                },
-              },
-            },
-            before_init = function(params, config)
-              local root_dir = params.root_dir
-              local lib_path = vim.fs.find('node_modules/typescript/lib', { path = root_dir, upward = true })[1]
-              if lib_path then
-                config.init_options.typescript.tsdk = lib_path
-              end
-            end,
-          }
-        end,
+        -- ['volar'] = function()
+        --   require('lspconfig').volar.setup {
+        --     capabilities = defaultLspCapabilities,
+        --     filetypes = {
+        --       'typescript',
+        --       'javascript',
+        --       'javascriptreact',
+        --       'typescriptreact',
+        --       'vue',
+        --       'json',
+        --     },
+        --     init_options = {
+        --       typescript = {
+        --         -- would use the following if we had a global installation of typescript
+        --         -- tsdk = vim.fn.expand '$HOME/node_modules/typescript/lib',
+        --         -- this is the installation of the typescrpt language server that mason-tool-installer installs
+        --         tsdk = vim.fn.expand '$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib',
+        --       },
+        --       -- additional Volar settings
+        --       languageFeatures = {
+        --         implementation = true, -- Go to implementation support
+        --         references = true, -- Find references support
+        --         definition = true, -- Go to definition support
+        --         typeDefinition = true, -- Go to type definition support
+        --         callHierarchy = true,
+        --         hover = true,
+        --         rename = true,
+        --         renameFileRefactoring = true,
+        --         signatureHelp = true,
+        --         codeAction = true,
+        --         workspaceSymbol = true,
+        --         completion = {
+        --           defaultTagNameCase = 'both',
+        --           defaultAttrNameCase = 'kebabCase',
+        --         },
+        --       },
+        --     },
+        --     before_init = function(params, config)
+        --       local root_dir = params.root_dir
+        --       local lib_path = vim.fs.find('node_modules/typescript/lib', { path = root_dir, upward = true })[1]
+        --       if lib_path then
+        --         config.init_options.typescript.tsdk = lib_path
+        --       end
+        --     end,
+        --   }
+        -- end,
       },
     }
   end,
