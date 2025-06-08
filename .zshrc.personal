@@ -130,7 +130,7 @@ eval "$(zoxide init zsh)"
 
 # FZF
 source <(fzf --zsh)
-export FZF_CTRL_T_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
+export FZF_CTRL_T_COMMAND="fd --type=f --hidden --strip-cwd-prefix --exclude .git"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 export FZF_DEFAULT_OPTS="--height=62% --layout=default --border --color=hl:#2dd4bf"
 export FZF_TMUX_OPTS=" -p90%,70%"
