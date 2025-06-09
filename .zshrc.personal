@@ -211,6 +211,11 @@ export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
 export PATH="$(gem environment gemdir)/bin:$PATH"
 
 
+# KUBERNETES *****************************************************************************************************************************************************
+source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc # add autocomplete permanently to your zsh shell
+
+
 # STARSHIP *******************************************************************************************************************************************************
 eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
