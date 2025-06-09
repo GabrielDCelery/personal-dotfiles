@@ -213,6 +213,8 @@ export PATH="$(gem environment gemdir)/bin:$PATH"
 
 # KUBERNETES *****************************************************************************************************************************************************
 source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+# tell zsh to use kubectl completion functions for the 'k' alias
+compdef k=kubectl
 
 # STARSHIP *******************************************************************************************************************************************************
 eval "$(starship init zsh)"
