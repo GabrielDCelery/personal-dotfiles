@@ -217,12 +217,12 @@ source <(kubectl completion zsh)  # set up autocomplete in zsh into the current 
 compdef k=kubectl
 
 # GENERAL *****************************************************************************************************************************************************
-# Function to pipe any command's help to nvim for better readability
+# function to pipe any command's help to nvim for better readability
 function chelp() {
-    # If there's input from a pipe, use that
+    # if there's input from a pipe, use that
     # for example `kubectl get pods --help | chelp`
     if [[ ! -t 0 ]]; then
-        # Reading from pipe into neovim
+        # reading from pipe into neovim
         # `-R` - read only mode
         # `-c` - runs the command `set ft=man` in neovim right after it starts
         # `-` - pipe stdin into neovim
