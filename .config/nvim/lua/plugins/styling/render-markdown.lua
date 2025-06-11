@@ -10,9 +10,10 @@ return {
     require('render-markdown').setup {
       heading = {
         position = 'inline',
-        width = 'block',
-        border = true,
-        left_pad = 1,
+        -- width = 'block',
+        width = 'full',
+        border = false,
+        left_pad = { 1, 2, 3, 4, 5, 6, 7, 8 },
         right_pad = 3,
       },
       code = {
