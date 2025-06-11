@@ -220,7 +220,7 @@ function khelp() {
     else
         # "@" --help - expand to all arguments passed to the function
         # -R - read only mode
-        # -c 'set ft=man' - sets the filetype to 'man' for proper formatting
+        # -c 'set ft=man' - "-c" allows to run a command right after setting the edior, this sets the filetype to 'man' for proper formatting
         # - - tell nvim to read from stdin
         kubectl "$@" --help | nvim -R -c 'set ft=man' -
     fi
