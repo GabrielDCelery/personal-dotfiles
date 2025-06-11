@@ -212,6 +212,20 @@ export PATH="$(gem environment gemdir)/bin:$PATH"
 
 
 # KUBERNETES *****************************************************************************************************************************************************
+# Function to pipe kubectl help to nvim for better readability
+function khelp() {
+    # check if no arguments were provided for the function
+    if [[ $# -eq 0 ]]; then
+        kubectl --help | nvim -R -c 'set ft=man' -
+    else
+        # "@" --help - expand to all arguments passed to the function
+        # -R - read only mode
+        # -c 'set ft=man' - sets the filetype to 'man' for proper formatting
+        # - - tell nvim to read from stdin
+        kubectl "$@" --help | nvim -R -c 'set ft=man' -
+    fi
+}
+
 source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
 # tell zsh to use kubectl completion functions for the 'k' alias
 compdef k=kubectl
