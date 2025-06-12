@@ -173,6 +173,7 @@ alias nvimc='cd $HOME/.config/nvim && nvim'
 # - set up command completion for pyenv commands
 # - install shell hooks to automatically swithc pythong versions when switching between directories
 eval "$(pyenv init - zsh)"
+eval "$(pyenv init --path)" # Might be needed for newer pyenv versions
 # alias the python command to use python3
 alias python='"$(which python3)"'
 # alias the pip command to use pip3
