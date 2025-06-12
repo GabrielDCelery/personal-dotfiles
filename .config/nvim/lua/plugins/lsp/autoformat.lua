@@ -18,11 +18,6 @@ return { -- Autoformat
             'yamlfmt', -- yaml
             'yq', -- json, yaml xml formatter
           },
-          formatters = {
-            yamlfmt = {
-              prepend_args = { '-formatter', 'retain_line_breaks=true' },
-            },
-          },
           auto_update = true,
           run_on_start = true,
         }
@@ -36,6 +31,11 @@ return { -- Autoformat
       format_on_save = {
         lsp_format = 'fallback',
         timeout_ms = 500,
+      },
+      formatters = {
+        yamlfmt = {
+          prepend_args = { '-formatter', 'retain_line_breaks=true' },
+        },
       },
       formatters_by_ft = {
         ['go'] = { 'goimports' },
