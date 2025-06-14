@@ -3,14 +3,14 @@
 
 format = """
 $nix_shell\
-$kubernetes\
 $username\
 $hostname\
 $directory\
 $fill\
+$kubernetes\
 $rust\
 $lua\
-$nodejs \
+$nodejs\
 $golang\
 $python\
 $git_branch\
@@ -119,12 +119,13 @@ format = 'via [󱄅 $state( \($name\)):](bold blue) '
 format = '[\[   $version \]](bold white) '
 
 [kubernetes]
-format = 'on [󱃾 \[$user on $cluster in $context \($namespace\)\]](dimmed green) '
+format = 'on [\[ 󱃾  󰦉 $cluster / 󱘟 $context \($namespace\) /  $user \]]($style) '
 disabled = false
-contexts = [
-  { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
-]
-detect_files = ['k8s', 'kubeconfig']
+style = 'bold #74c7ec'
+# contexts = [
+#   { context_pattern = "dev.local.cluster.k8s", style = "green", symbol = "💔 " },
+# ]
+# detect_files = ['k8s', 'kubeconfig']
 
 [palettes.catppuccin_macchiato]
 rosewater = "#f4dbd6"
@@ -158,7 +159,7 @@ crust = "#181926"
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
-mauve = "#cba6f7"
+mauve = "acba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
 peach = "#fab387"
