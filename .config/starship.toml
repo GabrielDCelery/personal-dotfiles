@@ -119,7 +119,7 @@ format = 'via [󱄅 $state( \($name\)):](bold blue) '
 format = '[\[   $version \]](bold white) '
 
 [kubernetes]
-format = 'on [\[ 󱃾  󰦉 $cluster / 󱘟 $context \($namespace\) /  $user \]]($style) '
+format = 'on [\[ 󱃾  󱘟 $context /  $user \(󰦉 $cluster - $namespace\) \]]($style) '
 disabled = false
 style = 'bold #74c7ec'
 # contexts = [
