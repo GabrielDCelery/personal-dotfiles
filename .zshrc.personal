@@ -193,11 +193,33 @@ export PATH="$N_PREFIX/bin:$PATH"
 # export GOBIN=$GOPATH/bin
 # make GOBIN part of path
 # export PATH=$PATH:$GOBIN
-# make sure .goenv dir exists
-mkdir -p "$HOME/.goenv"
-# Add goenv init to your shell to enable shims, management of GOPATH and GOROOT and auto-completion.
-# Please make sure eval "$(goenv init -)" is placed toward the end of the shell configuration file since it manipulates PATH during the initialization.
+
+# bottstrap goenv
 eval "$(goenv init -)"
+
+# Hook into goenv to automatically rehash when version changes
+autoload -U add-zsh-hook
+_goenv_version_hook() {
+    # get the current version name using goenv
+    local current_version=$(goenv version-name 2>/dev/null)
+    # if the current version is different from last known version then execute
+    if [[ $current_version != $_GOENV_LAST_VERSION ]]; then
+        # update goenv shims to ensure correct version of go tools are used
+        goenv rehash
+        # assign the current go version go a global variable
+        export _GOENV_LAST_VERSION=$current_version
+        # update GOBIN
+        export GOBIN="$GOPATH/bin"
+        # add GOBIN to path if it has not been added yet
+        if [[ ":$PATH:" != *":$GOBIN:"* ]]; then
+            export PATH="$PATH:$GOBIN"
+        fi
+    fi
+}
+# add a hook to execute the go version check if the directory changed
+add-zsh-hook chpwd _goenv_version_hook
+# execute the go version check on startup
+_goenv_version_hook 
 
 
 # RUST ***********************************************************************************************************************************************************
