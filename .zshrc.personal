@@ -188,11 +188,16 @@ export PATH="$N_PREFIX/bin:$PATH"
 
 # GOLANG *********************************************************************************************************************************************************
 # the env GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
-export GOPATH=$(go env GOPATH)
+# export GOPATH=$(go env GOPATH)
 # the env GOBIN specifies where go should install executable programs when using "go install"
-export GOBIN=$GOPATH/bin
+# export GOBIN=$GOPATH/bin
 # make GOBIN part of path
-export PATH=$PATH:$GOBIN
+# export PATH=$PATH:$GOBIN
+# make sure .goenv dir exists
+mkdir -p "$HOME/.goenv"
+# Add goenv init to your shell to enable shims, management of GOPATH and GOROOT and auto-completion.
+# Please make sure eval "$(goenv init -)" is placed toward the end of the shell configuration file since it manipulates PATH during the initialization.
+eval "$(goenv init -)"
 
 
 # RUST ***********************************************************************************************************************************************************
