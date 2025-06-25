@@ -45,8 +45,8 @@ require('lazy').setup({
   -- require 'plugins.navigation.hydra', -- hydra
 
   -- Git/Version control
-  -- require 'plugins.git.neogit', -- built-in git GUI
-  require 'plugins.git.fugitive',
+  require 'plugins.git.neogit', -- built-in git GUI
+  -- require 'plugins.git.fugitive',
   require 'plugins.git.gitsigns', -- git decorations
 
   -- Testing
