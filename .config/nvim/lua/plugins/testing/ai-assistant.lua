@@ -71,6 +71,7 @@ return {
       enable_token_counting = true,
       enable_cursor_planning_mode = true,
       enable_claude_text_editor_tool_mode = true,
+      auto_suggestions_respect_ignore = true, -- Add this line to respect gitignore patterns
     },
     file_selector = {
       provider = 'telescope',
