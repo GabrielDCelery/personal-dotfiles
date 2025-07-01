@@ -93,7 +93,7 @@ symbol = '󰠅 '
 style = 'bold fg:#89b4fa'
 
 [terraform]
-format = '[\[ $symbol $workspace \]]($style)'
+format = '[\[ $symbol $workspace \] ]($style)'
 symbol = '󱁢 '
 style = 'bold fg:#cba6f7'
 
