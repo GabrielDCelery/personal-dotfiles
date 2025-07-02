@@ -24,51 +24,6 @@ export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 export XDG_CONFIG_HOME="$HOME/.config"
 
 
-# CLI COMPLETIONS ************************************************************************************************************************************************
-# initialize completion system, -U means unique entries and -z means without aliases
-autoload -Uz compinit
-# Do a full completion system initialization if:
-# - .zcompdump doesn't exist, or
-# - .zcompdump is more than 24 hours old
-if [[ ! -f "$HOME/.zcompdump" ]] || [[ -n "$(find "$HOME/.zcompdump" -type f -mtime +1 2>/dev/null)" ]]; then
-  ( compinit >/dev/null 2>&1 & ) >/dev/null 2>&1
-else
-  ( compinit -C >/dev/null 2>&1 & ) >/dev/null 2>&1
-fi
-
-
-# CLI SYNTAX HIGHLIGHTING ****************************************************************************************************************************************
-# setting up syntax higlighting in the terminal
-# - highlights valid commands in green
-# - showing errors in red
-# - highlighting paths, options and arguments differently
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-
-# CLI AUTOSUGGESTIONS ********************************************************************************************************************************************
-# autosuggestions based on command history
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-# shift tab to accept autosuggestion
-bindkey '^[[Z'      autosuggest-accept
-# do autosuggestions in an async manner for performance gains
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-# disable autosuggestions for large buffers
-ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-# use both history AND completion for better suggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-# clear autosuggestions when any of the below scenarios happen
-# - buffer-empty - when the command line becomes empty
-# - bracketed-paste - when text is pasted into the terminal
-# - accept-line - when pressing enter to execute a command
-# - push-line-or-edit - when using the push-line-feature (typically Alt+Q) which saves the current line and gives a new prompt
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
-# change autosuggestion color to grey to make it more visible
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
-# improve autosuggestion performance on large history
-# - exclude cd commands in history based suggestions since those are unlikely to get reused
-# - exclude git from the completion system since it has its own comprehensive system
-ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
-ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 
 # ****************************************************************************************************************************************************************
@@ -185,14 +140,29 @@ alias pip='"$(which pip3)"'
 export N_PREFIX="$HOME/.n"
 export PATH="$N_PREFIX/bin:$PATH"
 
+# ASDF ***********************************************************************************************************************************************************
+#
+# Add ASDF shims to PATH
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="${ASDF_DATA_DIR}/shims:$PATH"
+# Only set up ASDF completions if ASDF is installed and completions don't exist
+if command -v asdf >/dev/null && [ ! -f "${ASDF_DATA_DIR}/completions/_asdf" ]; then
+    mkdir -p "${ASDF_DATA_DIR}/completions"
+    asdf completion zsh > "${ASDF_DATA_DIR}/completions/_asdf"
+fi
+# append completions to fpath
+fpath=(${ASDF_DATA_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit (it is commented out because I autoload compinit later)
+autoload -Uz compinit && compinit
 
-# GOLANG *********************************************************************************************************************************************************
-# the env GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
-export GOPATH=$(go env GOPATH)
-# the env GOBIN specifies where go should install executable programs when using "go install"
-export GOBIN=$GOPATH/bin
-# make GOBIN part of path
-export PATH=$PATH:$GOBIN
+
+# # GOLANG *********************************************************************************************************************************************************
+# # the env GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
+# export GOPATH=$(go env GOPATH)
+# # the env GOBIN specifies where go should install executable programs when using "go install"
+# export GOBIN=$GOPATH/bin
+# # make GOBIN part of path
+# export PATH=$PATH:$GOBIN
 
 
 # RUST ***********************************************************************************************************************************************************
@@ -246,8 +216,49 @@ function chelp() {
 eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
 
-# not using NVM atm in favor of N, but leaving it here for now
-# NVM
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# CLI COMPLETIONS ************************************************************************************************************************************************
+# initialize completion system, -U means unique entries and -z means without aliases
+autoload -Uz compinit
+# Do a full completion system initialization if:
+# - .zcompdump doesn't exist, or
+# - .zcompdump is more than 24 hours old
+if [[ ! -f "$HOME/.zcompdump" ]] || [[ -n "$(find "$HOME/.zcompdump" -type f -mtime +1 2>/dev/null)" ]]; then
+  ( compinit >/dev/null 2>&1 & ) >/dev/null 2>&1
+else
+  ( compinit -C >/dev/null 2>&1 & ) >/dev/null 2>&1
+fi
+
+
+# CLI SYNTAX HIGHLIGHTING ****************************************************************************************************************************************
+# setting up syntax higlighting in the terminal
+# - highlights valid commands in green
+# - showing errors in red
+# - highlighting paths, options and arguments differently
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# CLI AUTOSUGGESTIONS ********************************************************************************************************************************************
+# autosuggestions based on command history
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# shift tab to accept autosuggestion
+bindkey '^[[Z'      autosuggest-accept
+# do autosuggestions in an async manner for performance gains
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+# disable autosuggestions for large buffers
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+# use both history AND completion for better suggestions
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+# clear autosuggestions when any of the below scenarios happen
+# - buffer-empty - when the command line becomes empty
+# - bracketed-paste - when text is pasted into the terminal
+# - accept-line - when pressing enter to execute a command
+# - push-line-or-edit - when using the push-line-feature (typically Alt+Q) which saves the current line and gives a new prompt
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+# change autosuggestion color to grey to make it more visible
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+# improve autosuggestion performance on large history
+# - exclude cd commands in history based suggestions since those are unlikely to get reused
+# - exclude git from the completion system since it has its own comprehensive system
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
