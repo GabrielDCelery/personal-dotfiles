@@ -194,33 +194,6 @@ export GOBIN=$GOPATH/bin
 # make GOBIN part of path
 export PATH=$PATH:$GOBIN
 
-# # bottstrap goenv
-# eval "$(goenv init -)"
-#
-# # Hook into goenv to automatically rehash when version changes
-# autoload -U add-zsh-hook
-# _goenv_version_hook() {
-#     # get the current version name using goenv
-#     local current_version=$(goenv version-name 2>/dev/null)
-#     # if the current version is different from last known version then execute
-#     if [[ $current_version != $_GOENV_LAST_VERSION ]]; then
-#         # update goenv shims to ensure correct version of go tools are used
-#         goenv rehash
-#         # assign the current go version go a global variable
-#         export _GOENV_LAST_VERSION=$current_version
-#         # update GOBIN
-#         export GOBIN="$GOPATH/bin"
-#         # add GOBIN to path if it has not been added yet
-#         if [[ ":$PATH:" != *":$GOBIN:"* ]]; then
-#             export PATH="$PATH:$GOBIN"
-#         fi
-#     fi
-# }
-# # add a hook to execute the go version check if the directory changed
-# add-zsh-hook chpwd _goenv_version_hook
-# # execute the go version check on startup
-# _goenv_version_hook 
-
 
 # RUST ***********************************************************************************************************************************************************
 # when using cargo install those binaries will be in ~/.cargo/bin, so we need to add that dir to PATH
