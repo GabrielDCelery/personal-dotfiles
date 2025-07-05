@@ -153,16 +153,16 @@ fi
 # append completions to fpath
 fpath=(${ASDF_DATA_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit (it is commented out because I autoload compinit later)
-autoload -Uz compinit && compinit
+# autoload -Uz compinit && compinit
 
 
 # # GOLANG *********************************************************************************************************************************************************
 # # the env GOPATH is the go workspace directory where it manages its source code, packages and compiled binaries, this sets the default gopath from go's own environment
-# export GOPATH=$(go env GOPATH)
+export GOPATH=$(go env GOPATH)
 # # the env GOBIN specifies where go should install executable programs when using "go install"
-# export GOBIN=$GOPATH/bin
+export GOBIN=$GOPATH/bin
 # # make GOBIN part of path
-# export PATH=$PATH:$GOBIN
+export PATH=$PATH:$GOBIN
 
 
 # RUST ***********************************************************************************************************************************************************
