@@ -68,16 +68,6 @@ export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
 
 
-# ALIASES *********************************************************************************************************************************************************
-alias ps='grc ps'
-alias ls='grc ls'
-alias k='grc kubectl'
-alias netstat='grc netstat'
-alias e='eza'
-alias dig='grc dig'
-alias traceroute='grc traceroute'
-
-
 # NEOVIM *********************************************************************************************************************************************************
 # make neovim the default editor
 export EDITOR='nvim'
@@ -191,3 +181,11 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 
+# ALIASES *********************************************************************************************************************************************************
+alias ps='grc ps'
+alias ls='grc ls'
+alias k='grc kubectl'
+alias netstat='grc netstat'
+alias e='eza'
+alias dig='grc dig'
+alias traceroute='grc traceroute'
