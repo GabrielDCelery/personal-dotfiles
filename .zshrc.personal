@@ -70,6 +70,8 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 
 
 # NEOVIM *********************************************************************************************************************************************************
+# make neovim the default viewer
+export VISUAL='nvim'
 # make neovim the default editor
 export EDITOR='nvim'
 # setting neovim to be the default manpage viewer
