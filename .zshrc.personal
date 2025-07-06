@@ -45,13 +45,6 @@ export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 
 
-# DIRENV *********************************************************************************************************************************************************
-# generate shell specific code for zsh
-# - monitor when we change directories
-# - automatically load env variables from .envrc when entering a directory and unloading them when leading the dir
-# eval "$(direnv hook zsh)"
-
-
 # BAT *************************************************************************************************************************************************************
 export BAT_CONFIG_PATH="$(bat --config-file)"
 export BAT_CONFIG_DIR="$(bat --config-dir)"
