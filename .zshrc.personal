@@ -20,8 +20,11 @@ export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 
 
 # XDCONFIG *******************************************************************************************************************************************************
-# the env variable XDG_CONFIG_HOME is a standard for defining the location for user specific configurations so we set it to ~/.config
+# XDG specific configuration
+# read more about it at https://wiki.archlinux.org/title/XDG_Base_Directory
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$XDG_CONFIG_HOME/local/share"
+export XDG_CACHE_HOME="$XDG_CONFIG_HOME/cache"
 
 
 # GPG ************************************************************************************************************************************************************
