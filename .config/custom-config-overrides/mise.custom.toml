@@ -6,6 +6,7 @@ poetry = "latest"
 python = "latest"
 rust = "latest"
 usage = "latest"
+terraform = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
