@@ -132,7 +132,6 @@ export STARSHIP_RELOAD=true
 
 # MISE
 # activate mise end place 
-export MISE_CONFIG_FILE="$HOME/.config/custom-config-overrides/mise.custom.toml"
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
 
