@@ -57,7 +57,7 @@ style = 'blue'
 [rust]
 format = '[\[ $symbol($version) \] ]($style)'
 symbol = ' '
-style = 'red'
+style = 'bold fg:#fab387'
 
 [lua]
 format = '[\[ $symbol($version) \] ]($style)'
