@@ -125,6 +125,7 @@ function chelp() {
     fi
 }
 
+
 # STARSHIP *******************************************************************************************************************************************************
 eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
@@ -134,6 +135,11 @@ export STARSHIP_RELOAD=true
 # activate mise end place 
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
+
+
+# DIRENV
+# activate direnv
+eval "$(direnv hook zsh)"
 
 
 # CLI COMPLETIONS ************************************************************************************************************************************************
@@ -191,5 +197,3 @@ alias netstat='grc netstat'
 alias e='eza'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
-
-eval "$(direnv hook zsh)"
