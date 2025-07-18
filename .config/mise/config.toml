@@ -1,12 +1,12 @@
 [tools]
 dagger = "latest"
-go = "latest"
+golang = "latest"
 node = "latest"
 poetry = "latest"
 python = "latest"
 rust = "latest"
-usage = "latest"
 terraform = "latest"
+usage = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node"]
