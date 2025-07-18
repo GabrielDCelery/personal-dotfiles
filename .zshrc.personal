@@ -191,3 +191,5 @@ alias netstat='grc netstat'
 alias e='eza'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
+
+eval "$(direnv hook zsh)"
