@@ -21,13 +21,6 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt inc_append_history     # add commands to HISTFILE in order of execution
 setopt share_history          # share command history data
-# custom function for deduplicating history
-function gaze_deduphist() {
-    cp ~/.zsh_history ~/.zsh_history.bak
-    cat ~/.zsh_history | sort -u -t ";" -k 2 > ~/.zsh_history.dedup
-    mv ~/.zsh_history.dedup ~/.zsh_history
-}
-
 
 #*****************************************************************************************************************************************************************
 # SHELL CONFIGURATION 
@@ -52,6 +45,8 @@ elif [ -e "$HOMEBREW_INTEL_PATH" ]; then
     eval "$($HOMEBREW_INTEL_PATH shellenv)"
 elif [ -e "$HOMEBREW_LINUX_PATH" ]; then
     eval "$($HOMEBREW_LINUX_PATH shellenv)"
+else
+    echo "Warning: No Homebrew installation found"
 fi
 
 
@@ -135,31 +130,6 @@ export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
 
 # RUBY ***********************************************************************************************************************************************************
 export PATH="$(gem environment gemdir)/bin:$PATH"
-
-# GENERAL *****************************************************************************************************************************************************
-# function to pipe any command's help to nvim for better readability
-function gaze_help() {
-    # if there's input from a pipe, use that
-    # for example `kubectl get pods --help | gaze_help`
-    if [[ ! -t 0 ]]; then
-        # reading from pipe into neovim
-        # `-R` - read only mode
-        # `-c` - runs the command `set ft=man` in neovim right after it starts
-        # `-` - pipe stdin into neovim
-        nvim -R -c 'set ft=man' -
-    # if there is is no piped input and the command is directly executed (although autocompletion won't work hence I wanted to have the piped method)
-    # for example `gaze_help kubectl get pods`
-    else
-        # no piped input was provided so just notify the user that the command needs arguments
-        if [[ $# -eq 0 ]]; then
-            echo "Usage: gaze_help <command> [subcommand...] OR command --help | gaze_help"
-            return 1
-        fi
-
-        # execute the command with --help and pipe to neovim
-        "$@" --help | nvim -R -c 'set ft=man' -
-    fi
-}
 
 
 #*****************************************************************************************************************************************************************
@@ -261,6 +231,41 @@ eval "$(starship init zsh)"
 export STARSHIP_RELOAD=true
 
 
+#*****************************************************************************************************************************************************************
+# CUSTOM FUNCTIONS 
+#*****************************************************************************************************************************************************************
+# function to pipe any command's help to nvim for better readability
+function gaze_help() {
+    # if there's input from a pipe, use that
+    # for example `kubectl get pods --help | gaze_help`
+    if [[ ! -t 0 ]]; then
+        # reading from pipe into neovim
+        # `-R` - read only mode
+        # `-c` - runs the command `set ft=man` in neovim right after it starts
+        # `-` - pipe stdin into neovim
+        nvim -R -c 'set ft=man' -
+    # if there is is no piped input and the command is directly executed (although autocompletion won't work hence I wanted to have the piped method)
+    # for example `gaze_help kubectl get pods`
+    else
+        # no piped input was provided so just notify the user that the command needs arguments
+        if [[ $# -eq 0 ]]; then
+            echo "Usage: gaze_help <command> [subcommand...] OR command --help | gaze_help"
+            return 1
+        fi
+
+        # execute the command with --help and pipe to neovim
+        "$@" --help | nvim -R -c 'set ft=man' -
+    fi
+}
+
+# custom function for deduplicating history
+function gaze_deduphist() {
+    cp ~/.zsh_history ~/.zsh_history.bak
+    cat ~/.zsh_history | sort -u -t ";" -k 2 > ~/.zsh_history.dedup
+    mv ~/.zsh_history.dedup ~/.zsh_history
+}
+
+
 
 
 # export FZF_DEFAULT_OPTS=" \
@@ -272,3 +277,9 @@ export STARSHIP_RELOAD=true
 # export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | sed 's#^\./##'"
 # export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
 # export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+--color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+--color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+--color=selected-bg:#45475A \
+--color=border:#313244,label:#CDD6F4"
