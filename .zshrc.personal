@@ -1,4 +1,45 @@
-# HOMEBREW *******************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# XDCONFIG
+#*****************************************************************************************************************************************************************
+# XDG specific configuration
+# read more about it at https://wiki.archlinux.org/title/XDG_Base_Directory
+#
+export XDG_CONFIG_HOME="$HOME/.config"
+
+
+#*****************************************************************************************************************************************************************
+# ZSH HISTORY
+#*****************************************************************************************************************************************************************
+#
+HISTFILE="$HOME/.zsh_history" # location of history file
+HISTSIZE=1000000000           # controls how many commands are kept in memory for current session practically infinite
+SAVEHIST=1000000000           # controls how many commands are saved into the HISTFILE - practically infinite
+setopt extended_history       # record timestamp of command in HISTFILE
+setopt hist_expire_dups_first # delete duplicates first when HISTFILE size exceeds HISTSIZE
+setopt hist_ignore_dups       # ignore duplicated commands history list
+setopt hist_ignore_space      # ignore commands that start with space
+setopt hist_verify            # show command with history expansion to user before running it
+setopt inc_append_history     # add commands to HISTFILE in order of execution
+setopt share_history          # share command history data
+# custom function for deduplicating history
+function gaze_deduphist() {
+    cp ~/.zsh_history ~/.zsh_history.bak
+    cat ~/.zsh_history | sort -u -t ";" -k 2 > ~/.zsh_history.dedup
+    mv ~/.zsh_history.dedup ~/.zsh_history
+}
+
+
+#*****************************************************************************************************************************************************************
+# SHELL CONFIGURATION 
+#*****************************************************************************************************************************************************************
+# Increase recursion in shell functions
+#
+FUNCNEST=1000
+
+
+#*****************************************************************************************************************************************************************
+# HOMEBREW 
+#*****************************************************************************************************************************************************************
 # the below block looks for the "brew" executable at different locations and if it finds it
 # then executes "brew shellenv" which sets up necessary homebrew environment variables
 HOMEBREW_LINUX_PATH="/home/linuxbrew/.linuxbrew/bin/brew"
@@ -14,18 +55,16 @@ elif [ -e "$HOMEBREW_LINUX_PATH" ]; then
 fi
 
 
-# WEZTERM ********************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# WEZTERM 
+#*****************************************************************************************************************************************************************
 # by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
 
 
-# XDCONFIG *******************************************************************************************************************************************************
-# XDG specific configuration
-# read more about it at https://wiki.archlinux.org/title/XDG_Base_Directory
-export XDG_CONFIG_HOME="$HOME/.config"
-
-
-# GPG ************************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# GPG 
+#*****************************************************************************************************************************************************************
 # allow the gpg agent to interact with the terminal
 # set the GPG_TTY env variable to the current terminal device, this is important so GPG can interact with the terminal and do things like prompting for password
 export GPG_TTY=$(tty)
@@ -33,43 +72,46 @@ export GPG_TTY=$(tty)
 export GNUPGHOME="$HOME/.gnupg"
 
 
-# STOW ***********************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# STOW 
+#*****************************************************************************************************************************************************************
 # some binaries get stored in dotfiles so want to extend the $PATH with that location
 # TODO: does not look like the correct way to do, let's revisit and see if I can do better
 export PATH="$HOME/.dotfiles/.local/bin:$PATH"
 
 
-# AWS VAULT ******************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# FZF 
+#*****************************************************************************************************************************************************************
+source <(fzf --zsh)
+
+
+#*****************************************************************************************************************************************************************
+# AWS VAULT 
+#*****************************************************************************************************************************************************************
 # make aws-vault use pass as its backend storage system
 export AWS_VAULT_BACKEND=pass
 # specify where pass witll store the credentials managed by aws vault
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 
 
-# BAT *************************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# BAT 
+#*****************************************************************************************************************************************************************
 export BAT_CONFIG_PATH="$(bat --config-file)"
 export BAT_CONFIG_DIR="$(bat --config-dir)"
 export BAT_THEME="Catppuccin Mocha"
 
 
+#*****************************************************************************************************************************************************************
 # ZOXIDE
+#*****************************************************************************************************************************************************************
 eval "$(zoxide init zsh)"
 
 
-# FZF *************************************************************************************************************************************************************
-source <(fzf --zsh)
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
---height 62% --layout=reverse --border --preview-window=right:50%"
-# FZF command configurations
-export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | sed 's#^\./##'"
-export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-
-
-# NEOVIM *********************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# NEOVIM 
+#*****************************************************************************************************************************************************************
 # make neovim the default viewer
 export VISUAL='nvim'
 # make neovim the default editor
@@ -102,9 +144,9 @@ compdef k=kubectl
 
 # GENERAL *****************************************************************************************************************************************************
 # function to pipe any command's help to nvim for better readability
-function chelp() {
+function gaze_help() {
     # if there's input from a pipe, use that
-    # for example `kubectl get pods --help | chelp`
+    # for example `kubectl get pods --help | gaze_help`
     if [[ ! -t 0 ]]; then
         # reading from pipe into neovim
         # `-R` - read only mode
@@ -112,50 +154,58 @@ function chelp() {
         # `-` - pipe stdin into neovim
         nvim -R -c 'set ft=man' -
     # if there is is no piped input and the command is directly executed (although autocompletion won't work hence I wanted to have the piped method)
-    # for example `chelp kubectl get pods`
+    # for example `gaze_help kubectl get pods`
     else
         # no piped input was provided so just notify the user that the command needs arguments
         if [[ $# -eq 0 ]]; then
-            echo "Usage: chelp <command> [subcommand...] OR command --help | chelp"
+            echo "Usage: gaze_help <command> [subcommand...] OR command --help | gaze_help"
             return 1
         fi
-        
+
         # execute the command with --help and pipe to neovim
         "$@" --help | nvim -R -c 'set ft=man' -
     fi
 }
 
 
-# STARSHIP *******************************************************************************************************************************************************
-eval "$(starship init zsh)"
-export STARSHIP_RELOAD=true
-
-
+#*****************************************************************************************************************************************************************
 # MISE
-# activate mise end place 
+#*****************************************************************************************************************************************************************
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
 
 
+#*****************************************************************************************************************************************************************
 # DIRENV
-# activate direnv
+#*****************************************************************************************************************************************************************
 eval "$(direnv hook zsh)"
 
 
-# CLI COMPLETIONS ************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# ZSH COMPLETIONS
+#*****************************************************************************************************************************************************************
+# this adds completions from the completions repo to fpath, needs to come before compinit
+fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
+
+
+#*****************************************************************************************************************************************************************
+# CLI COMPLETIONS 
+#*****************************************************************************************************************************************************************
 # initialize completion system, -U means unique entries and -z means without aliases
-autoload -Uz compinit
-# Do a full completion system initialization if:
-# - .zcompdump doesn't exist, or
-# - .zcompdump is more than 24 hours old
-if [[ ! -f "$HOME/.zcompdump" ]] || [[ -n "$(find "$HOME/.zcompdump" -type f -mtime +1 2>/dev/null)" ]]; then
-  ( compinit >/dev/null 2>&1 & ) >/dev/null 2>&1
-else
-  ( compinit -C >/dev/null 2>&1 & ) >/dev/null 2>&1
-fi
+autoload -U compinit
+compinit
 
 
-# CLI SYNTAX HIGHLIGHTING ****************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# FZF TAB 
+#*****************************************************************************************************************************************************************
+# fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+source $HOME/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+
+
+#*****************************************************************************************************************************************************************
+# CLI SYNTAX HIGHLIGHTING 
+#*****************************************************************************************************************************************************************
 # setting up syntax higlighting in the terminal
 # - highlights valid commands in green
 # - showing errors in red
@@ -163,13 +213,15 @@ fi
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-# CLI AUTOSUGGESTIONS ********************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# CLI AUTOSUGGESTIONS 
+#*****************************************************************************************************************************************************************
 # autosuggestions based on command history
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # shift tab to accept autosuggestion
 bindkey '^[[Z'      autosuggest-accept
 # do autosuggestions in an async manner for performance gains
-ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_USE_ASYNC=false
 # disable autosuggestions for large buffers
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # use both history AND completion for better suggestions
@@ -189,7 +241,9 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 
-# ALIASES *********************************************************************************************************************************************************
+#*****************************************************************************************************************************************************************
+# ALIASES 
+#*****************************************************************************************************************************************************************
 alias ps='grc ps'
 alias ls='grc ls'
 alias k='grc kubectl'
@@ -197,3 +251,22 @@ alias netstat='grc netstat'
 alias e='eza'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
+
+#*****************************************************************************************************************************************************************
+# STARSHIP 
+#*****************************************************************************************************************************************************************
+eval "$(starship init zsh)"
+export STARSHIP_RELOAD=true
+
+
+
+
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+# --height 62% --layout=reverse --border --preview-window=right:50%"
+# # FZF command configurations
+# export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | sed 's#^\./##'"
+# export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
