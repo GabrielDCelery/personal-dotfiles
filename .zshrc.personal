@@ -260,8 +260,8 @@ function gaze_help() {
 
 # custom function for deduplicating history
 function gaze_deduphist() {
-    cp ~/.zsh_history ~/.zsh_history.bak
-    cat ~/.zsh_history | sort -u -t ";" -k 2 > ~/.zsh_history.dedup
+    cp ~/.zsh_history ~/.zsh_history.bak && \
+    LC_ALL=C cat ~/.zsh_history | LC_ALL=C sort -u -t ";" -k 2 > ~/.zsh_history.dedup && \
     mv ~/.zsh_history.dedup ~/.zsh_history
 }
 
