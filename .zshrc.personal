@@ -283,3 +283,24 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
 --color=selected-bg:#45475A \
 --color=border:#313244,label:#CDD6F4"
+
+#*****************************************************************************************************************************************************************
+# Custom ZSH CLI KEY BINDINGS
+#*****************************************************************************************************************************************************************
+# Common ZSH widgets (functions) you can bind to keys include:
+#`forward-word` - Move cursor forward one word
+#`backward-word` - Move cursor backward one word
+#`kill-word` - Delete from cursor to end of word
+#`backward-kill-word` - Delete from cursor to start of word
+#`beginning-of-line` - Move to start of line
+#`end-of-line` - Move to end of line
+#`up-line-or-history` - Move up in history
+#`down-line-or-history` - Move down in history
+#`accept-line` - Execute the current line
+#`clear-screen` - Clear the terminal screen
+bindkey "^a" beginning-of-line          # Ctrl+a
+bindkey "^e" end-of-line                # Ctrl+e
+bindkey "^[[1;5C" forward-word          # Ctrl+Right
+bindkey "^[[1;5D" backward-word         # Ctrl+Left
+bindkey "^b" backward-kill-word         # Ctrl+Backspace
+bindkey "^w" kill-word                  # Ctrl+W
