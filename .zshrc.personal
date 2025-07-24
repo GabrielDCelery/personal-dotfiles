@@ -176,7 +176,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=false
 # disable autosuggestions for large buffers
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 # use both history AND completion for better suggestions
-ZSH_AUTOSUGGEST_STRATEGY=(history)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # clear autosuggestions when any of the below scenarios happen
 # - buffer-empty - when the command line becomes empty
 # - bracketed-paste - when text is pasted into the terminal
