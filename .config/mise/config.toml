@@ -1,5 +1,6 @@
 [tools]
 dagger = "latest"
+databricks-cli = "latest"
 golang = "latest"
 node = "latest"
 poetry = "latest"
