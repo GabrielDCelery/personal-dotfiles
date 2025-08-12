@@ -19,6 +19,7 @@ return {
     vim.keymap.set('n', '<leader>di', ':DapStepInto<cr>', { noremap = true, desc = 'step into' })
     vim.keymap.set('n', '<leader>do', ':DapStepOut<cr>', { noremap = true, desc = 'step out' })
     vim.keymap.set('n', '<leader>dv', ':DapStepOver<cr>', { noremap = true, desc = 'step over' })
+    vim.keymap.set('n', '<leader>dC', ':DapClearBreakpoints<cr>', { noremap = true, desc = 'toggle conditional breakpoint' })
 
     vim.fn.sign_define('DapBreakpoint', { text = ' ', texthl = 'DapBreakpoint', linehl = '', numhl = '' })
     vim.api.nvim_set_hl(0, 'DapBreakpoint', { ctermbg = 0, fg = '#f5c2e7' })
