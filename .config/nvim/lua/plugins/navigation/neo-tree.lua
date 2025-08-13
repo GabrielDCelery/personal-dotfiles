@@ -25,8 +25,8 @@ return {
       statusline = true,
     },
     window = {
-      position = 'float',
-      -- position = 'left',
+      -- position = 'float',
+      position = 'left',
       mappings = {
         ['P'] = { 'toggle_preview', config = { use_float = true } },
       },
