@@ -13,7 +13,7 @@ return {
     vim.keymap.set('n', '<leader>dt', require('dapui').toggle, { noremap = true, desc = 'toggle debugger' })
     vim.keymap.set('n', '<leader>db', ':DapToggleBreakpoint<cr>', { noremap = true, desc = 'toggle breakpoint' })
     vim.keymap.set('n', '<leader>dc', ':DapContinue<cr>', { noremap = true, desc = 'continue' })
-    vim.keymap.set('n', '<leader>dr', function()
+    vim.keymap.set('n', '<leader>dR', function()
       require('dapui').open { reset = true }
     end, { noremap = true, desc = 'reset' })
     vim.keymap.set('n', '<leader>di', ':DapStepInto<cr>', { noremap = true, desc = 'step into' })
