@@ -43,6 +43,7 @@ return { -- Autoformat
         ['helm.yaml'] = { 'yamlfmt' },
         ['javascript'] = { 'prettier', 'prettierd', stop_after_first = true },
         ['json'] = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
+        ['jsonc'] = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
         ['kubernetes'] = { 'yamlfmt' },
         ['lua'] = { 'stylua' },
         ['markdown'] = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
