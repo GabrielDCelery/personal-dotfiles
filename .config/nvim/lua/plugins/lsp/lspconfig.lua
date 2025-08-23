@@ -190,7 +190,7 @@ return {
       ensure_installed = {
         'bashls', -- bash -- https://github.com/bash-lsp/bash-language-server
         'buf_ls', -- protocol buffer -- https://github.com/bufbuild/buf
-        -- 'clangd', -- c++ -- https://github.com/clangd/clangd
+        'clangd', -- c++ -- https://github.com/clangd/clangd
         'dockerls', -- dockerfile -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
         'docker_compose_language_service', -- docker compose -- https://github.com/microsoft/compose-language-service
         'eslint', -- eslint -- https://github.com/hrsh7th/vscode-langservers-extracted

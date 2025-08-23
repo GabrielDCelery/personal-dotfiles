@@ -8,6 +8,7 @@ return { -- Autoformat
         require('mason-tool-installer').setup {
           ensure_installed = {
             'black', -- python
+            -- 'clang-format', -- c++
             'goimports', -- go
             'isort', -- python
             'jq', -- json
@@ -38,6 +39,7 @@ return { -- Autoformat
         },
       },
       formatters_by_ft = {
+        -- ['cpp'] = { 'clang-format' },
         ['go'] = { 'goimports' },
         ['helm'] = { 'yamlfmt' },
         ['helm.yaml'] = { 'yamlfmt' },
