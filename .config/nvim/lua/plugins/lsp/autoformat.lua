@@ -35,7 +35,7 @@ return { -- Autoformat
       },
       formatters = {
         yamlfmt = {
-          prepend_args = { '-formatter', 'retain_line_breaks=true' },
+          prepend_args = { '-formatter', 'retain_line_breaks=true,drop_merge_tag=true' },
         },
       },
       formatters_by_ft = {
