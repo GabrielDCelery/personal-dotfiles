@@ -35,7 +35,7 @@ return {
         -- 8. `-g '!.git'`: Excludes the .git directory from searches (glob pattern)
         -- 9. `-g '!node_modules'`: Excludes the node_modules directory
         -- 10. `--no-ignore`: Searches in all directories, even those normally ignored
-        rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!.git' -g '!node_modules' --no-ignore",
+        rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!.git' -g '!node_modules' -g '!build' -g '!dist' -g '!coverage' --no-ignore",
       },
       keymap = {
         fzf = {
