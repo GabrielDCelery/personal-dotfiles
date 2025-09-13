@@ -9,6 +9,7 @@ rust = "latest"
 sqlite = "latest"
 terraform = "latest"
 usage = "latest"
+uv = "latest"
 yarn = "latest"
 
 [settings]
