@@ -55,6 +55,7 @@ require('lazy').setup({
   require 'plugins.testing.trouble', -- enhanced errors window
   require 'plugins.testing.debugger', -- debugger
   require 'plugins.testing.ai-assistant', -- ai assistant
+  require 'plugins.testing.mcp', -- mcp manager
 
   -- Terminal
   -- require 'plugins.terminal.toggleterm', -- inbuilt terminal

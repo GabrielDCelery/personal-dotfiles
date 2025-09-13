@@ -1,0 +1,3 @@
+return {
+  'ravitemer/mcphub.nvim',
+}
