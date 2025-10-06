@@ -1,17 +1,19 @@
 [tools]
-dagger = "latest"
-databricks-cli = "latest"
+"cargo:starship" = "latest"
+dagger = "0.19.0"
+databricks-cli = "0.271.0"
+go = "1.25.1"
 golang = "latest"
-node = "latest"
+node = "24"
 "npm:@anthropic-ai/claude-code" = "latest"
-poetry = "latest"
-python = "latest"
+poetry = "2.2.1"
+python = "3.13.7"
 rust = "latest"
 sqlite = "latest"
-terraform = "latest"
-usage = "latest"
-uv = "latest"
-yarn = "latest"
+terraform = "1.13.3"
+usage = "2.3.2"
+uv = "0.8.23"
+yarn = "4.10.3"
 
 [settings]
 idiomatic_version_file_enable_tools = [
@@ -21,3 +23,5 @@ idiomatic_version_file_enable_tools = [
     "terraform",
     "yarn",
 ]
+lockfile = true
+experimental = true
