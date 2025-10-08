@@ -11,11 +11,11 @@ return {
         noice = true,
         harpoon = true,
       },
-      transparent_background = true,
-      float = {
-        transparent = true, -- enable transparent floating windows
-        solid = false, -- use solid styling for floating windows, see |winborder|
-      },
+      -- transparent_background = true,
+      -- float = {
+      --   transparent = true, -- enable transparent floating windows
+      --   solid = false, -- use solid styling for floating windows, see |winborder|
+      -- },
     }
 
     -- THEN apply the colorscheme with the transparency settings
