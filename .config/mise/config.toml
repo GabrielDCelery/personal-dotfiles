@@ -1,5 +1,5 @@
 [tools]
-age = "1.21.1"
+age = "1.2.1"
 dagger = "0.19.0"
 databricks-cli = "0.271.0"
 go = "1.25.1"
