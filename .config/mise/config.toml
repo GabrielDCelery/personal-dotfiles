@@ -1,22 +1,23 @@
 [tools]
+"npm:@anthropic-ai/claude-code" = "2.0.9"
 age = "1.2.1"
 dagger = "0.19.0"
 databricks-cli = "0.271.0"
+fzf = "0.65.2"
 go = "1.25.1"
 golang = "1.24.5"
 lua = "5.4.8"
 node = "24"
-"npm:@anthropic-ai/claude-code" = "2.0.9"
 poetry = "2.2.1"
 python = "3.13.7"
 rust = "1.90"
+sops = "3.11.0"
 sqlite = "3.50.4"
 starship = "1.23.0"
 terraform = "1.13.3"
 usage = "2.3.2"
 uv = "0.8.23"
 yarn = "4.10.3"
-sops = "3.11.0"
 
 [settings]
 idiomatic_version_file_enable_tools = [
