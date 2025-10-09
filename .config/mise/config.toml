@@ -18,6 +18,7 @@ terraform = "1.13.3"
 usage = "2.3.2"
 uv = "0.8.23"
 yarn = "4.10.3"
+chezmoi = "2.66.0"
 
 [settings]
 idiomatic_version_file_enable_tools = [
