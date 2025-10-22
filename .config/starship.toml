@@ -126,23 +126,26 @@ style = 'bold #74c7ec'
 
 
 [custom.aws-sso]
-# command = "echo foo"  # shows output of command
 command = '''
 for cache_file in ~/.aws/sso/cache/*.json; do
-    start_url=$(cat $cache_file | jq -r '.startUrl // empty' 2>/dev/null)
+    start_url=$(cat "$cache_file" | jq -r '.startUrl // empty' 2>/dev/null)
     if [ -n "$start_url" ]; then
-        profile=$(cat ~/.aws/config | grep -B5 "$start_url" | grep -E "^\[(sso-session|profile)" | awk '{print $2}' | tr -d ']')
-        echo "$profile"
+        profile=$(cat ~/.aws/config | grep -B5 "$start_url" | grep -E '^\[(sso-session|profile) ' | awk '{print $2}' | tr -d ']' | head -1)
+        if [ -n "$profile" ]; then
+            echo "$profile"
+            break
+        fi
     fi
 done
 '''
 when = '''
+shopt -s nullglob
 for cache_file in ~/.aws/sso/cache/*.json; do
-    if grep -q "startUrl" $cache_file; then
-        exit 0;
+    if grep -q "startUrl" "$cache_file" 2>/dev/null; then
+        exit 0
     fi
 done
-exit 1;
+exit 1
 '''
 style = 'bold fg:#fab387'
 format = '[\[ $symbol $output \] ]($style)'
