@@ -136,7 +136,14 @@ for cache_file in ~/.aws/sso/cache/*.json; do
     fi
 done
 '''
-when = true
+when = '''
+for cache_file in ~/.aws/sso/cache/*.json; do
+    if grep -q "startUrl" $cache_file; then
+        exit 0;
+    fi
+done
+exit 1;
+'''
 style = 'bold fg:#fab387'
 format = '[\[ $symbol $output \] ]($style)'
 symbol = "  󰸏 "
