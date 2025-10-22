@@ -16,10 +16,10 @@ $python\
 $git_branch\
 $git_status\
 $aws\
+${custom.aws-sso}\
 $azure\
 $terraform\
 $vagrant\
-${custom.aws-sso}\
 $time\
 $line_break\
 $character"""
