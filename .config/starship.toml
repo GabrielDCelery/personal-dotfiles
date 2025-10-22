@@ -139,7 +139,6 @@ for cache_file in ~/.aws/sso/cache/*.json; do
 done
 '''
 when = '''
-shopt -s nullglob
 for cache_file in ~/.aws/sso/cache/*.json; do
     if grep -q "startUrl" "$cache_file" 2>/dev/null; then
         exit 0
