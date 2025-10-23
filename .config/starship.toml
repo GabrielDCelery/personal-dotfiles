@@ -89,7 +89,7 @@ style = 'bold fg:#fab387'
 
 [azure]
 disabled = false
-format = '[\[ $symbol ($subscription) \]]($style)'
+format = '[\[ $symbol ($subscription) \]]($style) '
 symbol = '󰠅 '
 style = 'bold fg:#89b4fa'
 
