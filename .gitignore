@@ -5,3 +5,5 @@
 !.gnupg/gpg-agent.conf
 
 .config/mise/age.txt
+
+.claude
