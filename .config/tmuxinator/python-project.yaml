@@ -5,6 +5,7 @@ windows:
       - nvim
   - terminal:
       - source ./.venv/bin/activate
+  - ai: claude
   - lazygit:
       - source ./.venv/bin/activate
       - lazygit

@@ -3,5 +3,5 @@ name: default-project
 windows:
   - editor: nvim
   - term:
-  - ai: aichat
+  - ai: claude
   - lazygit: lazygit
