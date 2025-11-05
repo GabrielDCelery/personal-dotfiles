@@ -1,5 +1,7 @@
 [tools]
 "npm:@anthropic-ai/claude-code" = "2.0.13"
+"pipx:csvkit" = "2.1.0"
+"pipx:tldr" = "3.4.3"
 # imagemagick = "7.1.2-5"
 age = "1.2.1"
 aws = "2.31.13"
