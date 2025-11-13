@@ -31,7 +31,7 @@ keybinds clear-defaults=true {
         bind "w" { ToggleFloatingPanes; SwitchToMode "normal"; }
         bind "z" { TogglePaneFrames; SwitchToMode "normal"; }
         bind "q" { CloseFocus; }
-        bind "esc" { SwitchToMode "locked"; }
+        // bind "esc" { SwitchToMode "locked"; }
     }
     tab {
         bind "left" { GoToPreviousTab; }
@@ -64,7 +64,7 @@ keybinds clear-defaults=true {
         // bind "q" { CloseTab; SwitchToMode "normal"; }
         bind "q" { CloseTab; }
         bind "tab" { ToggleTab; }
-        bind "esc" { SwitchToMode "locked"; }
+        // bind "esc" { SwitchToMode "locked"; }
     }
     resize {
         bind "left" { Resize "Increase left"; }
