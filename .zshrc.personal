@@ -93,8 +93,11 @@ export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 #*****************************************************************************************************************************************************************
 # BAT 
 #*****************************************************************************************************************************************************************
-export BAT_CONFIG_PATH="$(bat --config-file)"
-export BAT_CONFIG_DIR="$(bat --config-dir)"
+# export BAT_CONFIG_PATH="$(bat --config-file)"
+# export BAT_CONFIG_DIR="$(bat --config-dir)"
+# export BAT_THEME="Catppuccin Mocha"
+export BAT_CONFIG_PATH="$HOME/.config/bat/config"  # hardcode instead
+export BAT_CONFIG_DIR="$HOME/.config/bat"          # hardcode instead
 export BAT_THEME="Catppuccin Mocha"
 
 
@@ -143,8 +146,12 @@ fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
 # CLI COMPLETIONS 
 #*****************************************************************************************************************************************************************
 # initialize completion system, -U means unique entries and -z means without aliases
-autoload -U compinit
-compinit
+autoload -Uz compinit
+if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    compinit
+else
+    compinit -C
+fi
 
 
 #*****************************************************************************************************************************************************************
