@@ -2,7 +2,7 @@
 "npm:@anthropic-ai/claude-code" = "2.0.33"
 "pipx:csvkit" = "2.1.0"
 "pipx:tldr" = "3.4.3"
-"cargo:zellij" = "0.43.1"
+# "cargo:zellij" = "0.43.1"
 # imagemagick = "7.1.2-5"
 age = "1.2.1"
 aws = "2.31.29"
@@ -28,6 +28,7 @@ usage = "2.6.0"
 uv = "0.9.7"
 yarn = "4.10.3"
 yq = "4.48.1"
+zellij = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = [
