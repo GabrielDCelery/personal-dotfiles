@@ -147,6 +147,19 @@ keybinds clear-defaults=true {
             SwitchToMode "normal"
         }
     }
+    shared {
+        bind "Alt r" { NewPane "right"; }
+        bind "Alt d" { NewPane "down"; }
+        bind "Alt c" { NewTab; }
+        bind "Alt q" { CloseTab; }
+        bind "Alt h" { MoveFocus "left"; }
+        bind "Alt i" { TogglePanePinned; SwitchToMode "normal"; }
+        bind "Alt j" { MoveFocus "down"; }
+        bind "Alt k" { MoveFocus "up"; }
+        bind "Alt l" { MoveFocus "right"; }
+        bind "Alt n" { GoToNextTab; }
+        bind "Alt p" { GoToPreviousTab; }
+    }
     shared_except "locked" {
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
@@ -164,7 +177,7 @@ keybinds clear-defaults=true {
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
         bind "Alt l" { MoveFocusOrTab "right"; }
-        bind "Alt n" { NewPane; }
+        // bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
