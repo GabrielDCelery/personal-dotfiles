@@ -7,7 +7,6 @@
       "Read(./config/credentials.json)",
       "Read(./build)",
       "Read(./dist)"
-
     ]
   },
   "alwaysThinkingEnabled": false
