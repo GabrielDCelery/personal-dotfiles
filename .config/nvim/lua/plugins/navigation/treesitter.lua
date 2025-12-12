@@ -3,12 +3,6 @@ return {
   lazy = false,
   branch = 'main',
   build = ':TSUpdate',
-  dependencies = {
-    {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-      branch = 'master',
-    },
-  },
   config = function()
     local languages = {
       'bash',
