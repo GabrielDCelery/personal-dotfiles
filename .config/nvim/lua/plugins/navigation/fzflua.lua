@@ -54,7 +54,7 @@ return {
     vim.keymap.set('n', '<leader>sd', require('fzf-lua').lsp_document_symbols, { desc = 'document symbols' })
 
     vim.keymap.set('n', '<leader>sb', require('fzf-lua').builtin, { desc = 'fzf builtin' })
-    vim.keymap.set('n', '<leader>sB', require('fzf-lua').buffers, { desc = 'fzf builtin' })
+    vim.keymap.set('n', '<leader>sB', require('fzf-lua').buffers, { desc = 'fzf buffers' })
     vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = 'fzf files' })
     vim.keymap.set('n', '<leader>sg', require('fzf-lua').live_grep, { desc = 'fzf grep' })
     vim.keymap.set('n', '<leader>sG', require('fzf-lua').git_status, { desc = 'fzf git status' })
