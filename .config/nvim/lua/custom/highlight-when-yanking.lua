@@ -8,8 +8,7 @@ function M.init()
     desc = 'Highlight when yanking (copying) text',
     group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
     callback = function()
-      vim.highlight.on_yank()
-      -- vim.hl.on_yank()
+      vim.hl.on_yank()
     end,
   })
 end
