@@ -5,12 +5,12 @@ return {
     -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
     {
       'williamboman/mason.nvim',
-      version = 'v2.0.0',
+      -- version = 'v2.1.0',
       opts = {},
     },
     {
       'williamboman/mason-lspconfig.nvim',
-      version = 'v2.2.0',
+      -- version = 'v2.2.0',
     },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
