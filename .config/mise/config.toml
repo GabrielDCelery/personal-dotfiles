@@ -31,6 +31,8 @@ uv = "0.9.9"
 yarn = "4.10.3"
 yq = "4.48.1"
 zellij = "latest"
+jq = "1.8.1"
+"npm:@github/copilot" = "0.0.369"
 
 [settings]
 idiomatic_version_file_enable_tools = [
