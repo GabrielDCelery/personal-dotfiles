@@ -2,12 +2,15 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   branch = 'master',
+  commit = '42fc28ba', -- locked to stable master branch
   -- This is ran whenever treesitter is installed or updated, the below command will also make sure the language dependencies get updated as well
   build = ':TSUpdate',
   event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    branch = 'master',
+    {
+      'nvim-treesitter/nvim-treesitter-textobjects',
+      lazy = true,
+    },
   },
   opts = {
     -- Specify the languages that we want to get treeitter installed
