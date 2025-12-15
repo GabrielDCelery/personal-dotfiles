@@ -35,6 +35,7 @@ jq = "1.8.1"
 "npm:@github/copilot" = "0.0.369"
 "npm:opencode-ai" = "1.0.152"
 "npm:tree-sitter-cli" = "0.26.3"
+ripgrep = "15.1.0"
 
 [settings]
 idiomatic_version_file_enable_tools = [
