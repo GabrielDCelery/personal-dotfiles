@@ -9,7 +9,7 @@
 # imagemagick = "7.1.2-5"
 age = "1.2.1"
 ansible = "13.1.0"
-aws-cli = "2.32.20"
+awscli = { version = "2.32.21", symlink_bins = "true" }
 aws-vault = "7.2.0"
 azure-cli = "2.81.0"
 dagger = "0.19.8"
