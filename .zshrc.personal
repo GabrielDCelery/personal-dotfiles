@@ -292,6 +292,23 @@ export FZF_DEFAULT_OPTS=" \
 --color=border:#313244,label:#CDD6F4"
 
 #*****************************************************************************************************************************************************************
+# Custom ZSH Widgets
+#*****************************************************************************************************************************************************************
+
+# Open buffer line in editor
+# In case want to read more about it
+# For autoload:
+# - man zshbuiltins - Documents the autoload builtin command
+# - man zshmisc - Covers autoloaded functions in the "Functions" section
+#
+# For ZLE widgets:
+# - man zshzle - Complete guide to Zsh Line Editor, including widgets, bindkey, and creating custom widgets
+# - man zshcontrib - Documents contributed functions like edit-command-line
+autoload -z edit-command-line # Loads the edit-command-line function from Zsh's function library
+zle -N edit-command-line # Registers edit-command-line as a ZLE (Zsh Line Editor) widget
+bindkey "^X^E" edit-command-line # Ctrl+x followd by Ctrl+e
+
+#*****************************************************************************************************************************************************************
 # Custom ZSH CLI KEY BINDINGS
 #*****************************************************************************************************************************************************************
 # Common ZSH widgets (functions) you can bind to keys include:
@@ -311,3 +328,4 @@ bindkey "^[[1;5C" forward-word          # Ctrl+Right
 bindkey "^[[1;5D" backward-word         # Ctrl+Left
 bindkey "^b" backward-kill-word         # Ctrl+Backspace
 bindkey "^w" kill-word                  # Ctrl+W
+
