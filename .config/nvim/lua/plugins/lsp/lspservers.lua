@@ -20,7 +20,8 @@ local language_servers = {
   'solargraph',
   'templ',
   'terraformls',
-  'ts_ls',
+  -- 'ts_ls',
+  'tsgo',
   -- 'volar',
   'yamlls',
 }
@@ -35,16 +36,16 @@ local language_servers_new = {
 }
 
 local formatters = {
-  'black',        -- python
-  'isort',        -- python
-  'goimports',    -- go
-  'jq',           -- json
+  'black', -- python
+  'isort', -- python
+  'goimports', -- go
+  'jq', -- json
   'markdownlint', -- markdown
   'prettier',
   'prettierd',
-  'stylua',  -- lua formatter
+  'stylua', -- lua formatter
   'yamlfmt', -- yaml
-  'yq',      -- json, yaml xml formatter
+  'yq', -- json, yaml xml formatter
 }
 
 local linters = {

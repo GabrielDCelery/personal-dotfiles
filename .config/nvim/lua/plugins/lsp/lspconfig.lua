@@ -202,7 +202,8 @@ return {
         'pyright', -- python -- https://github.com/microsoft/pyright
         'taplo', -- toml -- https://github.com/tamasfe/taplo
         'terraformls', -- terraform -- https://github.com/hashicorp/terraform-ls
-        'ts_ls', -- typescript -- https://github.com/typescript-language-server/typescript-language-server
+        -- 'ts_ls', -- typescript -- https://github.com/typescript-language-server/typescript-language-server
+        'tsgo', -- typescript -- https://github.com/microsoft/typescript-go
         'yamlls', -- yaml -- https://github.com/redhat-developer/yaml-language-server
       },
       -- See `:h mason-lspconfig.setup_handlers()`
