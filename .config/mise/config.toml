@@ -12,7 +12,7 @@ ansible = "13.2.0"
 awscli = { version = "2.32.31", symlink_bins = "true" }
 aws-vault = "7.2.0"
 azure-cli = "2.81.0"
-dagger = "0.19.8"
+dagger = "0.19.9"
 databricks-cli = "0.282.0"
 doctl = "1.148.0"
 eza = "0.23.4"
