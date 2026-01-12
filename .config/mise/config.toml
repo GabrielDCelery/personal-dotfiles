@@ -49,6 +49,7 @@ yazi = "26.1.4"
 yq = "4.50.1"
 zellij = "0.43.1"
 zoxide = "0.9.8"
+ollama = "0.13.5"
 
 [settings]
 idiomatic_version_file_enable_tools = [
