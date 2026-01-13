@@ -12,6 +12,8 @@ ansible = "13.2.0"
 aws-vault = "7.2.0"
 awscli = { version = "2.32.31", symlink_bins = "true" }
 azure-cli = "2.81.0"
+bat = "0.26.1"                                          # CLI cat alternative with highlights https://github.com/sharkdp/bat
+btop = "1.4.6"                                          # CLI alternatvie to top https://github.com/aristocratos/btop
 dagger = "0.19.9"
 databricks-cli = "0.282.0"
 doctl = "1.148.0"
