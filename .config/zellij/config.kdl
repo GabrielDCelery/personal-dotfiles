@@ -20,7 +20,7 @@ plugins {
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
-        bind "Ctrl space" { SwitchToMode "tmux"; }
+        bind "Ctrl space" { SwitchToMode "tmux"; } // need this 
     }
     normal {
         bind "esc" { SwitchToMode "locked"; }
@@ -172,13 +172,18 @@ keybinds clear-defaults=true {
         bind "Alt d" { NewPane "down"; }
         bind "Alt c" { NewTab; }
         bind "Alt q" { CloseTab; }
-        bind "Alt h" { MoveFocus "left"; }
+        // bind "Alt h" { MoveFocus "left"; }
         bind "Alt i" { TogglePanePinned; SwitchToMode "normal"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocus "right"; }
+        // bind "Alt j" { MoveFocus "down"; }
+        // bind "Alt k" { MoveFocus "up"; }
+        // bind "Alt l" { MoveFocus "right"; }
         bind "Alt n" { GoToNextTab; }
         bind "Alt p" { GoToPreviousTab; }
+
+        bind "Alt h" { Resize "Increase left"; }
+        bind "Alt j" { Resize "Increase down"; }
+        bind "Alt k" { Resize "Increase up"; }
+        bind "Alt l" { Resize "Increase right"; }
 
         bind "Ctrl h" {
             MessagePlugin "navigator" {
@@ -213,7 +218,7 @@ keybinds clear-defaults=true {
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
-        bind "Alt right" { MoveFocusOrTab "right"; }
+        // bind "Alt right" { MoveFocusOrTab "right"; }
         bind "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt =" { Resize "Increase"; }
@@ -221,16 +226,21 @@ keybinds clear-defaults=true {
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Ctrl g" { SwitchToMode "locked"; }
-        bind "Alt h" { MoveFocusOrTab "left"; }
+        // bind "Alt h" { MoveFocusOrTab "left"; }
         bind "Alt i" { MoveTab "left"; }
-        bind "Alt j" { MoveFocus "down"; }
-        bind "Alt k" { MoveFocus "up"; }
-        bind "Alt l" { MoveFocusOrTab "right"; }
+        // bind "Alt j" { MoveFocus "down"; }
+        // bind "Alt k" { MoveFocus "up"; }
+        // bind "Alt l" { MoveFocusOrTab "right"; }
         // bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
         // bind "Alt p" { TogglePaneInGroup; }
         bind "Alt Shift p" { ToggleGroupMarking; }
         bind "Ctrl q" { Quit; }
+
+        bind "Alt h" { Resize "Increase left"; }
+        bind "Alt j" { Resize "Increase down"; }
+        bind "Alt k" { Resize "Increase up"; }
+        bind "Alt l" { Resize "Increase right"; }
     }
     // shared_except "locked" "move" {
     //     bind "Ctrl h" { SwitchToMode "move"; }
@@ -321,6 +331,7 @@ keybinds clear-defaults=true {
         bind "5" { GoToTab 5; SwitchToMode "normal"; }
         bind "6" { GoToTab 6; SwitchToMode "normal"; }
         bind "7" { GoToTab 7; SwitchToMode "normal"; }
+        bind "f" { ToggleFloatingPanes; SwitchToMode "normal"; }
 
         bind "s" {
             LaunchOrFocusPlugin "session-manager" {
@@ -393,6 +404,7 @@ theme "catppuccin-macchiato"
 // Default: "default"
 // 
 default_layout "compact"
+// default_layout "default"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
