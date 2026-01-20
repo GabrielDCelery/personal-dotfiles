@@ -66,3 +66,7 @@ idiomatic_version_file_enable_tools = [
 ]
 lockfile = true
 experimental = true
+
+[tasks."install-euporie"]
+description = "Install TUI Jupyter notebook editor and runner"
+run = ["uv tool install euporie"]
