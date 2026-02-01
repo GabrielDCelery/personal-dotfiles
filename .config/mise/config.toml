@@ -57,6 +57,7 @@ yq = "4.50.1"
 zellij = "0.43.1"
 zoxide = "0.9.8"
 circleci = "0.1.34038"
+bun = "1.3.8"
 
 [settings]
 idiomatic_version_file_enable_tools = [
