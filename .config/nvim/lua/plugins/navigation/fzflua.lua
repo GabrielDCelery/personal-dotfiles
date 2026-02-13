@@ -15,17 +15,16 @@ return {
       },
       files = {
         -- control how file searching works in fzf-lua through these flags:
-        -- 1. `--no-ignore-vcs`: Tells `fd` to not respect version control ignore files (like .gitignore)
-        -- 2. `--hidden`: Includes hidden files and directories (those starting with a dot, like .config, .circleci)
-        -- 3. `--follow`: Follows symbolic links while searching
-        -- 4. `--exclude .git`: Explicitly excludes the .git directory from searches
-        -- 5. `--exclude node_modules`: Explicitly excludes the node_modules directory from searches
-        -- 6. `--no-ignore`: Tells `fd` to not respect any ignore files (including .ignore, .fdignore, etc.)
-        fd_opts = '--no-ignore-vcs --hidden --follow --exclude .git --exclude node_modules --no-ignore',
+        -- 1. `--hidden`: Includes hidden files and directories (those starting with a dot, like .config, .circleci)
+        -- 2. `--follow`: Follows symbolic links while searching
+        -- 3. `--exclude .git`: Explicitly excludes the .git directory from searches
+        -- 4. `--exclude '*lock*'`: Excludes lockfiles (package-lock.json, pnpm-lock.yaml, etc.)
+        -- Note: Respects .gitignore to exclude node_modules, build, dist, .env, etc.
+        fd_opts = '--hidden --follow --exclude .git --exclude *lock*',
       },
       grep = {
         -- This line configures how ripgrep (rg) performs text searches in fzf-lua. Let's break down each flag:
-        -- 1. `--hidden`: Searches hidden files and directories (those starting with a dot, like .circleci, .env)
+        -- 1. `--hidden`: Searches hidden files and directories (those starting with a dot, like .circleci)
         -- 2. `--column`: Shows the column number where matches are found
         -- 3. `--line-number`: Shows the line number for each match
         -- 4. `--no-heading`: Displays results without grouping them by file
@@ -34,9 +33,8 @@ return {
         -- 7. `--max-columns=512`: Only searches lines up to 512 columns wide
         -- 8. `-g '!.git'`: Excludes the .git directory from searches
         -- 9. `-g '!*lock*'`: Excludes lockfiles (package-lock.json, pnpm-lock.yaml, yarn.lock, poetry.lock, uv.lock, etc.)
-        -- 10. `--no-ignore`: Ignores .gitignore so we can search .env and other gitignored files
-        -- Note: Build directories (node_modules, dist, build, etc.) are handled by .gitignore
-        rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!.git' -g '!*lock*' --no-ignore",
+        -- Note: Respects .gitignore to exclude node_modules, build, dist, .env, etc.
+        rg_opts = "--hidden --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!.git' -g '!*lock*'",
       },
       keymap = {
         fzf = {
