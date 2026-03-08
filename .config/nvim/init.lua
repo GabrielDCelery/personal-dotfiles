@@ -40,6 +40,7 @@ require('lazy').setup({
   require 'plugins.navigation.neo-tree', -- browse and edit file system
   require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
   require 'plugins.navigation.treesitter', -- treesitter
+  require 'plugins.navigation.treesitter-context', -- treesitter context
   require 'plugins.navigation.fzflua', -- versatile fzf based search
   require 'plugins.navigation.vim-tmux-navigator', -- vim tmux navigator
   require 'plugins.navigation.vim-zellij', -- vim zellij navigator
