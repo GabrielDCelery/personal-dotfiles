@@ -11,7 +11,7 @@ return {
     -- dashboard = { enabled = true },
     -- explorer = { enabled = true },
     indent = { enabled = true },
-    -- image = { enabled = true }, -- kitty support is limited (no zellij etc...) so diabled
+    image = { enabled = true }, -- kitty support is limited (no zellij etc...)
     input = { enabled = true },
     -- picker = { enabled = true },
     notifier = { enabled = true },
