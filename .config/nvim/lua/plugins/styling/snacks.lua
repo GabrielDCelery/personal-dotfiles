@@ -10,9 +10,7 @@ return {
     -- bigfile = { enabled = true },
     -- dashboard = { enabled = true },
     -- explorer = { enabled = true },
-    indent = {
-      enabled = true,
-    },
+    indent = { enabled = true },
     -- image = { enabled = true }, -- kitty support is limited (no zellij etc...) so diabled
     input = { enabled = true },
     -- picker = { enabled = true },

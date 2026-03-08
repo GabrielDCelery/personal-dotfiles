@@ -5,10 +5,6 @@ return {
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
     'MunifTanjim/nui.nvim',
-    {
-      'echasnovski/mini.nvim',
-      version = false,
-    },
     'hrsh7th/nvim-cmp',
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
@@ -17,6 +13,13 @@ return {
   },
   config = function()
     require('noice').setup {
+      -- Route notifications to snacks.notifier instead of handling them here
+      routes = {
+        {
+          filter = { event = 'notify' },
+          view = 'notify',
+        },
+      },
       lsp = {
         -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
         override = {
