@@ -8,7 +8,7 @@ return {
       -- !WARN: lualine is not controlled here via the theme integrations, but the lualine plugin itself
       -- integrations = {}
       integrations = {
-        -- noice = true,
+        noice = true,
         harpoon = true,
       },
       -- transparent_background = true,

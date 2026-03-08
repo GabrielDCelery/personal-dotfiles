@@ -18,7 +18,7 @@ require('lazy').setup({
 
   -- Theme/Styling
   require 'plugins.styling.theme', -- configure and load theme for editor
-  -- require 'plugins.styling.noice', -- experimental plugin that replaces the command line and messages with a custom implementation
+  require 'plugins.styling.noice', -- experimental plugin that replaces the command line and messages with a custom implementation
   require 'plugins.styling.todo-commments', -- highlight todo comments in codebase (FIX, TODO, HACK, WARN, PERF, NOTE, TEST)
   require 'plugins.styling.render-markdown', -- rendering markdown documents
   require 'plugins.styling.lualine', -- editor status bar
