@@ -22,9 +22,11 @@ return {
       'rust',
       'terraform',
       'typescript',
+      'toml',
       'vim',
       'vimdoc',
       'xml',
+      'yaml',
       'zig',
     }
 
