@@ -25,6 +25,7 @@ require('lazy').setup({
   require 'plugins.styling.which-key', -- displays key bindings
   require 'plugins.styling.colorizer', -- color highlighter for RGB colors
   require 'plugins.styling.web-devicons', -- nerd fonts for neovim plugins
+  require 'plugins.styling.snacks', -- collection of small plugins from folke
 
   -- LSP/Formatting/Linting
   require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation

@@ -1,7 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   lazy = false,
-  branch = 'main',
+  -- branch = 'main',
   build = ':TSUpdate',
   config = function()
     local languages = {
