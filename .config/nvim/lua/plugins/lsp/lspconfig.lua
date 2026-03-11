@@ -177,7 +177,17 @@ return {
     --  By default, Neovim doesn't support everything that is in the LSP specification.
     --  When you add nvim-cmp, luasnip, etc. Neovim now has *more* capabilities.
     --  So, we create new capabilities with nvim cmp, and then broadcast that to the servers.
-    local defaultLspCapabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities())
+    vim.lsp.config('*', {
+      capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities()),
+    })
+
+    vim.lsp.config('gopls', {
+      settings = {
+        gopls = {
+          buildFlags = { '-tags=integration' },
+        },
+      },
+    })
 
     require('mason-lspconfig').setup {
       automatic_enable = true,
@@ -212,6 +222,16 @@ return {
         function(server_name)
           require('lspconfig')[server_name].setup {
             capabilities = defaultLspCapabilities,
+          }
+        end,
+        ['gopls'] = function()
+          require('lspconfig').gopls.setup {
+            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {}),
+            settings = {
+              gopls = {
+                buildFlags = { '-tags=integration' },
+              },
+            },
           }
         end,
         ['lua_ls'] = function()
