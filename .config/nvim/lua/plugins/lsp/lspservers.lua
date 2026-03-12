@@ -20,8 +20,8 @@ local language_servers = {
   'solargraph',
   'templ',
   'terraformls',
-  -- 'ts_ls',
-  'tsgo',
+  'ts_ls',
+  -- 'tsgo',
   -- 'volar',
   'yamlls',
 }
