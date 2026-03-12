@@ -27,6 +27,11 @@ return {
       latex = { enabled = false },
       completions = { lsp = { enabled = true } },
       pipe_table = { preset = 'heavy' },
+      overrides = {
+        buftype = {
+          nofile = { render_modes = true },
+        },
+      },
     }
   end,
 }
