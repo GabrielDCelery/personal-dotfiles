@@ -207,7 +207,7 @@ return {
         'gopls', -- go -- https://github.com/golang/tools/tree/master/gopls
         'html', -- html -- https://github.com/hrsh7th/vscode-langservers-extracted
         'lua_ls', -- lua -- https://github.com/luals/lua-language-server
-        'marksman', -- markdown -- https://github.com/artempyanykh/marksman
+        -- 'marksman', -- markdown -- https://github.com/artempyanykh/marksman
         'rust_analyzer', -- rust -- https://github.com/rust-lang/rust-analyzer
         'pyright', -- python -- https://github.com/microsoft/pyright
         'taplo', -- toml -- https://github.com/tamasfe/taplo
