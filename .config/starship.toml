@@ -19,6 +19,7 @@ $aws\
 ${custom.aws-sso}\
 $azure\
 $terraform\
+$docker_context\
 $vagrant\
 $time\
 $line_break\
@@ -83,20 +84,26 @@ behind = '⇣${count}'
 
 [aws]
 disabled = false
-format = '[\[ $symbol $profile / $region / $duration \]]($style) '
+format = '[ \[ $symbol $profile / $region / $duration \]]($style)'
 symbol = "󰸏 "
 style = 'bold fg:#fab387'
 
 [azure]
 disabled = false
-format = '[\[ $symbol ($subscription) \]]($style) '
+format = '[ \[ $symbol ($subscription) \]]($style)'
 symbol = '󰠅 '
 style = 'bold fg:#89b4fa'
 
 [terraform]
-format = '[\[ $symbol $workspace \] ]($style)'
+format = '[ \[ $symbol $workspace \] ]($style)'
 symbol = '󱁢 '
 style = 'bold fg:#cba6f7'
+
+[docker_context]
+format = '[ \[ $symbol $context \] ]($style)'
+symbol = '󰡨 '
+style = 'bold fg:#74c7ec'
+# format = 'via [🐋 $context](blue bold)'
 
 [time]
 disabled = false
