@@ -17,6 +17,7 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
+    -- 'b0o/SchemaStore.nvim',
   },
   config = function()
     local signsMap = {
@@ -189,6 +190,21 @@ return {
       },
     })
 
+    -- vim.lsp.config('yamlls', {
+    --   settings = {
+    --     yaml = {
+    --       schemaStore = {
+    --         enable = false,
+    --         url = '',
+    --       },
+    --       schemas = require('schemastore').yaml.schemas(),
+    --       validate = true,
+    --       completion = true,
+    --       hover = true,
+    --     },
+    --   },
+    -- })
+
     require('mason-lspconfig').setup {
       automatic_enable = true,
       -- Using mason-tool-installer therefore setting automatic_installation to false and leaving ensure_installed empty
@@ -219,14 +235,12 @@ return {
       -- See `:h mason-lspconfig.setup_handlers()`
       ---@type table<string, fun(server_name: string)>?
       handlers = {
-        function(server_name)
-          require('lspconfig')[server_name].setup {
-            capabilities = defaultLspCapabilities,
-          }
-        end,
+        -- NOTE: since we removed defaultLspCapabilities this did not serve any more purpose but wanted to keep it for some further investigation around setup
+        -- function(server_name)
+        --   require('lspconfig')[server_name].setup {}
+        -- end,
         ['gopls'] = function()
           require('lspconfig').gopls.setup {
-            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {}),
             settings = {
               gopls = {
                 buildFlags = { '-tags=integration' },
@@ -236,7 +250,6 @@ return {
         end,
         ['lua_ls'] = function()
           require('lspconfig').lua_ls.setup {
-            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {}),
             settings = {
               Lua = {
                 completion = {
@@ -250,7 +263,7 @@ return {
         end,
         ['markdown_oxide'] = function()
           require('lspconfig').markdown_oxide.setup {
-            capabilities = vim.tbl_deep_extend('force', defaultLspCapabilities, {
+            capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities(), {
               workspace = {
                 didChangeWatchedFiles = {
                   dynamicRegistration = true,
