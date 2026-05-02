@@ -31,7 +31,7 @@ setopt share_history          # share command history data
 # SHELL CONFIGURATION 
 #*************************************************************************************************************
 # Increase recursion in shell functions
-FUNCNEST=5000
+FUNCNEST=1000
 # reduced key timeout for snappier key handling (primarily because vi escape was slow)
 KEYTIMEOUT=5
 
