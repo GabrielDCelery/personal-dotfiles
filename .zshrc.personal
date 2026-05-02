@@ -26,7 +26,7 @@ setopt hist_expire_dups_first # delete duplicates first when HISTFILE size excee
 setopt hist_ignore_all_dups   # ignore all duplicated commands history
 setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
-setopt inc_append_history     # add commands to HISTFILE in order of execution
+# write and read back so all open panes/tabs share history in real time, don't use it with inc_append_history which just writes but doesn't read back
 setopt share_history          # share command history data
 
 #*************************************************************************************************************
@@ -36,7 +36,6 @@ setopt share_history          # share command history data
 FUNCNEST=5000
 # reduced key timeout for snappier key handling (primarily because vi escape was slow)
 KEYTIMEOUT=5
-
 
 
 #*************************************************************************************************************
@@ -91,7 +90,6 @@ fi
 #*************************************************************************************************************
 # KUBERNETES
 # Override the default kubectl command to avoid sourcing it every time we open a new tab/pane
-# source <(kubectl completion zsh)  
 kubectl() {
     unfunction kubectl
     source <(kubectl completion zsh)
@@ -155,14 +153,6 @@ export MANPAGER='nvim +Man!'
 export MANWIDTH=999
 # use nvimc to cd into where there is the neovim configuration and open it with neovim
 alias nvimc='cd $HOME/.config/nvim && nvim'
-
-# PERSONAL NOTES 
-export PATH="$PATH:$HOME/.local/bin"
-export PERSONAL_NOTES_DIR=$HOME/notes
-export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
-export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
-export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
-
 
 # STARSHIP 
 eval "$(starship init zsh)"
