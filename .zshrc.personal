@@ -6,13 +6,11 @@
 #
 export XDG_CONFIG_HOME="$HOME/.config"
 
-
 #*************************************************************************************************************
 # WEZTERM 
 #*************************************************************************************************************
 # by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
 export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
-
 
 #*************************************************************************************************************
 # ZSH HISTORY
@@ -37,7 +35,6 @@ FUNCNEST=5000
 # reduced key timeout for snappier key handling (primarily because vi escape was slow)
 KEYTIMEOUT=5
 
-
 #*************************************************************************************************************
 # HOMEBREW 
 #*************************************************************************************************************
@@ -57,7 +54,6 @@ else
     echo "Warning: No Homebrew installation found"
 fi
 
-
 #*************************************************************************************************************
 # ZSH COMPLETIONS
 #*************************************************************************************************************
@@ -66,7 +62,6 @@ fi
 fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 # use the below if you use the plugin directly rather than via homebrew
 # fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
-
 
 #*************************************************************************************************************
 # CLI COMPLETIONS 
@@ -83,7 +78,6 @@ else
     # newer than 24: run compinit, skip scan and load from cache
     compinit -C
 fi
-
 
 #*************************************************************************************************************
 # CUSTOM ACTIVATIONS AND AUTOCOMPLETIONS
@@ -152,7 +146,6 @@ alias nvimc='cd $HOME/.config/nvim && nvim'
 # STARSHIP 
 eval "$(starship init zsh)"
 
-
 #*************************************************************************************************************
 # FZF TAB 
 #*************************************************************************************************************
@@ -160,7 +153,6 @@ eval "$(starship init zsh)"
 source $HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 # use the below if you use the plugin directly rather than via homebrew
 # source $HOME/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
-
 
 #*************************************************************************************************************
 # CLI AUTOSUGGESTIONS 
@@ -196,13 +188,11 @@ ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 # - highlighting paths, options and arguments differently
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-
 #*************************************************************************************************************
 # DIRENV
 #*************************************************************************************************************
 # replaced direnv with mise so this became redudnant
 # eval "$(direnv hook zsh)"
-
 
 #*************************************************************************************************************
 # ALIASES 
@@ -241,7 +231,6 @@ function gaze_help() {
         "$@" --help | nvim -R -c 'set ft=man' -
     fi
 }
-
 
 #*************************************************************************************************************
 # Custom ZSH Widgets
