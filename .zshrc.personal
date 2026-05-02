@@ -33,8 +33,10 @@ setopt share_history          # share command history data
 # SHELL CONFIGURATION 
 #*****************************************************************************************************************************************************************
 # Increase recursion in shell functions
-#
-FUNCNEST=1000
+FUNCNEST=5000
+# reduced key timeout for snappier key handling (primarily because vi escape was slow)
+KEYTIMEOUT=5
+
 
 
 #*****************************************************************************************************************************************************************
@@ -112,6 +114,21 @@ export GNUPGHOME="$HOME/.gnupg"
 export PATH="$HOME/.dotfiles/.local/bin:$PATH"
 
 # FZF 
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+# --height 62% --layout=reverse --border --preview-window=right:50%"
+# # FZF command configurations
+# export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | sed 's#^\./##'"
+# export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
+# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
+# --color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
+# --color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
+# --color=selected-bg:#45475A \
+# --color=border:#313244,label:#CDD6F4"
 source <(fzf --zsh)
 
 # AWS VAULT 
@@ -252,21 +269,6 @@ function gaze_deduphist() {
 
 
 
-# export FZF_DEFAULT_OPTS=" \
-# --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
-# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-# --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-# --height 62% --layout=reverse --border --preview-window=right:50%"
-# # FZF command configurations
-# export FZF_CTRL_T_COMMAND="find . -type f -not -path '*/\.git/*' | sed 's#^\./##'"
-# export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :500 {}'"
-# export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,bg:#1E1E2E,spinner:#F5E0DC,hl:#F38BA8 \
---color=fg:#CDD6F4,header:#F38BA8,info:#CBA6F7,pointer:#F5E0DC \
---color=marker:#B4BEFE,fg+:#CDD6F4,prompt:#CBA6F7,hl+:#F38BA8 \
---color=selected-bg:#45475A \
---color=border:#313244,label:#CDD6F4"
 
 #*****************************************************************************************************************************************************************
 # Custom ZSH Widgets
