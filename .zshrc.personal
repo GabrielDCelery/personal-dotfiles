@@ -171,14 +171,6 @@ source $HOMEBREW_PREFIX/opt/fzf-tab/share/fzf-tab/fzf-tab.zsh
 # source $HOME/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
 
 
-#*****************************************************************************************************************************************************************
-# CLI SYNTAX HIGHLIGHTING 
-#*****************************************************************************************************************************************************************
-# setting up syntax higlighting in the terminal
-# - highlights valid commands in green
-# - showing errors in red
-# - highlighting paths, options and arguments differently
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 #*****************************************************************************************************************************************************************
@@ -207,6 +199,15 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
 # - exclude git from the completion system since it has its own comprehensive system
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
+
+#*****************************************************************************************************************************************************************
+# CLI SYNTAX HIGHLIGHTING 
+#*****************************************************************************************************************************************************************
+# setting up syntax higlighting in the terminal
+# - highlights valid commands in green
+# - showing errors in red
+# - highlighting paths, options and arguments differently
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
 # KUBERNETES *****************************************************************************************************************************************************
