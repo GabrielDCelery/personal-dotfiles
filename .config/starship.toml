@@ -32,8 +32,11 @@ command_timeout = 10000 # 10 seconds
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
-success_symbol = '[❯](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+success_symbol = '[❯](bold green)'         # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
 error_symbol = '[✗](bold red)'
+vimcmd_symbol = '[N](bold yellow)'
+vimcmd_replace_symbol = '[R](bold yellow)'
+vimcmd_visual_symbol = '[V](bold yellow)'
 
 [directory]
 style = 'blue'
