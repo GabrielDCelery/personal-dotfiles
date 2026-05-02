@@ -112,11 +112,6 @@ export GPG_TTY=$(tty)
 # set the directory where GPG stores the encryption keys, trust database and configuration files
 export GNUPGHOME="$HOME/.gnupg"
 
-# STOW 
-# some binaries get stored in dotfiles so want to extend the $PATH with that location
-# TODO: does not look like the correct way to do, let's revisit and see if I can do better
-export PATH="$HOME/.dotfiles/.local/bin:$PATH"
-
 # FZF 
 export FZF_CTRL_T_COMMAND='fd --type f --hidden --exclude .git'
 export FZF_CTRL_T_OPTS="--preview 'bat --color=always -n --line-range :1000 {}' --preview-window=right:62%"
@@ -156,7 +151,6 @@ alias nvimc='cd $HOME/.config/nvim && nvim'
 
 # STARSHIP 
 eval "$(starship init zsh)"
-export STARSHIP_RELOAD=true
 
 
 #*************************************************************************************************************
