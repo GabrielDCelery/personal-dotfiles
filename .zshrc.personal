@@ -90,7 +90,13 @@ fi
 # CUSTOM ACTIVATIONS AND AUTOCOMPLETIONS
 #*****************************************************************************************************************************************************************
 # KUBERNETES
-source <(kubectl completion zsh)  
+# Override the default kubectl command to avoid sourcing it every time we open a new tab/pane
+# source <(kubectl completion zsh)  
+kubectl() {
+    unfunction kubectl
+    source <(kubectl completion zsh)
+    kubectl "$@"
+}
 # tell zsh to use kubectl completion functions for the 'k' alias
 compdef k=kubectl
 
@@ -133,9 +139,6 @@ export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 
 # BAT 
-# export BAT_CONFIG_PATH="$(bat --config-file)"
-# export BAT_CONFIG_DIR="$(bat --config-dir)"
-# export BAT_THEME="Catppuccin Mocha"
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"  # hardcode instead
 export BAT_CONFIG_DIR="$HOME/.config/bat"          # hardcode instead
 export BAT_THEME="Catppuccin Mocha"
