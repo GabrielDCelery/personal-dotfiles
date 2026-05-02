@@ -31,7 +31,7 @@ setopt share_history          # share command history data
 # SHELL CONFIGURATION 
 #*************************************************************************************************************
 # Increase recursion in shell functions
-FUNCNEST=1000
+FUNCNEST=5000
 # reduced key timeout for snappier key handling (primarily because vi escape was slow)
 KEYTIMEOUT=5
 
@@ -247,7 +247,8 @@ function gaze_help() {
 # - man zshcontrib - Documents contributed functions like edit-command-line
 autoload -z edit-command-line # Loads the edit-command-line function from Zsh's function library
 zle -N edit-command-line # Registers edit-command-line as a ZLE (Zsh Line Editor) widget
-bindkey "^x^e" edit-command-line # Ctrl+x followd by Ctrl+e
+bindkey "^x^e" edit-command-line # Ctrl+x followed by Ctrl+e
+bindkey -M vicmd 'v' edit-command-line # v in vi normal mode
 
 #*************************************************************************************************************
 # Custom ZSH CLI KEY BINDINGS
