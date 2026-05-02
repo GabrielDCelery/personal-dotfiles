@@ -87,13 +87,13 @@ behind = '⇣${count}'
 
 [aws]
 disabled = false
-format = '[ \[ $symbol $profile / $region / $duration \]]($style)'
+format = '[ \[ $symbol $profile / $region / $duration \] ]($style)'
 symbol = "󰸏 "
 style = 'bold fg:#fab387'
 
 [azure]
 disabled = false
-format = '[ \[ $symbol ($subscription) \]]($style)'
+format = '[ \[ $symbol ($subscription) \] ]($style)'
 symbol = '󰠅 '
 style = 'bold fg:#89b4fa'
 
@@ -112,7 +112,6 @@ style = 'bold fg:#74c7ec'
 disabled = false
 format = '[\[   $time \]]($style)'
 time_format = '%Y-%m-%d %H:%M:%S'
-time_range = '10:00:00-14:00:00'
 style = 'bold peach'
 
 # ~/.config/starship.toml
@@ -197,7 +196,7 @@ crust = "#181926"
 rosewater = "#f5e0dc"
 flamingo = "#f2cdcd"
 pink = "#f5c2e7"
-mauve = "acba6f7"
+mauve = "#cba6f7"
 red = "#f38ba8"
 maroon = "#eba0ac"
 peach = "#fab387"
