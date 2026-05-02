@@ -126,8 +126,8 @@ export AWS_VAULT_BACKEND=pass
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
 
 # BAT 
-export BAT_CONFIG_PATH="$HOME/.config/bat/config" 
-export BAT_CONFIG_DIR="$HOME/.config/bat"        
+export BAT_CONFIG_PATH="$HOME/.config/bat/config"
+export BAT_CONFIG_DIR="$HOME/.config/bat"
 export BAT_THEME="Catppuccin Mocha"
 
 # NEOVIM 
