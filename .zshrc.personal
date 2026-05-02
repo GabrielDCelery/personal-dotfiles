@@ -8,6 +8,13 @@ export XDG_CONFIG_HOME="$HOME/.config"
 
 
 #*****************************************************************************************************************************************************************
+# WEZTERM 
+#*****************************************************************************************************************************************************************
+# by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
+export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
+
+
+#*****************************************************************************************************************************************************************
 # ZSH HISTORY
 #*****************************************************************************************************************************************************************
 #
@@ -51,91 +58,6 @@ fi
 
 
 #*****************************************************************************************************************************************************************
-# WEZTERM 
-#*****************************************************************************************************************************************************************
-# by default wezterm looks for its configuration at the ~/.config/wezterm/wezterm.lua location, this sets it to the home dir
-export WEZTERM_CONFIG_FILE="$HOME/.wezterm.lua"
-
-
-#*****************************************************************************************************************************************************************
-# GPG 
-#*****************************************************************************************************************************************************************
-# allow the gpg agent to interact with the terminal
-# set the GPG_TTY env variable to the current terminal device, this is important so GPG can interact with the terminal and do things like prompting for password
-export GPG_TTY=$(tty)
-# set the directory where GPG stores the encryption keys, trust database and configuration files
-export GNUPGHOME="$HOME/.gnupg"
-
-
-#*****************************************************************************************************************************************************************
-# STOW 
-#*****************************************************************************************************************************************************************
-# some binaries get stored in dotfiles so want to extend the $PATH with that location
-# TODO: does not look like the correct way to do, let's revisit and see if I can do better
-export PATH="$HOME/.dotfiles/.local/bin:$PATH"
-
-
-#*****************************************************************************************************************************************************************
-# FZF 
-#*****************************************************************************************************************************************************************
-source <(fzf --zsh)
-
-
-#*****************************************************************************************************************************************************************
-# AWS VAULT 
-#*****************************************************************************************************************************************************************
-# make aws-vault use pass as its backend storage system
-export AWS_VAULT_BACKEND=pass
-# specify where pass witll store the credentials managed by aws vault
-export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
-
-
-#*****************************************************************************************************************************************************************
-# BAT 
-#*****************************************************************************************************************************************************************
-# export BAT_CONFIG_PATH="$(bat --config-file)"
-# export BAT_CONFIG_DIR="$(bat --config-dir)"
-# export BAT_THEME="Catppuccin Mocha"
-export BAT_CONFIG_PATH="$HOME/.config/bat/config"  # hardcode instead
-export BAT_CONFIG_DIR="$HOME/.config/bat"          # hardcode instead
-export BAT_THEME="Catppuccin Mocha"
-
-
-#*****************************************************************************************************************************************************************
-# ZOXIDE
-#*****************************************************************************************************************************************************************
-eval "$(zoxide init zsh)"
-
-
-#*****************************************************************************************************************************************************************
-# NEOVIM 
-#*****************************************************************************************************************************************************************
-# make neovim the default viewer
-export VISUAL='nvim'
-# make neovim the default editor
-export EDITOR='nvim'
-# setting neovim to be the default manpage viewer
-# +Man! is a neovim command that loads neovim built-in manpage viewer and ! at the end forces it to start in "Man mode"
-export MANPAGER='nvim +Man!'
-# This will make man pages use the full width of the terminal window, without it they would wrap around 80 characters
-export MANWIDTH=999
-# use nvimc to cd into where there is the neovim configuration and open it with neovim
-alias nvimc='cd $HOME/.config/nvim && nvim'
-
-
-# PERSONAL NOTES ************************************************************************************************************************************************ 
-export PATH="$PATH:$HOME/.local/bin"
-export PERSONAL_NOTES_DIR=$HOME/notes
-export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
-export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
-export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
-
-
-# RUBY ***********************************************************************************************************************************************************
-export PATH="$(gem environment gemdir)/bin:$PATH"
-
-
-#*****************************************************************************************************************************************************************
 # ZSH COMPLETIONS
 #*****************************************************************************************************************************************************************
 # compinit scans all directories in $fpath and registers completion functions that are files named as _something (e.g. _git, _kubectl)
@@ -160,6 +82,78 @@ else
     # newer than 24: run compinit, skip scan and load from cache
     compinit -C
 fi
+
+
+#*****************************************************************************************************************************************************************
+# CUSTOM ACTIVATIONS AND AUTOCOMPLETIONS
+#*****************************************************************************************************************************************************************
+# KUBERNETES
+source <(kubectl completion zsh)  
+# tell zsh to use kubectl completion functions for the 'k' alias
+compdef k=kubectl
+
+# MISE
+eval "$(mise activate zsh)"
+eval "$(mise completion zsh)"
+
+# ZOXIDE
+eval "$(zoxide init zsh)"
+
+# GPG 
+# allow the gpg agent to interact with the terminal
+# set the GPG_TTY env variable to the current terminal device, this is important so GPG can interact with the terminal and do things like prompting for password
+export GPG_TTY=$(tty)
+# set the directory where GPG stores the encryption keys, trust database and configuration files
+export GNUPGHOME="$HOME/.gnupg"
+
+# STOW 
+# some binaries get stored in dotfiles so want to extend the $PATH with that location
+# TODO: does not look like the correct way to do, let's revisit and see if I can do better
+export PATH="$HOME/.dotfiles/.local/bin:$PATH"
+
+# FZF 
+source <(fzf --zsh)
+
+# AWS VAULT 
+# make aws-vault use pass as its backend storage system
+export AWS_VAULT_BACKEND=pass
+# specify where pass witll store the credentials managed by aws vault
+export AWS_VAULT_PASS_PASSWORD_STORE_DIR=~/.password-store/aws-vault
+
+# BAT 
+# export BAT_CONFIG_PATH="$(bat --config-file)"
+# export BAT_CONFIG_DIR="$(bat --config-dir)"
+# export BAT_THEME="Catppuccin Mocha"
+export BAT_CONFIG_PATH="$HOME/.config/bat/config"  # hardcode instead
+export BAT_CONFIG_DIR="$HOME/.config/bat"          # hardcode instead
+export BAT_THEME="Catppuccin Mocha"
+
+# NEOVIM 
+# make neovim the default viewer
+export VISUAL='nvim'
+# make neovim the default editor
+export EDITOR='nvim'
+# setting neovim to be the default manpage viewer
+# +Man! is a neovim command that loads neovim built-in manpage viewer and ! at the end forces it to start in "Man mode"
+export MANPAGER='nvim +Man!'
+# This will make man pages use the full width of the terminal window, without it they would wrap around 80 characters
+export MANWIDTH=999
+# use nvimc to cd into where there is the neovim configuration and open it with neovim
+alias nvimc='cd $HOME/.config/nvim && nvim'
+
+# PERSONAL NOTES 
+export PATH="$PATH:$HOME/.local/bin"
+export PERSONAL_NOTES_DIR=$HOME/notes
+export PERSONAL_NOTES_INBOX_DIR=$HOME/notes/inbox
+export PERSONAL_NOTES_TEMPLATE=$HOME/notes/templates/default.md
+export PERSONAL_NOTES_DEFAULT_AUTHOR=GaborZeller
+
+# RUBY
+export PATH="$(gem environment gemdir)/bin:$PATH"
+
+# STARSHIP 
+eval "$(starship init zsh)"
+export STARSHIP_RELOAD=true
 
 
 #*****************************************************************************************************************************************************************
@@ -208,21 +202,6 @@ ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 
-# KUBERNETES *****************************************************************************************************************************************************
-# set up autocomplete in zsh into the current shell
-source <(kubectl completion zsh)  
-# tell zsh to use kubectl completion functions for the 'k' alias
-compdef k=kubectl
-
-
-#*****************************************************************************************************************************************************************
-# MISE
-#*****************************************************************************************************************************************************************
-eval "$(mise activate zsh)"
-# I don't need the below line anymore since I am using zsh completions
-eval "$(mise completion zsh)"
-
-
 #*****************************************************************************************************************************************************************
 # DIRENV
 #*****************************************************************************************************************************************************************
@@ -239,13 +218,6 @@ alias netstat='grc netstat'
 alias e='eza'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
-
-#*****************************************************************************************************************************************************************
-# STARSHIP 
-#*****************************************************************************************************************************************************************
-eval "$(starship init zsh)"
-export STARSHIP_RELOAD=true
-
 
 #*****************************************************************************************************************************************************************
 # CUSTOM FUNCTIONS 
