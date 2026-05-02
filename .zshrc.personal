@@ -138,7 +138,8 @@ export PATH="$(gem environment gemdir)/bin:$PATH"
 #*****************************************************************************************************************************************************************
 # ZSH COMPLETIONS
 #*****************************************************************************************************************************************************************
-# this adds completions from the completions repo to fpath, needs to come before compinit
+# compinit scans all directories in $fpath and registers completion functions that are files named as _something (e.g. _git, _kubectl)
+# zsh-completions contains a bunch of these, they have to be added to fpath before compinit runs
 fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 # use the below if you use the plugin directly rather than via homebrew
 # fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
@@ -147,11 +148,16 @@ fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 #*****************************************************************************************************************************************************************
 # CLI COMPLETIONS 
 #*****************************************************************************************************************************************************************
-# initialize completion system, -U means unique entries and -z means without aliases
+# lazy load compinit into memory but do not execute just yet, without autoload zsh wouldn't know compinit existed
+# -U prevents alias expansion, if I aliased something that appears inside compinit's code it could break it
+# -z forces zsh-style function loading (as opposed to ksh-style) and makes it explicit that compinit should be loaded as native zsh
 autoload -Uz compinit
+# compinit is expensive because it is scanning everything in $fpath so check if the .zcompdump file that compinit created/updated is older than 24 hours
 if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
+    # older than 24h: run full compinit, rebuild the cache
     compinit
 else
+    # newer than 24: run compinit, skip scan and load from cache
     compinit -C
 fi
 
@@ -204,8 +210,8 @@ ZSH_AUTOSUGGEST_COMPLETION_IGNORE="git *"
 
 
 # KUBERNETES *****************************************************************************************************************************************************
-# I don't need the below line anymore since I am using zsh completions
-# source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+# set up autocomplete in zsh into the current shell
+source <(kubectl completion zsh)  
 # tell zsh to use kubectl completion functions for the 'k' alias
 compdef k=kubectl
 
