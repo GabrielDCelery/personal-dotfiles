@@ -14,7 +14,7 @@ plugins {
     //     welcome_screen true
     // }
         // panel + neovim navigation
-    navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.2.1/vim-zellij-navigator.wasm"
+    navigator location="https://github.com/hiasr/vim-zellij-navigator/releases/download/0.3.0/vim-zellij-navigator.wasm"
 }
 
 keybinds clear-defaults=true {
