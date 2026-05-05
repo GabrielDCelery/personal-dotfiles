@@ -59,9 +59,9 @@ fi
 #*************************************************************************************************************
 # compinit scans all directories in $fpath and registers completion functions that are files named as _something (e.g. _git, _kubectl)
 # zsh-completions contains a bunch of these, they have to be added to fpath before compinit runs
-fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
+# fpath=($HOMEBREW_PREFIX/share/zsh-completions $fpath)
 # use the below if you use the plugin directly rather than via homebrew
-# fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
+fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
 
 #*************************************************************************************************************
 # CLI COMPLETIONS 
