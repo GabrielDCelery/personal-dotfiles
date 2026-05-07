@@ -44,11 +44,27 @@ return {
         },
       },
     }
+    -- Jump to where a symbol is defined — for a function this is the function body, for an
+    -- interface this is the interface itself. Use <C-t> to come back.
     vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions, { desc = 'goto definition' })
-    vim.keymap.set('n', 'gD', require('fzf-lua').lsp_declarations, { desc = 'goto declarations' }) -- WARN: This is not Goto Definition, this is Goto Declaration. For example, in C this would take you to the header.
+
+    -- Jump to the declaration (the interface/signature), not the implementation.
+    -- In C/C++ this is the header file. In Go/TypeScript this is the interface or type signature.
+    -- Use this when you want the contract, not the code behind it.
+    vim.keymap.set('n', 'gD', require('fzf-lua').lsp_declarations, { desc = 'goto declaration' })
+
+    -- Find every place this symbol is used across the project. Opens results in fzf.
+    -- Use this when you want to understand the impact of changing something.
     vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, { desc = 'goto references' })
+
+    -- Jump to the concrete struct/class that implements an interface — the actual code that runs.
+    -- Use this when you're on an interface type and want to find what satisfies it.
+    -- e.g. sitting on io.Reader → gI takes you to os.File, not the io.Reader interface.
     vim.keymap.set('n', 'gI', require('fzf-lua').lsp_implementations, { desc = 'goto implementation' })
 
+    -- Jump to the type definition of the symbol under the cursor — not where the variable was
+    -- declared, but what type it is. Use this to discover all fields on a struct, interface,
+    -- or object type when you want to know what keys/methods are available.
     vim.keymap.set('n', '<leader>D', require('fzf-lua').lsp_typedefs, { desc = 'type definition' })
     vim.keymap.set('n', '<leader>sd', require('fzf-lua').lsp_document_symbols, { desc = 'document symbols' })
 
