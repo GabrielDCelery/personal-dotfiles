@@ -13,6 +13,21 @@ return {
       return ''
     end
 
+    local function harpoon_status()
+      local ok, harpoon = pcall(require, 'harpoon')
+      if not ok then
+        return ''
+      end
+      local list = harpoon:list()
+      local current = vim.fn.fnamemodify(vim.fn.expand '%:p', ':~:.')
+      for i, item in ipairs(list.items) do
+        if item.value == current then
+          return '󰀱 ' .. i
+        end
+      end
+      return ''
+    end
+
     local function get_formatter()
       local conform = require 'conform'
       local formatters = conform.list_formatters(0)
@@ -46,10 +61,22 @@ return {
               unnamed = '[No Name]', -- Text to show for unnamed buffers.
               newfile = ' ', -- Text to show for newly created file before first write
             },
+            color = function()
+              if vim.bo.modified then
+                return { fg = '#fab387' }
+              end
+            end,
+          },
+          {
+            harpoon_status,
+            color = { fg = '#f5c2e7' },
           },
         },
         lualine_x = {
-          recording_status,
+          {
+            recording_status,
+            color = { fg = '#f38ba8' },
+          },
           'encoding',
           'fileformat',
           'filetype',
@@ -67,6 +94,11 @@ return {
             },
             -- List of LSP names to ignore (e.g., `null-ls`):
             ignore_lsp = {},
+            color = function()
+              if vim.lsp.status() ~= '' then
+                return { fg = '#fab387' }
+              end
+            end,
           },
         },
       },

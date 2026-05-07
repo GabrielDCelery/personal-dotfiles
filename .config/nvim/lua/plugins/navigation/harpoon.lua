@@ -20,13 +20,13 @@ return {
     --   end
     -- end, { desc = 'Remove buffer from harpoon' })
 
-    -- vim.keymap.set('n', '<Tab>', function()
-    --   harpoon:list():next()
-    -- end, { desc = 'Move to next harpoon buffer' })
+    vim.keymap.set('n', '<Tab>', function()
+      harpoon:list():next()
+    end, { desc = 'Move to next harpoon buffer' })
     --
-    -- vim.keymap.set('n', '<S-Tab>', function()
-    --   harpoon:list():prev()
-    -- end, { desc = 'Move to next harpoon buffer' })
+    vim.keymap.set('n', '<S-Tab>', function()
+      harpoon:list():prev()
+    end, { desc = 'Move to next harpoon buffer' })
 
     vim.keymap.set('n', '<leader>he', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
@@ -94,5 +94,12 @@ return {
     vim.keymap.set('n', '<leader>hs', function()
       toggle_fzf(harpoon:list())
     end, { desc = 'harpoon search' })
+
+    -- Instant jump to harpoon slots 1-5. Use <leader>he to see and reorder the list.
+    vim.keymap.set('n', '<leader>1', function() harpoon:list():select(1) end, { desc = 'harpoon slot 1' })
+    vim.keymap.set('n', '<leader>2', function() harpoon:list():select(2) end, { desc = 'harpoon slot 2' })
+    vim.keymap.set('n', '<leader>3', function() harpoon:list():select(3) end, { desc = 'harpoon slot 3' })
+    vim.keymap.set('n', '<leader>4', function() harpoon:list():select(4) end, { desc = 'harpoon slot 4' })
+    vim.keymap.set('n', '<leader>5', function() harpoon:list():select(5) end, { desc = 'harpoon slot 5' })
   end,
 }
