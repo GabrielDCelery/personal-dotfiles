@@ -116,6 +116,8 @@ return {
         --  TODO: figure out what to do with this
         -- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
         vim.keymap.set('n', 'rn', vim.lsp.buf.rename, { desc = 'Rename' })
+
+        -- NOTE: 'K' is automatically mapped to vim.lsp.buf.hover by Neovim 0.10+ when an LSP attaches
         -- vim.keymap.set('n', '<leader>K', vim.lsp.buf.hover, { desc = 'Show details' })
 
         -- map('<leader>K', vim.lsp.buf.hover, 'Show Details')
