@@ -200,15 +200,57 @@ source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # eval "$(direnv hook zsh)"
 
 #*************************************************************************************************************
-# ALIASES 
+# ALIASES
 #*************************************************************************************************************
 alias ps='grc ps'
 alias ls='grc ls'
 alias k='grc kubectl'
 alias netstat='grc netstat'
 alias e='eza'
+alias ll='eza -la --icons --git'
+alias lt='eza --tree --icons --level=2'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
+
+# GIT
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add .'
+alias gcm='git commit -m'
+alias gl='git log --oneline --graph --decorate'
+alias gco='git checkout'
+alias gp='git push'
+alias gpl='git pull'
+alias gd='git diff'
+alias lg='lazygit'
+
+# CLIPBOARD
+alias cpwd='pwd | clip'
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      pbcopy
+    else
+      echo "$1" | pbcopy
+    fi
+  }
+elif grep -qi microsoft /proc/version 2>/dev/null; then
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      clip.exe
+    else
+      echo "$1" | clip.exe
+    fi
+  }
+else
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      xclip -selection clipboard
+    else
+      echo "$1" | xclip -selection clipboard
+    fi
+  }
+fi
 
 #*************************************************************************************************************
 # CUSTOM FUNCTIONS 
