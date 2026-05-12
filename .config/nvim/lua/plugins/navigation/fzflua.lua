@@ -71,6 +71,9 @@ return {
     vim.keymap.set('n', '<leader>sb', require('fzf-lua').builtin, { desc = 'fzf builtin' })
     vim.keymap.set('n', '<leader>sB', require('fzf-lua').buffers, { desc = 'fzf buffers' })
     vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = 'fzf files' })
+    vim.keymap.set('n', '<leader>sn', function()
+      require('fzf-lua').files { cwd = vim.fn.expand '%:h' }
+    end, { desc = 'fzf files in current dir' })
     vim.keymap.set('n', '<leader>sF', function()
       require('fzf-lua').files { fd_opts = '--hidden --no-ignore --follow --exclude .git' }
     end, { desc = 'fzf files (all, incl gitignored)' })
@@ -80,7 +83,7 @@ return {
         rg_opts = "--hidden --no-ignore --column --line-number --no-heading --color=always --smart-case --max-columns=512 -g '!.git'",
       }
     end, { desc = 'fzf grep (all, incl gitignored)' })
-    -- vim.keymap.set('n', '<leader>sG', require('fzf-lua').git_status, { desc = 'fzf git status' })
+    vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status, { desc = 'fzf git status' })
     vim.keymap.set('n', '<leader>sc', require('fzf-lua').grep_curbuf, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sC', require('fzf-lua').commands, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sq', require('fzf-lua').quickfix, { desc = 'fzf quickfix' })
