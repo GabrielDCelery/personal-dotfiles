@@ -68,8 +68,8 @@ return {
     vim.keymap.set('n', '<leader>D', require('fzf-lua').lsp_typedefs, { desc = 'type definition' })
     vim.keymap.set('n', '<leader>sd', require('fzf-lua').lsp_document_symbols, { desc = 'document symbols' })
 
-    vim.keymap.set('n', '<leader>sb', require('fzf-lua').builtin, { desc = 'fzf builtin' })
-    vim.keymap.set('n', '<leader>sB', require('fzf-lua').buffers, { desc = 'fzf buffers' })
+    vim.keymap.set('n', '<leader>sb', require('fzf-lua').buffers, { desc = 'fzf buffers' })
+    vim.keymap.set('n', '<leader>sB', require('fzf-lua').builtin, { desc = 'fzf builtin' })
     vim.keymap.set('n', '<leader>sf', require('fzf-lua').files, { desc = 'fzf files' })
     vim.keymap.set('n', '<leader>sn', function()
       require('fzf-lua').files { cwd = vim.fn.expand '%:h' }
@@ -84,6 +84,9 @@ return {
       }
     end, { desc = 'fzf grep (all, incl gitignored)' })
     vim.keymap.set('n', '<leader>gs', require('fzf-lua').git_status, { desc = 'fzf git status' })
+    vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = 'fzf grep word under cursor' })
+    vim.keymap.set('n', '<leader>sW', require('fzf-lua').grep_cWORD, { desc = 'fzf grep WORD under cursor' })
+    vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = 'fzf resume last picker' })
     vim.keymap.set('n', '<leader>sc', require('fzf-lua').grep_curbuf, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sC', require('fzf-lua').commands, { desc = 'fzf current buffer' })
     vim.keymap.set('n', '<leader>sq', require('fzf-lua').quickfix, { desc = 'fzf quickfix' })
