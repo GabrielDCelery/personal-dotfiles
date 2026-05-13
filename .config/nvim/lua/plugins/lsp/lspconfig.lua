@@ -17,7 +17,7 @@ return {
     { 'j-hui/fidget.nvim', opts = {} },
     -- Allows extra capabilities provided by nvim-cmp
     'hrsh7th/cmp-nvim-lsp',
-    -- 'b0o/SchemaStore.nvim',
+    'b0o/SchemaStore.nvim',
   },
   config = function()
     local signsMap = {
@@ -192,20 +192,40 @@ return {
       },
     })
 
-    -- vim.lsp.config('yamlls', {
-    --   settings = {
-    --     yaml = {
-    --       schemaStore = {
-    --         enable = false,
-    --         url = '',
-    --       },
-    --       schemas = require('schemastore').yaml.schemas(),
-    --       validate = true,
-    --       completion = true,
-    --       hover = true,
-    --     },
-    --   },
-    -- })
+    vim.lsp.config('lua_ls', {
+      settings = {
+        Lua = {
+          completion = {
+            callSnippet = 'Replace',
+          },
+        },
+      },
+    })
+
+    vim.lsp.config('markdown_oxide', {
+      capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities(), {
+        workspace = {
+          didChangeWatchedFiles = {
+            dynamicRegistration = true,
+          },
+        },
+      }),
+    })
+
+    vim.lsp.config('yamlls', {
+      settings = {
+        yaml = {
+          schemaStore = {
+            enable = false,
+            url = '',
+          },
+          schemas = require('schemastore').yaml.schemas(),
+          validate = true,
+          completion = true,
+          hover = true,
+        },
+      },
+    })
 
     require('mason-lspconfig').setup {
       automatic_enable = true,
@@ -236,91 +256,6 @@ return {
       },
       -- See `:h mason-lspconfig.setup_handlers()`
       ---@type table<string, fun(server_name: string)>?
-      handlers = {
-        -- NOTE: since we removed defaultLspCapabilities this did not serve any more purpose but wanted to keep it for some further investigation around setup
-        -- function(server_name)
-        --   require('lspconfig')[server_name].setup {}
-        -- end,
-        ['gopls'] = function()
-          require('lspconfig').gopls.setup {
-            settings = {
-              gopls = {
-                buildFlags = { '-tags=integration' },
-              },
-            },
-          }
-        end,
-        ['lua_ls'] = function()
-          require('lspconfig').lua_ls.setup {
-            settings = {
-              Lua = {
-                completion = {
-                  callSnippet = 'Replace',
-                },
-                -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-                -- diagnostics = { disable = { 'missing-fields' } },
-              },
-            },
-          }
-        end,
-        ['markdown_oxide'] = function()
-          require('lspconfig').markdown_oxide.setup {
-            capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), require('cmp_nvim_lsp').default_capabilities(), {
-              workspace = {
-                didChangeWatchedFiles = {
-                  dynamicRegistration = true,
-                },
-              },
-            }),
-          }
-        end,
-        -- ['volar'] = function()
-        --   require('lspconfig').volar.setup {
-        --     capabilities = defaultLspCapabilities,
-        --     filetypes = {
-        --       'typescript',
-        --       'javascript',
-        --       'javascriptreact',
-        --       'typescriptreact',
-        --       'vue',
-        --       'json',
-        --     },
-        --     init_options = {
-        --       typescript = {
-        --         -- would use the following if we had a global installation of typescript
-        --         -- tsdk = vim.fn.expand '$HOME/node_modules/typescript/lib',
-        --         -- this is the installation of the typescrpt language server that mason-tool-installer installs
-        --         tsdk = vim.fn.expand '$HOME/.local/share/nvim/mason/packages/typescript-language-server/node_modules/typescript/lib',
-        --       },
-        --       -- additional Volar settings
-        --       languageFeatures = {
-        --         implementation = true, -- Go to implementation support
-        --         references = true, -- Find references support
-        --         definition = true, -- Go to definition support
-        --         typeDefinition = true, -- Go to type definition support
-        --         callHierarchy = true,
-        --         hover = true,
-        --         rename = true,
-        --         renameFileRefactoring = true,
-        --         signatureHelp = true,
-        --         codeAction = true,
-        --         workspaceSymbol = true,
-        --         completion = {
-        --           defaultTagNameCase = 'both',
-        --           defaultAttrNameCase = 'kebabCase',
-        --         },
-        --       },
-        --     },
-        --     before_init = function(params, config)
-        --       local root_dir = params.root_dir
-        --       local lib_path = vim.fs.find('node_modules/typescript/lib', { path = root_dir, upward = true })[1]
-        --       if lib_path then
-        --         config.init_options.typescript.tsdk = lib_path
-        --       end
-        --     end,
-        --   }
-        -- end,
-      },
     }
   end,
 }
