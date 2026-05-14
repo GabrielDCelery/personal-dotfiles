@@ -212,6 +212,15 @@ return {
       }),
     })
 
+    vim.lsp.config('jsonls', {
+      settings = {
+        json = {
+          schemas = require('schemastore').json.schemas(),
+          validate = { enable = true },
+        },
+      },
+    })
+
     vim.lsp.config('yamlls', {
       settings = {
         yaml = {
@@ -219,10 +228,31 @@ return {
             enable = false,
             url = '',
           },
-          schemas = require('schemastore').yaml.schemas(),
+          schemas = require('schemastore').yaml.schemas {
+            ignore = { 'Serverless Framework Configuration' },
+          },
           validate = true,
           completion = true,
           hover = true,
+          customTags = {
+            '!And', '!And sequence',
+            '!If', '!If sequence',
+            '!Not', '!Not sequence',
+            '!Equals', '!Equals sequence',
+            '!Or', '!Or sequence',
+            '!FindInMap', '!FindInMap sequence',
+            '!Base64',
+            '!Cidr',
+            '!Ref',
+            '!Sub', '!Sub sequence',
+            '!GetAtt', '!GetAtt sequence',
+            '!GetAZs',
+            '!ImportValue',
+            '!Select', '!Select sequence',
+            '!Split', '!Split sequence',
+            '!Join', '!Join sequence',
+            '!Condition',
+          },
         },
       },
     })
@@ -236,6 +266,7 @@ return {
       -- NOTE: If there are no language servers and want to figure out which one to install run LspInstall in the file
       -- and will get a list of recommended suggestions
       ensure_installed = {
+        'jsonls', -- json -- https://github.com/hrsh7th/vscode-langservers-extracted
         'bashls', -- bash -- https://github.com/bash-lsp/bash-language-server
         'buf_ls', -- protocol buffer -- https://github.com/bufbuild/buf
         'clangd', -- c++ -- https://github.com/clangd/clangd
