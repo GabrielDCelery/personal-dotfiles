@@ -77,8 +77,6 @@ return {
             recording_status,
             color = { fg = '#f38ba8' },
           },
-          'encoding',
-          'fileformat',
           'filetype',
           get_formatter,
           {
