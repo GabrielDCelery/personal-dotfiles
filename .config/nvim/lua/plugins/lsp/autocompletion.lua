@@ -108,8 +108,8 @@ return { -- Autocompletion
         },
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
-        { name = 'buffer' },
-        { name = 'path' },
+        -- { name = 'buffer' },
+        -- { name = 'path' },
       },
       formatting = {
         expandable_indicator = true,
