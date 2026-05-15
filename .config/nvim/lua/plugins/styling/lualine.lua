@@ -2,7 +2,7 @@ return {
   'nvim-lualine/lualine.nvim',
   requires = {
     'nvim-tree/nvim-web-devicons',
-    opt = true,
+    'catpuccin/nvim',
   },
   config = function()
     local function recording_status()
@@ -41,7 +41,7 @@ return {
     -- catppuccin is not controlled via the theme integrations but here
     require('lualine').setup {
       options = {
-        theme = 'catppuccin',
+        theme = 'catppuccin-mocha',
       },
       sections = {
         lualine_c = {
