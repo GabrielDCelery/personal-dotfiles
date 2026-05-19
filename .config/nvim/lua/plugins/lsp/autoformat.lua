@@ -1,30 +1,6 @@
 return { -- Autoformat
   'stevearc/conform.nvim',
   lazy = false, -- Load immediately so formatters install on startup
-  dependencies = {
-    {
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      config = function()
-        require('mason-tool-installer').setup {
-          ensure_installed = {
-            'black', -- python
-            -- 'clang-format', -- c++
-            'goimports', -- go
-            'isort', -- python
-            'jq', -- json
-            'markdownlint', -- markdown
-            'prettier',
-            'prettierd',
-            'stylua', -- lua formatter
-            'yamlfmt', -- yaml
-            'yq', -- json, yaml xml formatter
-          },
-          auto_update = true,
-          run_on_start = true,
-        }
-      end,
-    },
-  },
   config = function()
     local conform = require 'conform'
 
@@ -43,17 +19,17 @@ return { -- Autoformat
         ['go'] = { 'goimports' },
         ['helm'] = { 'yamlfmt' },
         ['helm.yaml'] = { 'yamlfmt' },
-        ['javascript'] = { 'prettier', 'prettierd', stop_after_first = true },
-        ['json'] = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
-        ['jsonc'] = { 'prettier', 'prettierd', 'yq', stop_after_first = true },
+        ['javascript'] = { 'prettierd', stop_after_first = true },
+        ['json'] = { 'prettierd', 'yq', stop_after_first = true },
+        ['jsonc'] = { 'prettierd', 'yq', stop_after_first = true },
         ['kubernetes'] = { 'yamlfmt' },
         ['lua'] = { 'stylua' },
-        ['markdown'] = { 'prettier', 'prettierd', 'markdownlint', stop_after_first = true },
+        ['markdown'] = { 'prettierd', 'markdownlint', stop_after_first = true },
         ['python'] = { 'isort', 'black' },
-        ['typescript'] = { 'prettier', 'prettierd', stop_after_first = true },
-        ['typescriptreact'] = { 'prettier', 'prettierd', stop_after_first = true },
-        ['vue'] = { 'prettier', 'prettierd', stop_after_first = true },
-        ['yaml'] = { 'yamlfmt', 'yq', 'prettier', 'prettierd', stop_after_first = true },
+        ['typescript'] = { 'prettierd', stop_after_first = true },
+        ['typescriptreact'] = { 'prettierd', stop_after_first = true },
+        ['vue'] = { 'prettierd', stop_after_first = true },
+        ['yaml'] = { 'yamlfmt', 'yq', 'prettierd', stop_after_first = true },
       },
       notify_on_error = true,
     }
