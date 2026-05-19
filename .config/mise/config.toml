@@ -7,7 +7,7 @@ dagger = "0.19.10"
 databricks-cli = "0.285.0"
 go = "1.25.6"
 lua = "5.4.8"
-node = "25.4.0"
+node = "latest"
 pipx = "1.8.0"
 poetry = "2.3.1"
 python = "3.14.2"
@@ -18,6 +18,8 @@ trivy = "0.68.2"
 usage = "2.13.1"
 uv = "0.9.26"
 yarn = "4.12.0"
+"npm:vscode-langservers-extracted" = "latest"
+"npm:typescript-language-server" = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = [
