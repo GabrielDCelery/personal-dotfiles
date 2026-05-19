@@ -2,16 +2,6 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' }, -- Load only when file is opened
   dependencies = {
-    -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-    {
-      'williamboman/mason.nvim',
-      -- version = 'v2.1.0',
-      opts = {},
-    },
-    {
-      'williamboman/mason-lspconfig.nvim',
-      -- version = 'v2.2.0',
-    },
     -- Useful status updates for LSP.
     -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
     { 'j-hui/fidget.nvim', opts = {} },
@@ -235,58 +225,58 @@ return {
           completion = true,
           hover = true,
           customTags = {
-            '!And', '!And sequence',
-            '!If', '!If sequence',
-            '!Not', '!Not sequence',
-            '!Equals', '!Equals sequence',
-            '!Or', '!Or sequence',
-            '!FindInMap', '!FindInMap sequence',
+            '!And',
+            '!And sequence',
+            '!If',
+            '!If sequence',
+            '!Not',
+            '!Not sequence',
+            '!Equals',
+            '!Equals sequence',
+            '!Or',
+            '!Or sequence',
+            '!FindInMap',
+            '!FindInMap sequence',
             '!Base64',
             '!Cidr',
             '!Ref',
-            '!Sub', '!Sub sequence',
-            '!GetAtt', '!GetAtt sequence',
+            '!Sub',
+            '!Sub sequence',
+            '!GetAtt',
+            '!GetAtt sequence',
             '!GetAZs',
             '!ImportValue',
-            '!Select', '!Select sequence',
-            '!Split', '!Split sequence',
-            '!Join', '!Join sequence',
+            '!Select',
+            '!Select sequence',
+            '!Split',
+            '!Split sequence',
+            '!Join',
+            '!Join sequence',
             '!Condition',
           },
         },
       },
     })
 
-    require('mason-lspconfig').setup {
-      automatic_enable = true,
-      -- Using mason-tool-installer therefore setting automatic_installation to false and leaving ensure_installed empty
-      ---@type boolean
-      automatic_installation = true,
-      ---@type string[]
-      -- NOTE: If there are no language servers and want to figure out which one to install run LspInstall in the file
-      -- and will get a list of recommended suggestions
-      ensure_installed = {
-        'jsonls', -- json -- https://github.com/hrsh7th/vscode-langservers-extracted
-        'bashls', -- bash -- https://github.com/bash-lsp/bash-language-server
-        'buf_ls', -- protocol buffer -- https://github.com/bufbuild/buf
-        'clangd', -- c++ -- https://github.com/clangd/clangd
-        'dockerls', -- dockerfile -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
-        'docker_compose_language_service', -- docker compose -- https://github.com/microsoft/compose-language-service
-        'eslint', -- eslint -- https://github.com/hrsh7th/vscode-langservers-extracted
-        'gopls', -- go -- https://github.com/golang/tools/tree/master/gopls
-        'html', -- html -- https://github.com/hrsh7th/vscode-langservers-extracted
-        'lua_ls', -- lua -- https://github.com/luals/lua-language-server
-        -- 'marksman', -- markdown -- https://github.com/artempyanykh/marksman
-        'rust_analyzer', -- rust -- https://github.com/rust-lang/rust-analyzer
-        'pyright', -- python -- https://github.com/microsoft/pyright
-        'taplo', -- toml -- https://github.com/tamasfe/taplo
-        'terraformls', -- terraform -- https://github.com/hashicorp/terraform-ls
-        'ts_ls', -- typescript -- https://github.com/typescript-language-server/typescript-language-server
-        -- 'tsgo', -- typescript -- https://github.com/microsoft/typescript-go
-        'yamlls', -- yaml -- https://github.com/redhat-developer/yaml-language-server
-      },
-      -- See `:h mason-lspconfig.setup_handlers()`
-      ---@type table<string, fun(server_name: string)>?
+    vim.lsp.enable {
+      'bashls', -- bash -- https://github.com/bash-lsp/bash-language-server
+      'buf_ls', -- protocol buffer -- https://github.com/bufbuild/buf
+      'clangd', -- c++ -- https://github.com/clangd/clangd
+      'docker_compose_language_service', -- docker compose -- https://github.com/microsoft/compose-language-service
+      'dockerls', -- dockerfile -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
+      'eslint', -- eslint -- https://github.com/hrsh7th/vscode-langservers-extracted
+      'gopls', -- go -- https://github.com/golang/tools/tree/master/gopls
+      'html', -- html -- https://github.com/hrsh7th/vscode-langservers-extracted
+      'jsonls', -- json -- https://github.com/hrsh7th/vscode-langservers-extracted
+      'lua_ls', -- lua -- https://github.com/luals/lua-language-server
+      -- 'marksman', -- markdown -- https://github.com/artempyanykh/marksman
+      'pyright', -- python -- https://github.com/microsoft/pyright
+      'rust_analyzer', -- rust -- https://github.com/rust-lang/rust-analyzer
+      'taplo', -- toml -- https://github.com/tamasfe/taplo
+      'terraformls', -- terraform -- https://github.com/hashicorp/terraform-ls
+      'ts_ls', -- typescript -- https://github.com/typescript-language-server/typescript-language-server
+      -- 'tsgo', -- typescript -- https://github.com/microsoft/typescript-go
+      'yamlls', -- yaml -- https://github.com/redhat-developer/yaml-language-server
     }
   end,
 }
