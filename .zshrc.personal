@@ -211,6 +211,7 @@ alias ll='eza -la --icons --git'
 alias lt='eza --tree --icons --level=2'
 alias dig='grc dig'
 alias traceroute='grc traceroute'
+alias cl='clear'
 
 # GIT
 alias gs='git status'
