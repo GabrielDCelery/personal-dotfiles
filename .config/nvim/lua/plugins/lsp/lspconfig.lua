@@ -158,11 +158,11 @@ return {
         --
         -- This may be unwanted, since they displace some of your code
         --
-        -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-        --   map('<leader>th', function()
-        --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-        --   end, '[T]oggle Inlay [H]ints')
-        -- end
+        if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          map('<leader>th', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+          end, '[T]oggle Inlay [H]ints')
+        end
       end,
     })
 
@@ -178,6 +178,15 @@ return {
       settings = {
         gopls = {
           buildFlags = { '-tags=integration' },
+          hints = {
+            assignVariableTypes = true,
+            compositeLiteralFields = true,
+            compositeLiteralTypes = true,
+            constantValues = true,
+            functionTypeParameters = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
         },
       },
     })
@@ -255,6 +264,24 @@ return {
             '!Condition',
           },
         },
+      },
+    })
+
+    local ts_inlay_hints = {
+      includeInlayParameterNameHints = 'all',
+      includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+      includeInlayFunctionParameterTypeHints = true,
+      includeInlayVariableTypeHints = true,
+      includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+      includeInlayPropertyDeclarationTypeHints = true,
+      includeInlayFunctionLikeReturnTypeHints = true,
+      includeInlayEnumMemberValueHints = true,
+    }
+
+    vim.lsp.config('ts_ls', {
+      settings = {
+        typescript = { inlayHints = ts_inlay_hints },
+        javascript = { inlayHints = ts_inlay_hints },
       },
     })
 
