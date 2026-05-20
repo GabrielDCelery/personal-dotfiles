@@ -52,7 +52,7 @@ idiomatic_version_file_enable_tools = [
     "yarn",
 ]
 lockfile = true
-experimental = true
+experimental = false
 
 [tasks."install-euporie"]
 description = "Install TUI Jupyter notebook editor and runner"
