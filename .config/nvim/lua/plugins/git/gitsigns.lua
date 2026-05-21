@@ -25,6 +25,13 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         map('n', '<leader>gtd', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' }) -- conflicting with toggle from neogit
         map('n', ']g', '<cmd>Gitsigns next_hunk<cr>', { desc = 'Next hunk' })
         map('n', '[g', '<cmd>Gitsigns prev_hunk<cr>', { desc = 'Previous hunk' })
+        map('n', '<leader>ghs', gitsigns.stage_hunk, { desc = 'Stage hunk' })
+        map('n', '<leader>ghS', gitsigns.stage_buffer, { desc = 'Stage buffer' })
+        map('n', '<leader>ghR', gitsigns.reset_hunk, { desc = 'Reset hunk' })
+        map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('v', '<leader>ghs', function()
+          gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
+        end, { desc = 'Stage selected lines' })
         -- map('n', '<leader>gD', gitsigns.diffthis, { desc = 'git [d]iff against index' }) -- not important since we have neogit
       end,
     }
