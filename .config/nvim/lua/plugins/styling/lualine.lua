@@ -35,7 +35,10 @@ return {
       if #formatters == 0 then
         return ''
       end
-      return '󰉢 ' .. formatters[1].name
+      local names = vim.tbl_map(function(f)
+        return f.name
+      end, formatters)
+      return '󰉢 ' .. table.concat(names, ', ')
     end
 
     -- catppuccin is not controlled via the theme integrations but here
