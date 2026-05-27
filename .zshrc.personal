@@ -75,12 +75,10 @@ fpath=($HOME/.zsh/plugins/zsh-completions/src $fpath)
 # -U prevents alias expansion, if I aliased something that appears inside compinit's code it could break it
 # -z forces zsh-style function loading (as opposed to ksh-style) and makes it explicit that compinit should be loaded as native zsh
 autoload -Uz compinit
-# compinit is expensive because it is scanning everything in $fpath so check if the .zcompdump file that compinit created/updated is older than 24 hours
-if [[ -n ${ZDOTDIR:-$HOME}/.zcompdump(#qN.mh+24) ]]; then
-    # older than 24h: run full compinit, rebuild the cache
+# compinit is expensive because it scans everything in $fpath, so only rebuild the cache if the dump is missing or older than 24h
+if [[ -z "$(find ${ZDOTDIR:-$HOME}/.zcompdump -mmin -1440 2>/dev/null)" ]]; then
     compinit
 else
-    # newer than 24: run compinit, skip scan and load from cache
     compinit -C
 fi
 
