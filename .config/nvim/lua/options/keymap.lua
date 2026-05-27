@@ -28,6 +28,9 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Move up down half a page then re-center' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Move up half a page then re-center' })
 
+vim.keymap.set('n', '<C-e>', '5jzz', { desc = 'Move down 5 lines and then re-center' })
+vim.keymap.set('n', '<C-y>', '5kzz', { desc = 'Move up 5 lines and then re-center' })
+
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
