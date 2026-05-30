@@ -31,8 +31,16 @@ return {
     local function get_formatter()
       local conform = require 'conform'
       local formatters = conform.list_formatters(0)
-      -- check if the array like table of formatters is empty
       if #formatters == 0 then
+        return ''
+      end
+      local ft_config = conform.formatters_by_ft[vim.bo.filetype] or {}
+      if ft_config.stop_after_first then
+        for _, f in ipairs(formatters) do
+          if f.available then
+            return '󰉢 ' .. f.name
+          end
+        end
         return ''
       end
       local names = vim.tbl_map(function(f)
