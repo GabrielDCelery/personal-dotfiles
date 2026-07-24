@@ -279,6 +279,34 @@ return {
     }
 
     vim.lsp.config('ts_ls', {
+      -- Default root detection walks up looking for the nearest tsconfig.json,
+      -- jsconfig.json, package.json, or .git — whichever is found first wins.
+      -- In npm-workspaces monorepos, nested packages/*/package.json files (with
+      -- no tsconfig.json of their own) are closer to the buffer than the real
+      -- root tsconfig.json, so root detection stops too early and the server
+      -- never loads the tsconfig.json that defines path aliases (e.g. "@somepackage/*").
+      --
+      -- Root at the nearest tsconfig.json instead, since that's the authoritative
+      -- config for path aliases and correctly supports nested per-package
+      -- tsconfigs too. Guard against it belonging to an unrelated ancestor
+      -- project (one with no tsconfig.json of its own) by only trusting it when
+      -- it's inside the current git repo. Fall back to the git root, then to
+      -- the buffer's own directory if the project has no .git yet.
+      root_dir = function(bufnr, on_dir)
+        local ts_root = vim.fs.root(bufnr, 'tsconfig.json')
+        local git_root = vim.fs.root(bufnr, '.git')
+
+        local root
+        if ts_root and (not git_root or ts_root:find(git_root, 1, true) == 1) then
+          root = ts_root
+        elseif git_root then
+          root = git_root
+        else
+          root = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr))
+        end
+
+        on_dir(root)
+      end,
       settings = {
         typescript = { inlayHints = ts_inlay_hints },
         javascript = { inlayHints = ts_inlay_hints },
