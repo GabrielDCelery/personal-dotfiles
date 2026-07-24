@@ -49,6 +49,8 @@ require('lazy').setup({
 
   -- Git/Version control
   require 'plugins.git.neogit', -- built-in git GUI
+  require 'plugins.git.octo', -- git PR review
+  require 'plugins.git.diffview', -- git PR review
   -- require 'plugins.git.fugitive',
   require 'plugins.git.gitsigns', -- git decorations
 
