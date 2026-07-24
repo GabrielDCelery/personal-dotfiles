@@ -16,7 +16,6 @@ $python\
 $git_branch\
 $git_status\
 $aws\
-${custom.aws-sso}\
 $azure\
 $terraform\
 $docker_context\
