@@ -55,7 +55,7 @@ require('lazy').setup({
   require 'plugins.git.gitsigns', -- git decorations
 
   -- Testing
-  require 'plugins.testing.vim-test', -- test initiator
+  -- require 'plugins.testing.vim-test', -- test initiator
   require 'plugins.testing.better-quickfix', -- quickfix window
   require 'plugins.testing.trouble', -- enhanced errors window
   require 'plugins.testing.debugger', -- debugger

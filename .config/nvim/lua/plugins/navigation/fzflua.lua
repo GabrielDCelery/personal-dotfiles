@@ -92,5 +92,6 @@ return {
     vim.keymap.set('n', '<leader>sq', require('fzf-lua').quickfix, { desc = 'fzf quickfix' })
     vim.keymap.set('n', '<leader>se', require('fzf-lua').diagnostics_document, { desc = 'fzf diagnostics (current buffer)' })
     vim.keymap.set('n', '<leader>sE', require('fzf-lua').diagnostics_workspace, { desc = 'fzf diagnostics (workspace)' })
+    vim.keymap.set('n', '<leader>ms', require('fzf-lua').marks, { desc = 'fzf marks' })
   end,
 }
