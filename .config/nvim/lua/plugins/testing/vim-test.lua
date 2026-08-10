@@ -3,7 +3,7 @@ return {
   dependencies = {
     'preservim/toggleterm',
   },
-  vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>', { desc = 'test closest' }),
+  -- vim.keymap.set('n', '<leader>tt', ':TestNearest<CR>', { desc = 'test closest' }),
   vim.keymap.set('n', '<leader>tf', ':TestFile<CR>', { desc = 'test file' }),
   vim.keymap.set('n', '<leader>ta', ':TestSuite<CR>', { desc = 'test all' }),
   vim.keymap.set('n', '<leader>tl', ':TestLast<CR>', { desc = 'test last' }),

@@ -61,6 +61,7 @@ require('lazy').setup({
   require 'plugins.testing.debugger', -- debugger
   -- require 'plugins.testing.ai-assistant', -- ai assistant
   require 'plugins.testing.mcp', -- mcp manager
+  require 'plugins.testing.neotest', -- neotest
 
   -- Terminal
   -- require 'plugins.terminal.toggleterm', -- inbuilt terminal
