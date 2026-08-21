@@ -432,6 +432,13 @@ default_layout "compact"
 //   - false
 // 
 // pane_frames false
+
+// (Since 0.45.0) Controls the frame style used when pane_frames is enabled.
+// Options:
+//   - "title" (default since 0.45.0, single title line only, no full border)
+//   - "full" (classic full border around each pane)
+// 
+pane_frame_style "full"
  
 // When attaching to an existing session with other users,
 // should the session be mirrored (true)
