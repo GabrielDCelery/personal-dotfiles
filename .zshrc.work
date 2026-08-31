@@ -1,0 +1,22 @@
+# Source this file from your shell rc on machines that need Atlassian MCP access
+# (see github.com/GabrielDCelery/personal-dotclaude for what consumes these).
+# Populates auth headers for the Atlassian Confluence/Jira MCP servers from pass.
+#
+# Requires:
+#   pass insert work/email
+#   pass insert work/atlassian/confluence-api-token
+#   pass insert work/atlassian/jira-api-token
+
+_work_email="$(pass work/email 2>/dev/null)"
+_work_confluence_token="$(pass work/atlassian/confluence-api-token 2>/dev/null)"
+_work_jira_token="$(pass work/atlassian/jira-api-token 2>/dev/null)"
+
+if [ -n "$_work_email" ] && [ -n "$_work_confluence_token" ]; then
+    export WORK_CONFLUENCE_AUTH_HEADER="Basic $(printf '%s' "${_work_email}:${_work_confluence_token}" | base64)"
+fi
+
+if [ -n "$_work_email" ] && [ -n "$_work_jira_token" ]; then
+    export WORK_JIRA_AUTH_HEADER="Basic $(printf '%s' "${_work_email}:${_work_jira_token}" | base64)"
+fi
+
+unset _work_email _work_confluence_token _work_jira_token
