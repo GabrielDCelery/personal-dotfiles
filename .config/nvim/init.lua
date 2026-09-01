@@ -37,6 +37,7 @@ require('lazy').setup({
   require 'plugins.lsp.spectre', -- search and replace text in the codebase
 
   -- Navigation/Searching
+  require 'plugins.navigation.bufferline', -- show tabs on a tab on neovim
   require 'plugins.navigation.flash', -- navigate within buffer jumping to characters
   require 'plugins.navigation.neo-tree', -- browse and edit file system
   require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
