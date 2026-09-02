@@ -11,6 +11,11 @@ export COLORTERM="truecolor"
 #
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# macOS limits Unitx domain sockets paths to ~103 characters and Neovim's runtime dir defaults to a long randomize path
+# on top of that fzf-lua crates a helper server and the two combined can create a really long name where bind() fails with EINVAL ("invalid argument")
+export XDG_RUNTIME_DIR="/tmp/nvim-runtime-$UID"
+mkdir -p "$XDG_RUNTIME_DIR" && chmod 700 "$XDG_RUNTIME_DIR"
+
 #*************************************************************************************************************
 # WEZTERM 
 #*************************************************************************************************************
