@@ -40,13 +40,15 @@ require('lazy').setup({
   require 'plugins.navigation.bufferline', -- show tabs on a tab on neovim
   require 'plugins.navigation.flash', -- navigate within buffer jumping to characters
   require 'plugins.navigation.neo-tree', -- browse and edit file system
+  require 'plugins.navigation.navic', -- lsp-powered breadcrumb winbar
   require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
   require 'plugins.navigation.treesitter', -- treesitter
   require 'plugins.navigation.treesitter-context', -- treesitter context
+  require 'plugins.navigation.treesitter-textobjects', -- jump/select function & class scopes
   require 'plugins.navigation.fzflua', -- versatile fzf based search
   require 'plugins.navigation.vim-tmux-navigator', -- vim tmux navigator
   require 'plugins.navigation.vim-zellij', -- vim zellij navigator
-  -- require 'plugins.navigation.hydra', -- hydra
+  require 'plugins.navigation.hydra', -- hydra
 
   -- Git/Version control
   require 'plugins.git.neogit', -- built-in git GUI

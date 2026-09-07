@@ -163,6 +163,12 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
           end, '[T]oggle Inlay [H]ints')
         end
+
+        -- feed the winbar breadcrumb (see plugins.navigation.navic) with symbol
+        -- locations from any LSP server that supports document symbols
+        if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentSymbol, event.buf) then
+          require('nvim-navic').attach(client, event.buf)
+        end
       end,
     })
 
