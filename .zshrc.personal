@@ -233,25 +233,25 @@ alias cpwd='pwd | clip'
 if [[ "$OSTYPE" == "darwin"* ]]; then
   function clip() {
     if [[ $# -eq 0 ]]; then
-      pbcopy
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
     else
-      echo "$1" | pbcopy
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
     fi
   }
 elif grep -qi microsoft /proc/version 2>/dev/null; then
   function clip() {
     if [[ $# -eq 0 ]]; then
-      clip.exe
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
     else
-      echo "$1" | clip.exe
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
     fi
   }
 else
   function clip() {
     if [[ $# -eq 0 ]]; then
-      xclip -selection clipboard
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
     else
-      echo "$1" | xclip -selection clipboard
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
     fi
   }
 fi
