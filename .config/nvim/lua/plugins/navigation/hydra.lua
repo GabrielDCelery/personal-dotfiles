@@ -95,11 +95,35 @@ return {
       body = '<leader>f',
       heads = {
         -- lowercase = forward, Shift = backward, same key jumps the same scope
-        { 'f', function() move.goto_next_start('@function.outer', 'textobjects') end, { desc = 'Next function' } },
-        { 'F', function() move.goto_previous_start('@function.outer', 'textobjects') end, { desc = 'Prev function' } },
+        {
+          'f',
+          function()
+            move.goto_next_start('@function.outer', 'textobjects')
+          end,
+          { desc = 'Next function' },
+        },
+        {
+          'F',
+          function()
+            move.goto_previous_start('@function.outer', 'textobjects')
+          end,
+          { desc = 'Prev function' },
+        },
 
-        { 'm', function() move.goto_next_start('@class.outer', 'textobjects') end, { desc = 'Next class/method' } },
-        { 'M', function() move.goto_previous_start('@class.outer', 'textobjects') end, { desc = 'Prev class/method' } },
+        {
+          'm',
+          function()
+            move.goto_next_start('@class.outer', 'textobjects')
+          end,
+          { desc = 'Next class/method' },
+        },
+        {
+          'M',
+          function()
+            move.goto_previous_start('@class.outer', 'textobjects')
+          end,
+          { desc = 'Prev class/method' },
+        },
 
         { 'q', nil, { desc = 'Quit', exit = true } },
         { '<Esc>', nil, { desc = 'Quit', exit = true } },
