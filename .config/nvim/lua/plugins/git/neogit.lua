@@ -13,7 +13,7 @@ return {
     vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<cr>', { desc = 'git diffview open' })
     vim.keymap.set('n', '<leader>gc', '<cmd>DiffviewClose<cr>', { desc = 'git diffview close' })
     vim.keymap.set('n', '<leader>gr', '<cmd>DiffviewRefresh<cr>', { desc = 'git diffview refresh' })
-    vim.keymap.set('n', '<leader>gt', '<cmd>DiffviewToggleFiles<cr>', { desc = 'git diffview toggle' })
+    -- vim.keymap.set('n', '<leader>gt', '<cmd>DiffviewToggleFiles<cr>', { desc = 'git diffview toggle' })
     vim.keymap.set('n', '<leader>gb', function()
       vim.ui.input({ prompt = 'Diff against branch: ', default = require('custom.git-default-branch').get() }, function(branch)
         if branch and branch ~= '' then
