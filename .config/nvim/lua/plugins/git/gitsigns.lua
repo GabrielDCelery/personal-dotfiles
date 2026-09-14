@@ -29,6 +29,12 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         map('n', '<leader>ghS', gitsigns.stage_buffer, { desc = 'Stage buffer' })
         map('n', '<leader>ghR', gitsigns.reset_hunk, { desc = 'Reset hunk' })
         map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = 'Undo stage hunk' })
+        map('n', '<leader>gtm', function()
+          gitsigns.change_base('main', true)
+        end, { desc = '[T]oggle diff against [m]ain' })
+        map('n', '<leader>gtr', function()
+          gitsigns.reset_base(true)
+        end, { desc = '[T]oggle [r]eset diff base' })
         map('v', '<leader>ghs', function()
           gitsigns.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
         end, { desc = 'Stage selected lines' })
