@@ -15,7 +15,7 @@ return { -- scrollbar showing cursor position, diagnostics, search results and g
       },
       handle = {
         text = ' ',
-        blend = 70, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
+        blend = 80, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
         color = palette.pink,
         color_nr = nil, -- cterm
         highlight = 'CursorColumn',
