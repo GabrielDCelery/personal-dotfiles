@@ -124,6 +124,50 @@ return {
           end,
           { desc = 'Prev class/method' },
         },
+        -- gitsigns.nav_hunk() is fire-and-forget async and vim.wait()-ing
+        -- for it pumps the event loop, which confuses Hydra's own key
+        -- dispatch and makes it exit early. gitsigns.get_hunks() is plain
+        -- synchronous data (already computed/cached for the signs you see
+        -- in the gutter), so we navigate ourselves off of it instead.
+        {
+          'g',
+          function()
+            local gitsigns = require 'gitsigns'
+            local hunks = gitsigns.get_hunks(0)
+            if not hunks or #hunks == 0 then
+              return
+            end
+            local line = vim.fn.line '.'
+            for _, hunk in ipairs(hunks) do
+              if hunk.added.start > line then
+                vim.api.nvim_win_set_cursor(0, { hunk.added.start, 0 })
+                return
+              end
+            end
+            vim.api.nvim_win_set_cursor(0, { hunks[1].added.start, 0 })
+          end,
+          { desc = 'Next hunk' },
+        },
+        {
+          'G',
+          function()
+            local gitsigns = require 'gitsigns'
+            local hunks = gitsigns.get_hunks(0)
+            if not hunks or #hunks == 0 then
+              return
+            end
+            local line = vim.fn.line '.'
+            for i = #hunks, 1, -1 do
+              local hunk = hunks[i]
+              if hunk.added.start < line then
+                vim.api.nvim_win_set_cursor(0, { hunk.added.start, 0 })
+                return
+              end
+            end
+            vim.api.nvim_win_set_cursor(0, { hunks[#hunks].added.start, 0 })
+          end,
+          { desc = 'Prev hunk' },
+        },
 
         { 'q', nil, { desc = 'Quit', exit = true } },
         { '<Esc>', nil, { desc = 'Quit', exit = true } },
