@@ -9,17 +9,17 @@ return {
   config = function()
     local neogit = require 'neogit'
     neogit.setup {}
-    vim.keymap.set('n', '<leader>go', '<cmd>Neogit<cr>', { desc = 'git open' })
-    vim.keymap.set('n', '<leader>gd', '<cmd>DiffviewOpen<cr>', { desc = 'git diffview open' })
-    vim.keymap.set('n', '<leader>gc', '<cmd>DiffviewClose<cr>', { desc = 'git diffview close' })
-    vim.keymap.set('n', '<leader>gr', '<cmd>DiffviewRefresh<cr>', { desc = 'git diffview refresh' })
-    -- vim.keymap.set('n', '<leader>gt', '<cmd>DiffviewToggleFiles<cr>', { desc = 'git diffview toggle' })
-    vim.keymap.set('n', '<leader>gb', function()
-      vim.ui.input({ prompt = 'Diff against branch: ', default = require('custom.git-default-branch').get() }, function(branch)
+    vim.keymap.set('n', '<leader>go', '<cmd>Neogit<cr>', { desc = 'Neogit open' })
+    vim.keymap.set('n', '<leader>gdo', '<cmd>DiffviewOpen<cr>', { desc = 'Diffview [o]pen' })
+    vim.keymap.set('n', '<leader>gdc', '<cmd>DiffviewClose<cr>', { desc = 'Diffview [c]lose' })
+    vim.keymap.set('n', '<leader>gdr', '<cmd>DiffviewRefresh<cr>', { desc = 'Diffview [r]efresh' })
+    -- vim.keymap.set('n', '<leader>gdf', '<cmd>DiffviewToggleFiles<cr>', { desc = 'Diffview toggle [f]iles panel' })
+    vim.keymap.set('n', '<leader>gdb', function()
+      vim.ui.input({ prompt = 'Diff against branch: ' }, function(branch)
         if branch and branch ~= '' then
           vim.cmd('DiffviewOpen ' .. branch)
         end
       end)
-    end, { desc = 'git diffview open against branch' })
+    end, { desc = 'Diffview open against [b]ranch' })
   end,
 }
