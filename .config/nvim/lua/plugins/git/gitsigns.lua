@@ -30,8 +30,15 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
         map('n', '<leader>ghR', gitsigns.reset_hunk, { desc = 'Reset hunk' })
         map('n', '<leader>ghu', gitsigns.undo_stage_hunk, { desc = 'Undo stage hunk' })
         map('n', '<leader>gtm', function()
-          gitsigns.change_base('main', true)
-        end, { desc = '[T]oggle diff against [m]ain' })
+          gitsigns.change_base(require('custom.git-default-branch').get(), true)
+        end, { desc = '[T]oggle diff against [m]ain/master' })
+        map('n', '<leader>gtb', function()
+          vim.ui.input({ prompt = 'Diff against branch: ', default = require('custom.git-default-branch').get() }, function(branch)
+            if branch and branch ~= '' then
+              gitsigns.change_base(branch, true)
+            end
+          end)
+        end, { desc = '[T]oggle diff against [b]ranch' })
         map('n', '<leader>gtr', function()
           gitsigns.reset_base(true)
         end, { desc = '[T]oggle [r]eset diff base' })
