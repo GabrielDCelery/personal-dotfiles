@@ -26,6 +26,7 @@ require('lazy').setup({
   require 'plugins.styling.colorizer', -- color highlighter for RGB colors
   require 'plugins.styling.web-devicons', -- nerd fonts for neovim plugins
   require 'plugins.styling.snacks', -- collection of small plugins from folke
+  require 'plugins.styling.scrollbar', -- scrollbar with cursor position, diagnostics and git hunks
 
   -- LSP/Formatting/Linting
   require 'plugins.lsp.sleuth', -- auto adjust cursor to follow indentation
@@ -40,7 +41,6 @@ require('lazy').setup({
   require 'plugins.navigation.bufferline', -- show tabs on a tab on neovim
   require 'plugins.navigation.flash', -- navigate within buffer jumping to characters
   require 'plugins.navigation.neo-tree', -- browse and edit file system
-  require 'plugins.navigation.navic', -- lsp-powered breadcrumb winbar
   require 'plugins.navigation.harpoon', -- harpoon for pinning buffers that keep revisiting
   require 'plugins.navigation.treesitter', -- treesitter
   require 'plugins.navigation.treesitter-context', -- treesitter context
