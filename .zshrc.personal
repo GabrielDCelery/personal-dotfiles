@@ -284,6 +284,32 @@ function gaze_help() {
 }
 
 #*************************************************************************************************************
+# ZELLIJ TAB AUTO-RENAME
+#*************************************************************************************************************
+# keeps the zellij tab name in sync with the nearest git repo root, prefixed with the tab's position
+# (e.g. "#2 dotfiles"), falling back to the cwd basename outside a repo
+# runs on chpwd (only fires on cd) rather than precmd (which fires on every command)
+_zellij_autorename_tab() {
+    command -v zellij >/dev/null 2>&1 && [[ -n "$ZELLIJ" ]] || return
+
+    local name
+    if command -v git >/dev/null 2>&1 && name=$(git rev-parse --show-toplevel 2>/dev/null); then
+        name=${name:t}
+    else
+        name=${PWD:t}
+    fi
+
+    local position
+    position=$(zellij action current-tab-info 2>/dev/null | awk '/^position:/{print $2}')
+    [[ -n "$position" ]] && name="#$((position + 1)) $name"
+
+    zellij action rename-tab "$name" 2>/dev/null
+}
+chpwd_functions+=(_zellij_autorename_tab)
+# also run once on shell start, since a new zellij tab/pane spawns a fresh shell rather than triggering a cd
+_zellij_autorename_tab
+
+#*************************************************************************************************************
 # Custom ZSH Widgets
 #*************************************************************************************************************
 
