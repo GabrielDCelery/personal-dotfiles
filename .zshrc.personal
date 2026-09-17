@@ -348,9 +348,6 @@ bindkey "^[[1;5D" backward-word         # Ctrl+Left
 bindkey "^b" backward-kill-word         # Ctrl+Backspace
 bindkey "^w" kill-word                  # Ctrl+W
 
-# lambda-logs sipp-management-devgaborzd-service
-# lambda-errors sipp-management-devgaborzd-service 60m
-
 # Tail a Lambda's CloudWatch logs, stripping the timestamp/stream prefix and
 # pretty-printing/filtering any JSON log lines. Non-JSON lines (START/END/REPORT,
 # extension logs) are passed through raw so you don't lose Lambda's own crash dumps.
