@@ -1,0 +1,41 @@
+#*************************************************************************************************************
+# CUSTOM HELPER SCRIPTS
+#*************************************************************************************************************
+# Home for standalone helper functions (as opposed to shell/plugin config, which lives in .zshrc.personal)
+
+# Tail a Lambda's CloudWatch logs, stripping the timestamp/stream prefix and
+# pretty-printing/filtering any JSON log lines. Non-JSON lines (START/END/REPORT,
+# extension logs) are passed through raw so you don't lose Lambda's own crash dumps.
+# usage: lambda-logs sipp-management-devgaborzd-service
+lambda-logs() {
+  local log_group="$1"
+  local since="${2:-15m}"
+  local region="${3:-eu-west-1}"
+
+  if [[ -z "$log_group" ]]; then
+    echo "Usage: lambda-logs <function-name> [since=15m] [region=eu-west-1]" >&2
+    return 1
+  fi
+
+  aws logs tail "/aws/lambda/${log_group}" --since "$since" --region "$region" \
+    | sed -E 's/^[^ ]+ [^ ]+ //' \
+    | while IFS= read -r line; do
+        if echo "$line" | jq -e . >/dev/null 2>&1; then
+          echo "$line" | jq -c .
+        else
+          echo "$line"
+        fi
+      done
+}
+
+# Same but filtered to just ERROR-level structured logs.
+# usage: lambda-errors sipp-management-devgaborzd-service 60m
+lambda-errors() {
+  local log_group="$1"
+  local since="${2:-15m}"
+  local region="${3:-eu-west-1}"
+
+  aws logs tail "/aws/lambda/${log_group}" --since "$since" --region "$region" \
+    | sed -E 's/^[^ ]+ [^ ]+ //' \
+    | jq -Rr 'fromjson? // empty | select(.level == "ERROR")'
+}
