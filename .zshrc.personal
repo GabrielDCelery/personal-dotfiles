@@ -228,36 +228,8 @@ alias gpl='git pull'
 alias gd='git diff'
 alias lg='lazygit'
 
-# CLIPBOARD
-alias cpwd='pwd | clip'
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  function clip() {
-    if [[ $# -eq 0 ]]; then
-      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
-    else
-      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
-    fi
-  }
-elif grep -qi microsoft /proc/version 2>/dev/null; then
-  function clip() {
-    if [[ $# -eq 0 ]]; then
-      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
-    else
-      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
-    fi
-  }
-else
-  function clip() {
-    if [[ $# -eq 0 ]]; then
-      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
-    else
-      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
-    fi
-  }
-fi
-
 #*************************************************************************************************************
-# CUSTOM FUNCTIONS 
+# CUSTOM FUNCTIONS
 #*************************************************************************************************************
 # function to pipe any command's help to nvim for better readability
 function gaze_help() {

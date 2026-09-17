@@ -39,3 +39,32 @@ lambda-errors() {
     | sed -E 's/^[^ ]+ [^ ]+ //' \
     | jq -Rr 'fromjson? // empty | select(.level == "ERROR")'
 }
+
+# Cross-platform clipboard copy: pipe text in, or pass it as args.
+# Trims a trailing newline and surrounding whitespace so `pwd | clip` etc. paste cleanly.
+# usage: pwd | clip   OR   clip some literal text
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
+    else
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | pbcopy
+    fi
+  }
+elif grep -qi microsoft /proc/version 2>/dev/null; then
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
+    else
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | clip.exe
+    fi
+  }
+else
+  function clip() {
+    if [[ $# -eq 0 ]]; then
+      tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
+    else
+      printf '%s' "$*" | tr -d '\n' | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' | xclip -selection clipboard
+    fi
+  }
+fi
