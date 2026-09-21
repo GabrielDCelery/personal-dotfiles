@@ -100,6 +100,20 @@ kubectl() {
 # tell zsh to use kubectl completion functions for the 'k' alias
 compdef k=kubectl
 
+# DOCKER
+# Override the default docker command to avoid sourcing it every time we open a new tab/pane
+docker() {
+    unfunction docker
+    source <(docker completion zsh)
+    docker "$@"
+}
+
+# TERRAFORM
+# terraform has no completion generator script, it uses bash-style completion where
+# the binary itself is invoked on every tab press to compute suggestions
+autoload -Uz bashcompinit && bashcompinit
+complete -o nospace -C "$(which terraform)" terraform
+
 # MISE
 eval "$(mise activate zsh)"
 eval "$(mise completion zsh)"
