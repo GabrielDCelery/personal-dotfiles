@@ -26,6 +26,7 @@ return { -- Autoformat
         ['lua'] = { 'stylua' },
         ['markdown'] = { 'prettierd', 'markdownlint', stop_after_first = true },
         ['python'] = { 'isort', 'black' },
+        ['terraform'] = { 'terraform' },
         ['typescript'] = { 'biome', 'prettierd', stop_after_first = true },
         ['typescriptreact'] = { 'biome', 'prettierd', stop_after_first = true },
         ['vue'] = { 'biome', 'prettierd', stop_after_first = true },

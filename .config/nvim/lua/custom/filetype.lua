@@ -17,6 +17,7 @@ function M.init()
   vim.filetype.add {
     pattern = {
       ['.*%.vue'] = 'vue',
+      ['.*%.tfvars'] = 'terraform',
     },
   }
 end
