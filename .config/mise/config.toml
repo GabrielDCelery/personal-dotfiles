@@ -47,13 +47,7 @@ postgres = "latest"
 direnv = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = [
-    "go",
-    "node",
-    "python",
-    "terraform",
-    "yarn",
-]
+idiomatic_version_file_enable_tools = ["node", "python", "terraform", "yarn"]
 lockfile = true
 experimental = false
 
