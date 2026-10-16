@@ -121,6 +121,9 @@ eval "$(mise completion zsh)"
 # ZOXIDE
 eval "$(zoxide init zsh)"
 
+# DIRENV
+eval "$(direnv hook zsh)"
+
 # GPG 
 # allow the gpg agent to interact with the terminal
 # set the GPG_TTY env variable to the current terminal device, this is important so GPG can interact with the terminal and do things like prompting for password

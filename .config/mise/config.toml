@@ -35,14 +35,16 @@ rust-analyzer = "latest"
 stylua = "latest"
 syft = "latest"
 taplo = "latest"
-terraform = "latest"
-terraform-ls = "latest"
+# terraform = "latest"
+# terraform-ls = "latest"
 trivy = "latest"
 usage = "latest"
 uv = "latest"
 yamlfmt = "latest"
 yarn = "latest"
 yq = "latest"
+postgres = "latest"
+direnv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = [
