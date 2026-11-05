@@ -20,7 +20,7 @@ return {
         -- 3. `--exclude .git`: Explicitly excludes the .git directory from searches
         -- 4. `--exclude '*lock*'`: Excludes lockfiles (package-lock.json, pnpm-lock.yaml, etc.)
         -- Note: Respects .gitignore to exclude node_modules, build, dist, .env, etc.
-        fd_opts = '--hidden --follow --exclude .git --exclude *lock*',
+        fd_opts = "--hidden --follow --exclude .git --exclude '*lock*'",
       },
       grep = {
         -- This line configures how ripgrep (rg) performs text searches in fzf-lua. Let's break down each flag:
