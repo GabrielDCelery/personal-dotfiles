@@ -292,7 +292,16 @@ return {
       -- project (one with no tsconfig.json of its own) by only trusting it when
       -- it's inside the current git repo. Fall back to the git root, then to
       -- the buffer's own directory if the project has no .git yet.
+      --
+      -- Loose JS/TS files outside any JS project (no tsconfig/jsconfig/package.json
+      -- anywhere above them) have no TypeScript install for the server to use, so it
+      -- would fail with "Could not find a valid TypeScript installation". Skip starting
+      -- the server for those buffers by not calling on_dir.
       root_dir = function(bufnr, on_dir)
+        if not vim.fs.root(bufnr, { 'tsconfig.json', 'jsconfig.json', 'package.json' }) then
+          return
+        end
+
         local ts_root = vim.fs.root(bufnr, 'tsconfig.json')
         local git_root = vim.fs.root(bufnr, '.git')
 
